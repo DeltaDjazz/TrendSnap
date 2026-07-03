@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Dune : Deuxième Partie",
+    "type": "movie",
+    "genre": ["Science-fiction", "Aventure"],
+    "rating": 8.5,
+    "year": 2024,
+    "poster": "https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg",
+    "description": "Paul Atréides s'unit aux Fremen pour mener la guerre contre les conspirateurs qui ont détruit sa famille."
+  },
+  {
+    "id": 2,
+    "title": "Oppenheimer",
+    "type": "movie",
+    "genre": ["Drame", "Histoire"],
+    "rating": 8.3,
+    "year": 2023,
+    "poster": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "description": "L'histoire du physicien J. Robert Oppenheimer et de son rôle dans le développement de la bombe atomique."
+  },
+  {
+    "id": 3,
+    "title": "The Bear",
+    "type": "series",
+    "genre": ["Drame", "Comédie"],
+    "rating": 8.7,
+    "year": 2022,
+    "poster": "https://image.tmdb.org/t/p/w500/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg",
+    "description": "Un jeune chef cuisinier revient dans sa ville natale pour gérer le restaurant sandwich de sa famille."
+  },
+  {
+    "id": 4,
+    "title": "Poor Things",
+    "type": "movie",
+    "genre": ["Comédie", "Fantasy"],
+    "rating": 8.0,
+    "year": 2023,
+    "poster": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXIbpAlZTuA5MvE.jpg",
+    "description": "La fantastique évolution d'une jeune femme ramenée à la vie par un scientifique brillant et peu orthodoxe."
+  },
+  {
+    "id": 5,
+    "title": "Shogun",
+    "type": "series",
+    "genre": ["Drame", "Histoire"],
+    "rating": 8.8,
+    "year": 2024,
+    "poster": "https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
+    "description": "Un navigateur anglais échoue au Japon féodal et se retrouve pris dans une guerre de pouvoir."
+  },
+  {
+    "id": 6,
+    "title": "Alien : Romulus",
+    "type": "movie",
+    "genre": ["Horreur", "Science-fiction"],
+    "rating": 7.4,
+    "year": 2024,
+    "poster": "https://image.tmdb.org/t/p/w500/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
+    "description": "Des jeunes colonisateurs de l'espace se retrouvent face aux formes de vie les plus terrifiantes de l'univers."
+  },
+  {
+    "id": 7,
+    "title": "Challengers",
+    "type": "movie",
+    "genre": ["Drame", "Romance"],
+    "rating": 7.6,
+    "year": 2024,
+    "poster": "https://image.tmdb.org/t/p/w500/H6vke7zGiuLsz4v4RPeReb9rsj.jpg",
+    "description": "Une championne de tennis devenue entraîneuse tente de relancer la carrière de son mari."
+    },
+    {
+    "id": 8,
+    "title": "Severance",
+    "type": "series",
+    "genre": ["Thriller", "Science-fiction"],
+    "rating": 8.7,
+    "year": 2022,
+    "poster": "https://image.tmdb.org/t/p/w500/cMaykP9aFnSRqt7jS4X87QEAiKz.jpg",
+    "description": "Des employés acceptent une procédure chirurgicale qui sépare leurs souvenirs professionnels et personnels."
+    },
+    {
+    "id": 9,
+    "title": "The Substance",
+    "type": "movie",
+    "genre": ["Horreur", "Science-fiction"],
+    "rating": 7.3,
+    "year": 2024,
+    "poster": "https://image.tmdb.org/t/p/w500/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
+    "description": "Une star hollywoodienne utilise une mystérieuse substance pour créer une version plus jeune d'elle-même."
+    },
+    {
+    "id": 10,
+    "title": "Arcane",
+    "type": "series",
+    "genre": ["Animation", "Fantasy"],
+    "rating": 9.0,
+    "year": 2021,
+    "poster": "https://image.tmdb.org/t/p/w500/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+    "description": "Dans les cités utopiques de Piltover et les bas-fonds de Zaun, deux sœurs luttent de chaque côté d'une guerre."
+    }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Elle",
+    "saison": "Séries",
+    "genre": ["Comédie", "Drame"],
+    "distribution": 8.5,
+    "year": 2026,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/f2c45d9a64f1294dbdf51d13cf57bd4188e975e467986ac843b10340e85091db._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX899_FMavif_PQ65_.jpg",
+    "description": "Avant qu'Elle Woods ne se retrouve comme un poisson hors de l'eau à Harvard, nous la découvrons en 1995, nageant dans les eaux tumultueuses du lycée où elle est confrontée à des amitiés compliquées, un amour interdit et des choix vestimentaires discutables. Ce récit inattendu de son adolescence nous montre les expériences qui ont fait d'elle la jeune femme emblématique que le public aime tant."
+  },
+  {
+    "id": 2,
+    "title": "Off Campus",
+    "saison": "Séries",
+    "genre": ["Drame", "Romance"],
+    "distribution": 8.3,
+    "year": 2023,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/8027fe1fcc5cba00727b0332335ffa165a7b87b4979dbd72e07009300217a69c._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX899_FMavif_PQ65_.jpg",
+    "description": "La première saison de la série OFF CAMPUS raconte l'idylle improbable qui naît entre Hannah Wells, une étudiante en musique qui déteste le hockey, et le séduisant Garrett Graham, la star de l'équipe de hockey de l'université de Briar."
+  },
+  {
+    "id": 3,
+    "title": "Au fil des années",
+    "saison": "series",
+    "genre": ["Romance", "Jeunes Adultes"],
+    "distribution": 8.7,
+    "year": 2022,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/5feb5b15e603dfe9863b8f2267437eae69f6b8e7eff3c84e9cc24955ab05b859._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMpng_.png",
+    "description": "Au Fil des années de Carley Fortune est une romance teintée de nostalgie sur les premières amours et les choix qui nous marquent pour la vie."
+  },
+  {
+    "id": 4,
+    "title": "The Boys",
+    "saison": "movie",
+    "genre": ["Action", "Comédie"],
+    "distribution": 8.0,
+    "year": 2023,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/56f82f69aee908d4f6b075e6cba83d344cbf0aca0cf50ab1944a5dc57695fa99._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMjpg_.jpg",
+    "description": "Le Protecteur contrôle l'Amérique par la terreur fasciste et l'emprisonnement des contestataires au sein des camps de la liberté. Butcher, Hughie et les Boys organisent une résistance désespérée et font face à des obstacles insurmontables afin de stopper son règne tyrannique."
+  },
+  {
+    "id": 5,
+    "title": "Spider-Noir",
+    "saison": "series",
+    "genre": ["Action", "Drame"],
+    "distribution": 8.8,
+    "year": 2026,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/ac62d7b37addb925f6828bd38ed26633fd798cfd2e8796e589e868c5167b310e._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMpng_.png",
+    "description": "Ben Reilly, détective privé, est engagé pour enquêter sur ce qui semble être de banales affaires… jusqu'à ce que des gangsters, des monstres et une mystérieuse femme fatale tissent une toile qui va le confronter à son ancienne vie de seul et unique super-héros de New York : L'Araignée."
+  },
+  {
+    "id": 6,
+    "title": "Memory of a Killer",
+    "saison": "1",
+    "genre": ["Action", "Suspense", "Drame"],
+    "distribution": "Patrick Dempsey, Michael Imperioli, Richard Harmon",
+    "year": 2023,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/b7aa28f75f2fb39078811d7208521ee9d2e62c2196d2293728403c3968b10f86._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMjpg_.jpg",
+    "description": "Un tueur à gages mène une double vie et cache un dangereux secret le concernant."
+  },
+  {
+    "id": 7,
+    "title": "L'été où je suis devenue jolie",
+    "saison": "series",
+    "genre": ["Drame", "Comédie"],
+    "distribution": 8.7,
+    "year": 2022,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/bf3847d657e42796d997ccafae736a773b6cabea0714c6e004b70ed64781b186._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMpng_.png",
+    "description": ""
+  },
+  {
+    "id": 8,
+    "title": "LOL: Qui rit, sort !",
+    "saison": "5",
+    "genre": ["Comédie", "Télé Réalité"],
+    "distribution": 8.0,
+    "year": 2023,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/d68471cff79ea2fab49edb203beaaf3878822a3db2041425ac4ab92de7681de7._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMjpg_.jpg",
+    "description": "Cette saison, Philippe Lacheau a réuni 11 humoristes : Jérémy Ferrari, Arnaud Tsamère, Baptiste Lecaplain, Alban Ivanov, Paul Mirabel, Kad Merad, Jonathan Lambert, Marine Leonardi, Paul de Saint Sernin, GuiHome et Elena Nagapetyan. Et pour la première fois, LOL : qui rit sort ! se joue en duo. Dans ce jeu, où chaque rire compte, l'esprit d'équipe peut devenir un atout... ou un véritable piège."
+  },
+  {
+    "id": 9,
+    "title": "Noir et Blanc",
+    "saison": "series",
+    "genre": ["Drame", "Action"],
+    "distribution": 8.8,
+    "year": 2026,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/fec1558f136a6fe65557c28339563df1dea6d890e8a8b98b9cfb74bd49e156c6._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMjpg_.jpg",
+    "description": ""
+  },
+  {
+    "id": 10,
+    "title": "Atomic",
+    "saison": "1",
+    "genre": ["Drame"],
+    "distribution": "Mariska Hargitay, Christopher Meloni, Richard Belzer",
+    "year": 2025,
+    "poster": "https://m.media-amazon.com/images/S/pv-target-images/37693cc05edef70b156767c2d5fde752e65371f66e60b1e84a94adaa14c2c085._UR1920,1080_CLs%7C1920,1080%7C/G/bundle/BottomRightCardGradient16x9.png,/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-white.png%7C0,0,1920,1080+0,0,1920,1080+1578,847,263,156_kvf21cb47db8d34aa971cd86f57a65cf8d_SX624_FMjpg_.jpg",
+    "description": "Quand les chemins de Max, trafiquant de drogue, et JJ, ex-djihadiste, se croisent dans le Sahara, cette rencontre fortuite se transforme en une odyssée spirituelle et violente."
+  }
+]

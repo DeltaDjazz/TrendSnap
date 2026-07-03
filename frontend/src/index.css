@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .text-stroke-white {
+    -webkit-text-stroke: 2px white;
+  }
+  .text-stroke-zinc {
+    -webkit-text-stroke: 1px #52525b;
+  }
+}
