@@ -3,6 +3,7 @@ import { MovieCard } from './MovieCard'
 import { getCardTemplate } from '../templates'
 
 const GAP = 36
+const SWIPE_THRESHOLD = 80
 
 function getMaxStartIndex(totalCards, visibleCount) {
   return Math.max(0, totalCards - visibleCount)
@@ -18,17 +19,22 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     backgroundColor: backgroundColor ?? 'transparent',
   }
 
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [visibleCount, setVisibleCount] = useState(1)
   const [isSliding, setIsSliding] = useState(false)
+  const [dragOffsetX, setDragOffsetX] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [positionOffset, setPositionOffset] = useState(0)
   const containerRef = useRef(null)
   const viewportRef = useRef(null)
+  const dragStartXRef = useRef(0)
+  const pointerIdRef = useRef(null)
 
   const totalCards = movies.length
   const maxStartIndex = getMaxStartIndex(totalCards, visibleCount)
-  const offsetX = currentIndex * cardStep
-  const canGoPrev = currentIndex > 0
-  const canGoNext = currentIndex < maxStartIndex
+  const maxOffset = Math.max(0, maxStartIndex * cardStep)
+  const visualOffsetX = positionOffset - dragOffsetX
+  const canGoPrev = positionOffset > 0
+  const canGoNext = positionOffset < maxOffset
 
   useEffect(() => {
     const viewport = viewportRef.current
@@ -47,8 +53,55 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   }, [cardStep])
 
   useEffect(() => {
-    setCurrentIndex((index) => Math.min(index, getMaxStartIndex(movies.length, visibleCount)))
-  }, [visibleCount, movies.length])
+    const nextMaxOffset = Math.max(0, getMaxStartIndex(movies.length, visibleCount) * cardStep)
+    setPositionOffset((offset) => Math.min(offset, nextMaxOffset))
+  }, [visibleCount, movies.length, cardStep])
+
+  const resetDrag = () => {
+    setIsDragging(false)
+    setDragOffsetX(0)
+
+    const viewport = viewportRef.current
+    if (viewport && pointerIdRef.current !== null && viewport.hasPointerCapture(pointerIdRef.current)) {
+      viewport.releasePointerCapture(pointerIdRef.current)
+    }
+
+    pointerIdRef.current = null
+  }
+
+  const handlePointerDown = (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+    if (isSliding) return
+
+    dragStartXRef.current = event.clientX
+    pointerIdRef.current = event.pointerId
+    setIsDragging(true)
+    setDragOffsetX(0)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handlePointerMove = (event) => {
+    if (!isDragging || event.pointerId !== pointerIdRef.current) return
+
+    const nextOffset = event.clientX - dragStartXRef.current
+    setDragOffsetX(nextOffset)
+  }
+
+  const handlePointerEnd = (event) => {
+    if (!isDragging || event.pointerId !== pointerIdRef.current) return
+
+    const deltaX = event.clientX - dragStartXRef.current
+
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+      const nextPosition = Math.min(maxOffset, Math.max(0, positionOffset - deltaX))
+      setPositionOffset(nextPosition)
+    } else {
+      setPositionOffset((offset) => Math.min(maxOffset, Math.max(0, offset - dragOffsetX)))
+    }
+
+    setDragOffsetX(0)
+    resetDrag()
+  }
 
   const slide = (direction) => {
     if (isSliding) return
@@ -56,23 +109,20 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     const container = containerRef.current
     if (!container) return
 
-    const nextIndex = direction === 'right'
-      ? Math.min(currentIndex + visibleCount, maxStartIndex)
-      : Math.max(currentIndex - visibleCount, 0)
+    const nextOffset = direction === 'right'
+      ? Math.min(positionOffset + visibleCount * cardStep, maxOffset)
+      : Math.max(positionOffset - visibleCount * cardStep, 0)
 
-    const delta = Math.abs(nextIndex - currentIndex)
-    if (delta === 0) return
-
-    const targetOffset = currentIndex * cardStep + (direction === 'right' ? delta * cardStep : -delta * cardStep)
+    if (nextOffset === positionOffset) return
 
     setIsSliding(true)
     container.style.transition = 'transform 500ms ease-in-out'
-    container.style.transform = `translateX(-${targetOffset}px)`
+    container.style.transform = `translateX(-${nextOffset}px)`
 
     setTimeout(() => {
       container.style.transition = 'none'
       container.style.removeProperty('transform')
-      setCurrentIndex(nextIndex)
+      setPositionOffset(nextOffset)
       setIsSliding(false)
     }, 500)
   }
@@ -92,8 +142,16 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
       <div className="flex-1 mx-2 rounded-3xl overflow-hidden py-8" style={sliderStyle}>
         <div
           ref={viewportRef}
-          className="min-w-0 overflow-clip"
-          style={{ overflowClipMargin: config.numberBleed ?? '2rem' }}
+          className="min-w-0 overflow-clip select-none"
+          style={{
+            overflowClipMargin: config.numberBleed ?? '2rem',
+            touchAction: 'pan-y',
+            cursor: isDragging ? 'grabbing' : 'grab',
+          }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerEnd}
+          onPointerCancel={handlePointerEnd}
         >
           <div
             ref={containerRef}
@@ -101,7 +159,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
             style={{
               gap: `${GAP}px`,
               gridTemplateColumns: `repeat(${totalCards}, ${resolvedWidth}px)`,
-              transform: `translateX(-${offsetX}px)`,
+              transform: `translateX(-${visualOffsetX}px)`,
             }}
           >
             {movies.map((movie, index) => (
