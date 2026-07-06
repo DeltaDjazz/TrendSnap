@@ -1,0 +1,27 @@
+{
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.hovers": true,
+  "tailwindCSS.colorDecorators": true,
+  "tailwindCSS.experimental.configFile": "frontend/tailwind.config.js",
+  "tailwindCSS.trace.server": "verbose",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "off"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
+  },
+  "[jsx]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
+  },
+  "[tsx]": {
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
+  }
+}
