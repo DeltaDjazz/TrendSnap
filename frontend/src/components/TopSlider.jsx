@@ -73,6 +73,10 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     if (event.pointerType === 'mouse' && event.button !== 0) return
     if (isSliding) return
 
+    if (event.pointerType === 'mouse') {
+      event.preventDefault()
+    }
+
     dragStartXRef.current = event.clientX
     pointerIdRef.current = event.pointerId
     setIsDragging(true)
@@ -148,7 +152,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
             touchAction: 'pan-y',
             cursor: isDragging ? 'grabbing' : 'grab',
           }}
-          onPointerDown={handlePointerDown}
+          onPointerDownCapture={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerEnd}
           onPointerCancel={handlePointerEnd}
@@ -163,7 +167,11 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
             }}
           >
             {movies.map((movie, index) => (
-              <div key={movie.id} className="overflow-visible" style={{ width: `${resolvedWidth}px` }}>
+              <div
+                key={movie.id}
+                className="overflow-visible"
+                style={{ width: `${resolvedWidth}px` }}
+              >
                 <MovieCard
                   movie={movie}
                   number={index + 1}
