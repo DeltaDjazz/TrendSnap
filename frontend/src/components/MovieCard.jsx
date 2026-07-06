@@ -22,13 +22,14 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
         />
       )}
       <div
-        className={`relative bg-zinc-900 rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer overflow-hidden ${borderClass}`}
+        className={`relative bg-zinc-900 rounded-xl hover:scale-105 transition-transform duration-300  overflow-hidden ${borderClass}`}
         style={{ minHeight: `${height}px` }}
       >
         <img
           src={movie.poster}
           alt={movie.title}
-          className={`w-full ${aspectClass} object-cover`}
+          draggable={false}
+          className={`w-full ${aspectClass} object-cover select-none`}
         />
         <CardInfo movie={movie} />
       </div>

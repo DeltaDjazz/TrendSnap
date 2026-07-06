@@ -21,7 +21,8 @@ export function CardInfo({ movie }) {
         <img
           src={movie.logo}
           alt={movie.title}
-          className="w-full h-6 object-contain"
+          draggable={false}
+          className="w-full h-6 object-contain select-none"
         />
         <div className="flex items-center justify-center mt-1">
           <span className="text-xs text-zinc-100">{movie.genre}</span>
