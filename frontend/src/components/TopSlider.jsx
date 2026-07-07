@@ -27,7 +27,9 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const containerRef = useRef(null)
   const viewportRef = useRef(null)
   const dragStartXRef = useRef(0)
+  const dragOffsetXRef = useRef(0)
   const pointerIdRef = useRef(null)
+  const touchActiveRef = useRef(false)
 
   const totalCards = movies.length
   const maxStartIndex = getMaxStartIndex(totalCards, visibleCount)
@@ -60,9 +62,16 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const resetDrag = () => {
     setIsDragging(false)
     setDragOffsetX(0)
+    dragOffsetXRef.current = 0
+    touchActiveRef.current = false
 
     const viewport = viewportRef.current
-    if (viewport && pointerIdRef.current !== null && viewport.hasPointerCapture(pointerIdRef.current)) {
+    if (
+      viewport
+      && pointerIdRef.current !== null
+      && typeof viewport.hasPointerCapture === 'function'
+      && viewport.hasPointerCapture(pointerIdRef.current)
+    ) {
       viewport.releasePointerCapture(pointerIdRef.current)
     }
 
@@ -72,6 +81,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const handlePointerDown = (event) => {
     if (event.pointerType === 'mouse' && event.button !== 0) return
     if (isSliding) return
+    if (touchActiveRef.current) return
 
     if (event.pointerType === 'mouse') {
       event.preventDefault()
@@ -81,13 +91,20 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     pointerIdRef.current = event.pointerId
     setIsDragging(true)
     setDragOffsetX(0)
-    event.currentTarget.setPointerCapture(event.pointerId)
+    if (typeof event.currentTarget.setPointerCapture === 'function') {
+      try {
+        event.currentTarget.setPointerCapture(event.pointerId)
+      } catch {
+        // Certains navigateurs mobiles peuvent jeter ici; le drag continue sans capture.
+      }
+    }
   }
 
   const handlePointerMove = (event) => {
     if (!isDragging || event.pointerId !== pointerIdRef.current) return
 
     const nextOffset = event.clientX - dragStartXRef.current
+    dragOffsetXRef.current = nextOffset
     setDragOffsetX(nextOffset)
   }
 
@@ -101,6 +118,38 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
       setPositionOffset(nextPosition)
     } else {
       setPositionOffset((offset) => Math.min(maxOffset, Math.max(0, offset - dragOffsetX)))
+    }
+
+    setDragOffsetX(0)
+    resetDrag()
+  }
+
+  const handleTouchStart = (event) => {
+    if (isSliding || event.touches.length === 0) return
+
+    touchActiveRef.current = true
+    dragStartXRef.current = event.touches[0].clientX
+    setIsDragging(true)
+    setDragOffsetX(0)
+  }
+
+  const handleTouchMove = (event) => {
+    if (!touchActiveRef.current || !isDragging || event.touches.length === 0) return
+    const nextOffset = event.touches[0].clientX - dragStartXRef.current
+    dragOffsetXRef.current = nextOffset
+    setDragOffsetX(nextOffset)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchActiveRef.current || !isDragging) return
+
+    const deltaX = dragOffsetXRef.current
+
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+      const nextPosition = Math.min(maxOffset, Math.max(0, positionOffset - deltaX))
+      setPositionOffset(nextPosition)
+    } else {
+      setPositionOffset((offset) => Math.min(maxOffset, Math.max(0, offset - deltaX)))
     }
 
     setDragOffsetX(0)
@@ -152,10 +201,14 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
             touchAction: 'pan-y',
             cursor: isDragging ? 'grabbing' : 'grab',
           }}
-          onPointerDownCapture={handlePointerDown}
+          onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerEnd}
           onPointerCancel={handlePointerEnd}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
         >
           <div
             ref={containerRef}
