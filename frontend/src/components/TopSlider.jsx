@@ -4,6 +4,9 @@ import { getCardTemplate } from '../templates'
 
 const GAP = 36
 const SWIPE_THRESHOLD = 80
+const MOBILE_BREAKPOINT = 768
+const MOBILE_GAP = 10
+const DEFAULT_MOBILE_SCALE = 0.5
 
 function getMaxStartIndex(totalCards, visibleCount) {
   return Math.max(0, totalCards - visibleCount)
@@ -13,12 +16,13 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const { config } = getCardTemplate(template)
   const resolvedWidth = cardWidth ?? config.cardWidth
   const resolvedHeight = cardHeight ?? config.cardHeight
-  const cardStep = resolvedWidth + GAP
+  const mobileScale = config.mobileCardScale ?? DEFAULT_MOBILE_SCALE
   const sliderStyle = {
     maxWidth: config.maxWidth ?? '1600px',
     backgroundColor: backgroundColor ?? 'transparent',
   }
 
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < MOBILE_BREAKPOINT)
   const [visibleCount, setVisibleCount] = useState(1)
   const [isSliding, setIsSliding] = useState(false)
   const [dragOffsetX, setDragOffsetX] = useState(0)
@@ -28,6 +32,10 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const viewportRef = useRef(null)
   const dragStartXRef = useRef(0)
   const pointerIdRef = useRef(null)
+  const effectiveWidth = isMobile ? Math.round(resolvedWidth * mobileScale) : resolvedWidth
+  const effectiveHeight = isMobile ? Math.round(resolvedHeight * mobileScale) : resolvedHeight
+  const effectiveGap = isMobile ? MOBILE_GAP : GAP
+  const cardStep = effectiveWidth + effectiveGap
 
   const totalCards = movies.length
   const maxStartIndex = getMaxStartIndex(totalCards, visibleCount)
@@ -35,6 +43,16 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const visualOffsetX = positionOffset - dragOffsetX
   const canGoPrev = positionOffset > 0
   const canGoNext = positionOffset < maxOffset
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+    const updateIsMobile = (event) => setIsMobile(event.matches)
+
+    setIsMobile(mediaQuery.matches)
+    mediaQuery.addEventListener('change', updateIsMobile)
+
+    return () => mediaQuery.removeEventListener('change', updateIsMobile)
+  }, [])
 
   useEffect(() => {
     const viewport = viewportRef.current
@@ -161,8 +179,8 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
             ref={containerRef}
             className="grid"
             style={{
-              gap: `${GAP}px`,
-              gridTemplateColumns: `repeat(${totalCards}, ${resolvedWidth}px)`,
+              gap: `${effectiveGap}px`,
+              gridTemplateColumns: `repeat(${totalCards}, ${effectiveWidth}px)`,
               transform: `translateX(-${visualOffsetX}px)`,
             }}
           >
@@ -170,14 +188,14 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
               <div
                 key={movie.id}
                 className="overflow-visible"
-                style={{ width: `${resolvedWidth}px` }}
+                style={{ width: `${effectiveWidth}px` }}
               >
                 <MovieCard
                   movie={movie}
                   number={index + 1}
                   template={template}
-                  cardWidth={resolvedWidth}
-                  cardHeight={resolvedHeight}
+                  cardWidth={effectiveWidth}
+                  cardHeight={effectiveHeight}
                 />
               </div>
             ))}

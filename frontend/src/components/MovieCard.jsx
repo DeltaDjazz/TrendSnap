@@ -22,7 +22,7 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
         />
       )}
       <div
-        className={`relative bg-zinc-900 rounded-xl hover:scale-105 transition-transform duration-300  overflow-hidden ${borderClass}`}
+        className={`relative bg-zinc-900 rounded-xl md:hover:scale-105 transition-transform duration-300 overflow-hidden ${borderClass}`}
         style={{ minHeight: `${height}px` }}
       >
         <img
