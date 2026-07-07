@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b gh-pages",
+    "deploy": "node scripts/deploy-current-branch.cjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
