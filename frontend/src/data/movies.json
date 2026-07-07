@@ -36,7 +36,7 @@
     "genre": ["Comédie", "Fantasy"],
     "rating": 8.0,
     "year": 2023,
-    "poster": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXIbpAlZTuA5MvE.jpg",
+    "poster": "https://media.themoviedb.org/t/p/w300_and_h450_face/roRjNH7cRVrZQYv1Ex8ownMu2ey.jpg",
     "description": "La fantastique évolution d'une jeune femme ramenée à la vie par un scientifique brillant et peu orthodoxe."
   },
   {
@@ -66,7 +66,7 @@
     "genre": ["Drame", "Romance"],
     "rating": 7.6,
     "year": 2024,
-    "poster": "https://image.tmdb.org/t/p/w500/H6vke7zGiuLsz4v4RPeReb9rsj.jpg",
+    "poster": "https://media.themoviedb.org/t/p/w300_and_h450_face/wCVIoOlw1NG1dAriVLYRcoQyP6o.jpg",
     "description": "Une championne de tennis devenue entraîneuse tente de relancer la carrière de son mari."
     },
     {
@@ -76,7 +76,7 @@
     "genre": ["Thriller", "Science-fiction"],
     "rating": 8.7,
     "year": 2022,
-    "poster": "https://image.tmdb.org/t/p/w500/cMaykP9aFnSRqt7jS4X87QEAiKz.jpg",
+    "poster": "https://media.themoviedb.org/t/p/w300_and_h450_face/xmjW474DJ27bqTYNvS4MvraJgiQ.jpg",
     "description": "Des employés acceptent une procédure chirurgicale qui sépare leurs souvenirs professionnels et personnels."
     },
     {

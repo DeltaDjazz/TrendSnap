@@ -47,92 +47,47 @@
   },
   {
     "id": 6,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
+    "title": "Fountain of Youth",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/IjAMAaawaFGrazHDEIZ2zg/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/5_OvKjXpgXJyKi11wPoEVw/100x33bb.webp",
+    "genre": "Action",
     "year": 2026,
-    "description": ""
+    "description": "A treasure-hunting mastermind (John Krasinski) assembles a team for a life-changing adventure. But to outwit and outrun threats at every turn, he’ll need someone even smarter than he is: his estranged sister (Natalie Portman)."
   },
   {
     "id": 7,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
+    "title": "Wolfs",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/coNJnVeTxL037pEjt5hi2A/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/5lTWWdks8LO-Ojnpnjh30Q/100x33bb.webp",
+    "genre": "Action",
     "year": 2026,
-    "description": ""
+    "description": "Two rival fixers (George Clooney and Brad Pitt) cross paths when they’re both called in to help cover up a prominent New York official’s misstep. Over one explosive night, they’ll have to set aside their petty grievances—and their egos—to finish the job."
   },
   {
     "id": 8,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
+    "title": "The familly Plan",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/bPdjzNmz1np6iAajg7RYuQ/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/J7vM2h0h2cFSUDB5x44EKg/100x33bb.webp",
+    "genre": "Comédie",
     "year": 2026,
-    "description": ""
+    "description": "Dan Morgan is many things: a devoted husband, a loving father, a celebrated car salesman. He’s also a former assassin. And when his past catches up to his present, he’s forced to take his unsuspecting family on a road trip unlike any other."
   },
   {
     "id": 9,
-    "title": "",
-    "poster": "",
-    "logo": "",
+    "title": "The family plan 2",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/ETEFi3ORE3xGO31vxsvFUQ/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/lwMTBp6xUPJVppCaxW-Kqw/100x33bb.webp",
     "genre": "Thriller",
     "year": 2026,
-    "description": ""
-  },
-  {
-    "id": 5,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
-    "year": 2026,
-    "description": ""
-  },
-  {
-    "id": 6,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
-    "year": 2026,
-    "description": ""
-  },
-  {
-    "id": 7,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
-    "year": 2026,
-    "description": ""
-  },
-  {
-    "id": 8,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
-    "year": 2026,
-    "description": ""
-  },
-  {
-    "id": 9,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
-    "year": 2026,
-    "description": ""
+    "description": "Now that Dan’s assassin days are behind him, all he wants for Christmas is quality time with his kids. But when he learns his daughter has her own plans, he books a family trip to London—putting them all in the crosshairs of an unexpected enemy."
   },
   {
     "id": 10,
-    "title": "",
-    "poster": "",
-    "logo": "",
-    "genre": "Thriller",
+    "title": "Eternity",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/hzmF0DySIPC7JFZqxf-67g/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/JyUWxw2MMXxU39B_TMXwVw/100x33bb.webp",
+    "genre": "Romance",
     "year": 2026,
-    "description": ""
+    "description": "After death comes the junction, where everyone must decide how to spend their eternity. For Joan, that means choosing between her long-time husband Larry, or her first love, Luke, who died when they were just newlyweds."
   }
 ]

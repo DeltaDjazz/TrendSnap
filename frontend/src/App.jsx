@@ -1,15 +1,26 @@
+import { useState } from 'react'
 import movies from './data/movies.json'
 import netflixSeries from './data/netflix-series.json'
 import appleSeries from './data/apple-series.json'
 import amazonSeries from './data/amazon-series.json'
 import appleMovies from './data/apple-movies.json'
 import { TopSlider } from './components/TopSlider'
+import { MovieModal } from './components/MovieModal'
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <header className="px-6 py-4 border-b border-zinc-600">
+      <header className="px-6 py-4 border-b border-zinc-600 flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">TrendSnap</h1>
+        <button
+          type="button"
+          onClick={() => setIsModalOpen(true)}
+          className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm font-medium text-zinc-200 transition hover:bg-zinc-800"
+        >
+          Ouvrir la modale de test
+        </button>
       </header>
       <main className="px-0 py-10">
         <h2 className="text-lg text-center font-semibold mb-6">Top 10 des films du moment</h2>
@@ -36,6 +47,13 @@ function App() {
         </div>
 
       </main>
+
+      <MovieModal
+        isOpen={isModalOpen}
+        title="Modale de test"
+        description="Cette modale est ouverte depuis le bouton en haut de la page."
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   )
 }

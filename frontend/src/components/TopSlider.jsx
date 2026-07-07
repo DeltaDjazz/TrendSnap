@@ -91,10 +91,6 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     if (event.pointerType === 'mouse' && event.button !== 0) return
     if (isSliding) return
 
-    if (event.pointerType === 'mouse') {
-      event.preventDefault()
-    }
-
     dragStartXRef.current = event.clientX
     pointerIdRef.current = event.pointerId
     setIsDragging(true)
