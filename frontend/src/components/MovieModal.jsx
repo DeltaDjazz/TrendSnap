@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { getCardTemplate } from '../templates'
 
 function formatGenre(genre) {
@@ -23,6 +24,17 @@ function InfoField({ label, value }) {
 }
 
 export function MovieModal({ isOpen, title, description, poster, year, genre, saison, template = 'cinema', onClose }) {
+  useEffect(() => {
+    if (!isOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isOpen])
+
   if (!isOpen) return null
 
   const { config } = getCardTemplate(template)
