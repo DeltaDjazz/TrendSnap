@@ -4,6 +4,7 @@ import { getCardTemplate } from '../templates'
 
 const GAP = 36
 const SWIPE_THRESHOLD = 80
+const DRAG_THRESHOLD = 5
 const MOBILE_BREAKPOINT = 768
 const MOBILE_GAP = 10
 const DEFAULT_MOBILE_SCALE = 0.5
@@ -12,7 +13,7 @@ function getMaxStartIndex(totalCards, visibleCount) {
   return Math.max(0, totalCards - visibleCount)
 }
 
-export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, backgroundColor }) {
+export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, backgroundColor, onMovieSelect }) {
   const { config } = getCardTemplate(template)
   const resolvedWidth = cardWidth ?? config.cardWidth
   const resolvedHeight = cardHeight ?? config.cardHeight
@@ -32,6 +33,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const viewportRef = useRef(null)
   const dragStartXRef = useRef(0)
   const pointerIdRef = useRef(null)
+  const didDragRef = useRef(false)
   const effectiveWidth = isMobile ? Math.round(resolvedWidth * mobileScale) : resolvedWidth
   const effectiveHeight = isMobile ? Math.round(resolvedHeight * mobileScale) : resolvedHeight
   const effectiveGap = isMobile ? MOBILE_GAP : GAP
@@ -91,26 +93,35 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     if (event.pointerType === 'mouse' && event.button !== 0) return
     if (isSliding) return
 
-    if (event.pointerType === 'mouse') {
-      event.preventDefault()
-    }
-
     dragStartXRef.current = event.clientX
     pointerIdRef.current = event.pointerId
-    setIsDragging(true)
+    didDragRef.current = false
     setDragOffsetX(0)
-    event.currentTarget.setPointerCapture(event.pointerId)
   }
 
   const handlePointerMove = (event) => {
-    if (!isDragging || event.pointerId !== pointerIdRef.current) return
+    if (pointerIdRef.current === null || event.pointerId !== pointerIdRef.current) return
 
     const nextOffset = event.clientX - dragStartXRef.current
+
+    if (!didDragRef.current) {
+      if (Math.abs(nextOffset) < DRAG_THRESHOLD) return
+
+      didDragRef.current = true
+      setIsDragging(true)
+      event.currentTarget.setPointerCapture(event.pointerId)
+    }
+
     setDragOffsetX(nextOffset)
   }
 
   const handlePointerEnd = (event) => {
-    if (!isDragging || event.pointerId !== pointerIdRef.current) return
+    if (pointerIdRef.current === null || event.pointerId !== pointerIdRef.current) return
+
+    if (!didDragRef.current) {
+      resetDrag()
+      return
+    }
 
     const deltaX = event.clientX - dragStartXRef.current
 
@@ -123,6 +134,14 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
 
     setDragOffsetX(0)
     resetDrag()
+  }
+
+  const handleClickCapture = (event) => {
+    if (!didDragRef.current) return
+
+    event.preventDefault()
+    event.stopPropagation()
+    didDragRef.current = false
   }
 
   const slide = (direction) => {
@@ -170,10 +189,11 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
             touchAction: 'pan-y',
             cursor: isDragging ? 'grabbing' : 'grab',
           }}
-          onPointerDownCapture={handlePointerDown}
+          onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerEnd}
           onPointerCancel={handlePointerEnd}
+          onClickCapture={handleClickCapture}
         >
           <div
             ref={containerRef}
@@ -196,6 +216,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
                   template={template}
                   cardWidth={effectiveWidth}
                   cardHeight={effectiveHeight}
+                  onSelect={onMovieSelect}
                 />
               </div>
             ))}
