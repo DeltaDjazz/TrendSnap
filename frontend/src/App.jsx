@@ -54,6 +54,7 @@ function App() {
         title={selection?.movie.title ?? ''}
         description={selection?.movie.description}
         poster={selection?.movie.poster}
+        modalPoster={selection?.movie.imgVertical ?? ""}
         year={selection?.movie.year}
         genre={selection?.movie.genre ?? selection?.movie.genres}
         stars={selection?.movie.stars ?? []}

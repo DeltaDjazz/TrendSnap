@@ -20,12 +20,14 @@ export function CardInfo({ movie }) {
       <div className="w-full pointer-events-auto">
         <img
           src={movie.logo}
-          alt={movie.title}
+          alt={movie.title
+            
+          }
           draggable={false}
           className="w-full h-6 object-contain select-none"
         />
         <div className="flex items-center justify-center mt-1">
-          <span className="text-xs text-zinc-100">{movie.genre}</span>
+          <span className="text-xs text-zinc-100">{movie.genre || (movie.genres && movie.genres[0]) || "Genre inconnu"}</span>
         </div>
       </div>
     </div>

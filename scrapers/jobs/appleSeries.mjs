@@ -11,13 +11,13 @@ try {
     const title = await page.$eval('h1', el => el.textContent);
     console.log(title);
 
-    // --- ÉTAPE 1 : Récupérer les 10 premiers films titre, poster, logo, detailsPageUrl---
+    // --- ÉTAPE 1 : Récupérer les 10 premiers series titre, poster, logo, detailsPageUrl---
     const top10Movies = await page.evaluate(() => {
         // 1. On trouve tous les h2 de la page
         const headings = Array.from(document.querySelectorAll('h2'));
         
         // 2. On cherche celui qui contient "Top 10 : films" (on nettoie les espaces éventuels)
-        const top10Heading = headings.find(h => h.textContent.trim() === "Top 10 : films");
+        const top10Heading = headings.find(h => h.textContent.trim() === "Top 10 : séries");
         
         if (!top10Heading) {
           return []; // Retourne un tableau vide si la section n'est pas trouvée
@@ -37,19 +37,21 @@ try {
             const logoSrcset = item.querySelector('[data-testid="logo"] source[type="image/webp"]')?.getAttribute('srcset');
             const logo = logoSrcset ? logoSrcset.split(' ')[0] : null;
       
+            const genre = item.querySelector('[data-testid="caption"]')?.textContent || null;
+
             const rawTitle = item.querySelector('[data-testid="logo"] img')?.getAttribute('alt') || null;
             // Si rawTitle existe, on le coupe au niveau du premier ":" et on prend la première partie, sinon null
             const title = rawTitle ? rawTitle.split(':')[0].trim() : null;
 
 
             const detailsPageUrl = item.querySelector('a')?.getAttribute('href') || null;
-            return { id: index + 1, title, poster, logo, detailsPageUrl };
+            return { id: index + 1, title, poster, logo, genre, detailsPageUrl };
         });
     });
       
     console.log(top10Movies);
 
-    // --- ÉTAPE 2 : Aller sur la page de détail de chaque film  pour récupérer les infos : year ---
+    // --- ÉTAPE 2 : Aller sur la page de détail de chaque série  pour récupérer les infos : year ---
     for (let i = 0; i < top10Movies.length; i++) {
         const movie = top10Movies[i];
         console.log(`[${i+1}/${top10Movies.length}] Recherche de l'année de sortie de : ${movie.title}...`);
@@ -66,7 +68,7 @@ try {
         movie.year = year;
     }
 
-    // --- ÉTAPE 3 : Aller sur allocine pour chaque film ---
+    // --- ÉTAPE 3 : Aller sur allocine pour chaque serie ---
     for (let i = 0; i < top10Movies.length; i++) {
         const movie = top10Movies[i];
         // si title est vide on passe au suivant
@@ -75,7 +77,7 @@ try {
         console.log(`[${i+1}/${top10Movies.length}] Recherche Allociné de : ${movie.title}...`);
 
         try {
-            const searchUrl = `https://www.allocine.fr/rechercher/movie/?q=${encodeURIComponent(movie.title)}`;
+            const searchUrl = `https://www.allocine.fr/rechercher/series/?q=${encodeURIComponent(movie.title)}`;
             await page.goto(searchUrl, { waitUntil: 'domcontentloaded' });
 
             // --- BLOC COOKIES ISOLÉ ---
@@ -92,101 +94,41 @@ try {
             }
 
             // C'est Puppeteer qui va exécuter ce qui est à l'intérieur de evaluate() sur la page web
-            const details = await page.evaluate((fallbackTitle, targetYear) => {
-                //-- fonctions utilisées --
-                const normalizeTitle = (str) =>
-                    (str || '')
-                        .normalize('NFD')
-                        .replace(/[\u0300-\u036f]/g, '')
-                        .toLowerCase()
-                        .trim();
-
-                const getCardTitle = (card) =>
-                    card.querySelector('h2.meta-title .meta-title-link, h2.meta-title a.meta-title-link')
-                        ?.textContent?.trim() || '';
-
-                const getCardYear = (card) => {
-                    const metaInfo = card.querySelector('.meta-body-info')?.textContent || '';
-                    return metaInfo.match(/\b(19|20)\d{2}\b/)?.[0] || null;
-                };
-
-                const getPageUrl = (card) => {
-                    const titleLink = card.querySelector('h2.meta-title a.meta-title-link');
-                    if (titleLink?.href) return titleLink.href;
-
-                    const obfuscatedEl = card.querySelector('h2.meta-title .meta-title-link, .thumbnail-link');
-                    const encodedClass = obfuscatedEl?.className?.split(' ').find(c => c.startsWith('ACr'));
-                    if (encodedClass) {
-                        const path = atob(encodedClass.substring(3));
-                        return path.startsWith('http') ? path : `https://www.allocine.fr${path}`;
-                    }
-
-                    return card.querySelector('a[href*="fichefilm"]')?.href || null;
-                };
-
-                const titleMatches = (card) =>
-                    normalizeTitle(getCardTitle(card)) === normalizeTitle(fallbackTitle);
-
-                // -- logique pour trouver le bon film --
-                const cards = Array.from(document.querySelectorAll('div.card.entity-card'));
-
-                const findMatchingCard = (yearToMatch) =>
-                    cards.find(card =>
-                        titleMatches(card) &&
-                        (!yearToMatch || getCardYear(card) === String(yearToMatch))
-                    );
-
-                if (cards.length === 0) {
-                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null, matchedYear: null };
-                }
-
-                let mainCard = null;
-                let matchedYear = targetYear ? String(targetYear) : null;
-
-                if (targetYear) {
-                    mainCard = findMatchingCard(targetYear);
-
-                    if (!mainCard) {
-                        const prevYear = String(Number(targetYear) - 1);
-                        mainCard = findMatchingCard(prevYear);
-                        if (mainCard) matchedYear = prevYear;
-                    }
-
-                    if (!mainCard) {
-                        const nextYear = String(Number(targetYear) + 1);
-                        mainCard = findMatchingCard(nextYear);
-                        if (mainCard) matchedYear = nextYear;
-                    }
-                } else {
-                    mainCard = cards.find(card => titleMatches(card));
-                }
-
+            const details = await page.evaluate((fallbackTitle) => {
+                const firstResultSelector = 'div.card.entity-card';
+                const mainCard = document.querySelector(firstResultSelector);
+                
+                // Sécurité au cas où la carte n'est pas trouvée
                 if (!mainCard) {
-                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null, matchedYear: null };
+                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null };
                 }
-
-                const imgVertical = mainCard.querySelector('img.thumbnail-img')?.getAttribute('data-src') || "";
-
-                const titleElem = mainCard.querySelector('h2.meta-title .meta-title-link, h2.meta-title a.meta-title-link');
-                const title = titleElem ? titleElem.textContent.trim() : fallbackTitle;
-
+                // Extraction de l'URL de l'image
+                const imgVertical = document.querySelector('div.card.entity-card img.thumbnail-img')?.getAttribute('data-src') || "";
+                
+                // Extraction du titre
+                const titleElem = document.querySelector('div.meta h2.meta-title a.meta-title-link');
+                const title = titleElem ? titleElem.textContent.trim() : "Non trouvé";
+                // 1. Extraction de la description
                 const descElem = mainCard.querySelector('div.content-txt');
                 const description = descElem ? descElem.textContent.trim() : "Non trouvée";
-
+                
+                // 2. Récupération des stars
                 const starElements = mainCard.querySelectorAll('div.meta-body-actor a');
                 const starsList = [];
-
+                
                 starElements.forEach(el => {
                     const name = el.textContent.trim();
+                    // Attention : sur AlloCiné l'URL contient '/personne/' et non '/name/' !
                     if (name && !starsList.includes(name) && el.href.includes('/personne/')) {
                         starsList.push(name);
                     }
                 });
 
-                const pageInfosUrl = getPageUrl(mainCard);
+                const pageInfosUrl = titleElem ? titleElem.href : null;
+                
 
-                return { title, description, stars: starsList, imgVertical, pageInfosUrl, matchedYear };
-            }, movie.title, movie.year);
+                return { title, description, stars: starsList, imgVertical: imgVertical, pageInfosUrl: pageInfosUrl };
+            }, movie.title);
 
             // si description est vide on passe au suivanteeE
             if (!details.pageInfosUrl) {
@@ -210,17 +152,11 @@ try {
 
             await page.goto(movie.pageInfosUrl, { waitUntil: 'domcontentloaded' });
             const detailsInfos = await page.evaluate(() => {
-                const genreElements = document.querySelectorAll('div.card.entity-card .meta-body-info a');
-                const genresList = [];
-                genreElements.forEach(el => {
-                    const genre = el.textContent.trim();
-                    if (genre && !genresList.includes(genre)) {
-                        genresList.push(genre);
-                    }
-                });
-
-                const originCountry = document.querySelector('div.card.entity-card div.meta-body-item.meta-body-nationality a') ?.textContent.trim() || "";   
-
+                
+                const originCountry = document.querySelector('div.card.entity-card div.meta-body-item.meta-body-nationality a') ?.textContent.trim() || "";
+                const nbSaisons = document.querySelector('section#synopsis-details div.stats-numbers-row-item div.stats-item') ?.textContent.trim() || "";
+                const nbEpisodes = document.querySelector('section#synopsis-details div.stats-numbers-row-item:nth-child(2) div.stats-item') ?.textContent.trim() || "";
+                
                 //  Extraction de l'ID Dailymotion et génération de l'URL
                 let trailerUrl = "";
                 const playerElement = document.querySelector('figure.player');
@@ -241,11 +177,13 @@ try {
                 }
 
 
-                return { originCountry: originCountry, trailerUrl: trailerUrl};
+                return { originCountry: originCountry, nbSaisons: nbSaisons, nbEpisodes: nbEpisodes, trailerUrl: trailerUrl};
             });
 
-            movie.genres = detailsInfos.genres;
+            
             movie.originCountry = detailsInfos.originCountry;
+            movie.nbSaisons = detailsInfos.nbSaisons;
+            movie.nbEpisodes = detailsInfos.nbEpisodes;
             movie.trailerUrl = detailsInfos.trailerUrl;
 
 
@@ -264,7 +202,7 @@ try {
 
          // 4. Générer le nom du fichier avec le numéro de la semaine
          const weekNum = getWeekNumber();
-         const filename = `apple-movies-${weekNum}.json`;
+         const filename = `apple-series-${weekNum}.json`;
  
          // 5. Enregistrer le tableau au format JSON
          fs.writeFileSync(filename, JSON.stringify(top10Movies, null, 2), 'utf-8');
