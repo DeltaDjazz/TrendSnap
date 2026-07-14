@@ -1,0 +1,12 @@
+{
+  "name": "mon-scraper-puppeteer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "scrapn": "node scrapers/jobs/netflixWeekly.mjs",
+    "scrapam": "node scrapers/jobs/appleMovies.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.3.0"
+  }
+}

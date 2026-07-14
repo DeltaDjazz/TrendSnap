@@ -1,0 +1,93 @@
+[
+  
+  {
+    "id": 1,
+    "title": "F1",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/ZBJu4aifHuc_51WYSqdk4w/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/RHO4MKL0MT0Daq-hINei5w/100x33bb.webp",
+    "genre": "Action",
+    "year": 2026,
+    "description": "Racing legend Sonny Hayes is coaxed into leading a struggling Formula 1 team—and mentoring a young hotshot driver—while chasing one last chance at redemption."
+  },
+  {
+    "id": 2,
+    "title": "Outcome",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/VZ8G03qliU2oNIv55pf-aA/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/IqMhuTS1fKx3UhvREThPLw/100x33bb.webp",
+    "genre": "Comédie",
+    "year": 2026,
+    "description": "Reef Hawk, Hollywood’s poster child since age six, is not okay. When he learns about an extortion plot tied to a mysterious video, Reef preemptively sets out on a redemption tour to make amends, confront his demons, and avoid getting canceled."
+  },
+  {
+    "id": 3,
+    "title": "Echo Valley",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/pEKghM8Ut3L6GH5t_-DX3w/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/mtJesicHY0ecNvwFSXnpKg/100x33bb.webp",
+    "genre": "Thriller",
+    "year": 2026,
+    "description": "Julianne Moore is Kate, whose secluded life is interrupted by her troubled daughter (Sydney Sweeney) when she shows up frightened and covered in someone's blood. As Kate unravels the shocking truth, she learns how far she’ll go for her child."
+  },
+  {
+    "id": 4,
+    "title": "GreyHood",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/PCMtP8sLZF39mh_BP3sJ2g/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/GNnhncGbJt1J1bPXscprUQ/100x33bb.webp",
+    "genre": "Thriller",
+    "year": 2026,
+    "description": "2021 Oscar® nominee. In a thrilling WWII story inspired by actual events, Captain Ernest Krause (Tom Hanks) leads an international convoy of 37 ships on a treacherous mission across the Atlantic to deliver soldiers and supplies to Allied forces."
+  },
+  {
+    "id": 5,
+    "title": "The Gorge",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/atB16fDyA9l0RdfRsFXaMw/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/bH8SF2KXtkagMFaw2BXnXQ/100x33bb.webp",
+    "genre": "Thriller",
+    "year": 2025,
+    "description": "Deux agents hautement entraînés (Anya Taylor-Joy et Miles Teller) se rapprochent malgré la distance lorsqu'ils sont envoyés garder deux côtés opposés d'une mystérieuse gorge. Quand un mal surgit des profondeurs, ils doivent faire équipe pour survivre à ce qui est tapi sous la surface."
+  },
+  {
+    "id": 6,
+    "title": "Fountain of Youth",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/IjAMAaawaFGrazHDEIZ2zg/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/5_OvKjXpgXJyKi11wPoEVw/100x33bb.webp",
+    "genre": "Action",
+    "year": 2026,
+    "description": "A treasure-hunting mastermind (John Krasinski) assembles a team for a life-changing adventure. But to outwit and outrun threats at every turn, he’ll need someone even smarter than he is: his estranged sister (Natalie Portman)."
+  },
+  {
+    "id": 7,
+    "title": "Wolfs",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/coNJnVeTxL037pEjt5hi2A/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/5lTWWdks8LO-Ojnpnjh30Q/100x33bb.webp",
+    "genre": "Action",
+    "year": 2026,
+    "description": "Two rival fixers (George Clooney and Brad Pitt) cross paths when they’re both called in to help cover up a prominent New York official’s misstep. Over one explosive night, they’ll have to set aside their petty grievances—and their egos—to finish the job."
+  },
+  {
+    "id": 8,
+    "title": "The familly Plan",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/bPdjzNmz1np6iAajg7RYuQ/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/J7vM2h0h2cFSUDB5x44EKg/100x33bb.webp",
+    "genre": "Comédie",
+    "year": 2026,
+    "description": "Dan Morgan is many things: a devoted husband, a loving father, a celebrated car salesman. He’s also a former assassin. And when his past catches up to his present, he’s forced to take his unsuspecting family on a road trip unlike any other."
+  },
+  {
+    "id": 9,
+    "title": "The family plan 2",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/ETEFi3ORE3xGO31vxsvFUQ/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/lwMTBp6xUPJVppCaxW-Kqw/100x33bb.webp",
+    "genre": "Thriller",
+    "year": 2026,
+    "description": "Now that Dan’s assassin days are behind him, all he wants for Christmas is quality time with his kids. But when he learns his daughter has her own plans, he books a family trip to London—putting them all in the crosshairs of an unexpected enemy."
+  },
+  {
+    "id": 10,
+    "title": "Eternity",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/hzmF0DySIPC7JFZqxf-67g/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/JyUWxw2MMXxU39B_TMXwVw/100x33bb.webp",
+    "genre": "Romance",
+    "year": 2026,
+    "description": "After death comes the junction, where everyone must decide how to spend their eternity. For Joan, that means choosing between her long-time husband Larry, or her first love, Luke, who died when they were just newlyweds."
+  }
+]

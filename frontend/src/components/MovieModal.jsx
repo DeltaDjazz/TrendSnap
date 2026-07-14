@@ -23,7 +23,7 @@ function InfoField({ label, value }) {
   )
 }
 
-export function MovieModal({ isOpen, title, description, poster, year, genre, saison, template = 'cinema', onClose }) {
+export function MovieModal({ isOpen, title, description, poster, year, genre, saison, episodes, stars, originCountry, trailerUrl, template = 'cinema', onClose }) {
   useEffect(() => {
     if (!isOpen) return
 
@@ -74,6 +74,11 @@ export function MovieModal({ isOpen, title, description, poster, year, genre, sa
                 }`}
               />
             )}
+            {trailerUrl && (
+              <div className="flex flex-col gap-2">
+                <a className="text-sm text-zinc-300 text-center bg-blue-700/50 px-4 py-2 mt-4 rounded-md" href={trailerUrl} target="_blank" rel="noopener noreferrer">Bande annonce</a>
+              </div>
+            )}
           </div>
 
           <div className="min-w-0 flex-1 p-6 pr-12 pt-5">
@@ -84,7 +89,17 @@ export function MovieModal({ isOpen, title, description, poster, year, genre, sa
               {saison && (
                 <InfoField label="Nombre de saisons" value={saison} />
               )}
+              {episodes && (
+                <InfoField label="Nombre d'épisodes" value={episodes} />
+              )}
+              <InfoField label="Pays d'origine" value={originCountry} />  
             </div>
+            
+
+
+
+            {/* on affiche les noms des stars */}
+            <InfoField label="Acteurs" value={stars.join(', ')} />
             
 
             <div className="hidden md:block mt-4">
@@ -102,7 +117,7 @@ export function MovieModal({ isOpen, title, description, poster, year, genre, sa
             {description || 'Aucune description disponible.'}
           </p>
         </div>
-
+        
 
 
       </div>   

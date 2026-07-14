@@ -55,8 +55,12 @@ function App() {
         description={selection?.movie.description}
         poster={selection?.movie.poster}
         year={selection?.movie.year}
-        genre={selection?.movie.genre}
-        saison={selection?.movie.saison}
+        genre={selection?.movie.genre ?? selection?.movie.genres}
+        stars={selection?.movie.stars ?? []}
+        saison={selection?.movie.saison ?? selection?.movie.nbSaisons}
+        episodes={selection?.movie.nbEpisodes ?? ""}
+        originCountry={selection?.movie.originCountry ?? ""}
+        trailerUrl={selection?.movie.trailerUrl ?? ""}  
         template={selection?.template}
         onClose={handleCloseModal}
       />
