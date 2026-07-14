@@ -92,41 +92,82 @@ try {
             }
 
             // C'est Puppeteer qui va exécuter ce qui est à l'intérieur de evaluate() sur la page web
-            const details = await page.evaluate((fallbackTitle) => {
-                const firstResultSelector = 'div.card.entity-card';
-                const mainCard = document.querySelector(firstResultSelector);
-                
-                // Sécurité au cas où la carte n'est pas trouvée
-                if (!mainCard) {
+            const details = await page.evaluate((fallbackTitle, targetYear) => {
+                //-- fonctions utilisées --
+                const normalizeTitle = (str) =>
+                    (str || '')
+                        .normalize('NFD')
+                        .replace(/[\u0300-\u036f]/g, '')
+                        .toLowerCase()
+                        .trim();
+
+                const getCardTitle = (card) =>
+                    card.querySelector('h2.meta-title .meta-title-link, h2.meta-title a.meta-title-link')
+                        ?.textContent?.trim() || '';
+
+                const getCardYear = (card) => {
+                    const metaInfo = card.querySelector('.meta-body-info')?.textContent || '';
+                    return metaInfo.match(/\b(19|20)\d{2}\b/)?.[0] || null;
+                };
+
+                const getPageUrl = (card) => {
+                    const titleLink = card.querySelector('h2.meta-title a.meta-title-link');
+                    if (titleLink?.href) return titleLink.href;
+
+                    const obfuscatedEl = card.querySelector('h2.meta-title .meta-title-link, .thumbnail-link');
+                    const encodedClass = obfuscatedEl?.className?.split(' ').find(c => c.startsWith('ACr'));
+                    if (encodedClass) {
+                        const path = atob(encodedClass.substring(3));
+                        return path.startsWith('http') ? path : `https://www.allocine.fr${path}`;
+                    }
+
+                    return card.querySelector('a[href*="fichefilm"]')?.href || null;
+                };
+
+                const titleMatches = (card) =>
+                    normalizeTitle(getCardTitle(card)) === normalizeTitle(fallbackTitle);
+
+                const yearMatches = (card) =>
+                    !targetYear || getCardYear(card) === String(targetYear);
+
+
+
+                // -- logique pour trouver le bon film --
+                const cards = Array.from(document.querySelectorAll('div.card.entity-card'));
+
+                if (cards.length === 0) {
                     return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null };
                 }
-                // Extraction de l'URL de l'image
-                const imgVertical = document.querySelector('div.card.entity-card img.thumbnail-img')?.getAttribute('data-src') || "";
-                
-                // Extraction du titre
-                const titleElem = document.querySelector('div.meta h2.meta-title a.meta-title-link');
-                const title = titleElem ? titleElem.textContent.trim() : "Non trouvé";
-                // 1. Extraction de la description
+
+                const mainCard = cards.find(card => titleMatches(card) && yearMatches(card));
+
+                if (!mainCard) {
+                    console.log(`Aucun résultat AlloCiné pour "${fallbackTitle}", passage au suivant.`);
+                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null };
+                }
+
+                const imgVertical = mainCard.querySelector('img.thumbnail-img')?.getAttribute('data-src') || "";
+
+                const titleElem = mainCard.querySelector('h2.meta-title .meta-title-link, h2.meta-title a.meta-title-link');
+                const title = titleElem ? titleElem.textContent.trim() : fallbackTitle;
+
                 const descElem = mainCard.querySelector('div.content-txt');
                 const description = descElem ? descElem.textContent.trim() : "Non trouvée";
-                
-                // 2. Récupération des stars
+
                 const starElements = mainCard.querySelectorAll('div.meta-body-actor a');
                 const starsList = [];
-                
+
                 starElements.forEach(el => {
                     const name = el.textContent.trim();
-                    // Attention : sur AlloCiné l'URL contient '/personne/' et non '/name/' !
                     if (name && !starsList.includes(name) && el.href.includes('/personne/')) {
                         starsList.push(name);
                     }
                 });
 
-                const pageInfosUrl = titleElem ? titleElem.href : null;
-                
+                const pageInfosUrl = getPageUrl(mainCard);
 
-                return { title, description, stars: starsList, imgVertical: imgVertical, pageInfosUrl: pageInfosUrl };
-            }, movie.title);
+                return { title, description, stars: starsList, imgVertical, pageInfosUrl };
+            }, movie.title, movie.year);
 
             // si description est vide on passe au suivanteeE
             if (!details.pageInfosUrl) {
