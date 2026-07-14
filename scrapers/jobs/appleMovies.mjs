@@ -49,7 +49,7 @@ try {
       
     console.log(top10Movies);
 
-    // --- ÉTAPE 2 : Aller sur la page de détail de chaque film  pour récupérer les infos : year,---
+    // --- ÉTAPE 2 : Aller sur la page de détail de chaque film  pour récupérer les infos : year, et genre ---
     for (let i = 0; i < top10Movies.length; i++) {
         const movie = top10Movies[i];
         console.log(`[${i+1}/${top10Movies.length}] Recherche de l'année de sortie de : ${movie.title}...`);
@@ -127,23 +127,42 @@ try {
                 const titleMatches = (card) =>
                     normalizeTitle(getCardTitle(card)) === normalizeTitle(fallbackTitle);
 
-                const yearMatches = (card) =>
-                    !targetYear || getCardYear(card) === String(targetYear);
-
-
-
                 // -- logique pour trouver le bon film --
                 const cards = Array.from(document.querySelectorAll('div.card.entity-card'));
 
+                const findMatchingCard = (yearToMatch) =>
+                    cards.find(card =>
+                        titleMatches(card) &&
+                        (!yearToMatch || getCardYear(card) === String(yearToMatch))
+                    );
+
                 if (cards.length === 0) {
-                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null };
+                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null, matchedYear: null };
                 }
 
-                const mainCard = cards.find(card => titleMatches(card) && yearMatches(card));
+                let mainCard = null;
+                let matchedYear = targetYear ? String(targetYear) : null;
+
+                if (targetYear) {
+                    mainCard = findMatchingCard(targetYear);
+
+                    if (!mainCard) {
+                        const prevYear = String(Number(targetYear) - 1);
+                        mainCard = findMatchingCard(prevYear);
+                        if (mainCard) matchedYear = prevYear;
+                    }
+
+                    if (!mainCard) {
+                        const nextYear = String(Number(targetYear) + 1);
+                        mainCard = findMatchingCard(nextYear);
+                        if (mainCard) matchedYear = nextYear;
+                    }
+                } else {
+                    mainCard = cards.find(card => titleMatches(card));
+                }
 
                 if (!mainCard) {
-                    console.log(`Aucun résultat AlloCiné pour "${fallbackTitle}", passage au suivant.`);
-                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null };
+                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null, matchedYear: null };
                 }
 
                 const imgVertical = mainCard.querySelector('img.thumbnail-img')?.getAttribute('data-src') || "";
@@ -166,13 +185,20 @@ try {
 
                 const pageInfosUrl = getPageUrl(mainCard);
 
-                return { title, description, stars: starsList, imgVertical, pageInfosUrl };
+                return { title, description, stars: starsList, imgVertical, pageInfosUrl, matchedYear };
             }, movie.title, movie.year);
 
             // si description est vide on passe au suivanteeE
             if (!details.pageInfosUrl) {
-                console.log(`Aucun résultat AlloCiné pour "${movie.title}", passage au suivant.`);
+                const yearsTested = movie.year
+                    ? `${movie.year}, ${Number(movie.year) - 1}, ${Number(movie.year) + 1}`
+                    : 'aucune (titre seul)';
+                console.log(`Aucun résultat AlloCiné pour "${movie.title}" (années testées : ${yearsTested}), passage au suivant.`);
                 continue;
+            }
+
+            if (details.matchedYear && details.matchedYear !== String(movie.year)) {
+                console.log(`Correspondance AlloCiné trouvée avec l'année ${details.matchedYear} (au lieu de ${movie.year}) pour "${movie.title}".`);
             }
 
             // On enrichit l'objet movie existant
@@ -215,7 +241,7 @@ try {
                 }
 
 
-                return { genres: genresList, originCountry: originCountry, trailerUrl: trailerUrl};
+                return { originCountry: originCountry, trailerUrl: trailerUrl};
             });
 
             movie.genres = detailsInfos.genres;
