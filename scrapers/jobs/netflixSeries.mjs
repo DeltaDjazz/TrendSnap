@@ -61,7 +61,7 @@ async function run() {
                 // 5. Ajout des données structurées dans notre tableau
                 dataTable.push({
                     id: parseInt(id),
-                    imageUrl: imageUrl,
+                    poster: imageUrl,
                     title: title
                 });
             });
@@ -101,13 +101,13 @@ async function run() {
 
                 */
                 // C'est Puppeteer qui va exécuter ce qui est à l'intérieur de evaluate() sur la page web
-                const details = await page.evaluate(() => {
+                const details = await page.evaluate((movieTitle) => {
                     const firstResultSelector = 'div.card.entity-card';
                     const mainCard = document.querySelector(firstResultSelector);
                     
                     // Sécurité au cas où la carte n'est pas trouvée
                     if (!mainCard) {
-                        return { title: movie.title, description: "Non trouvée", pageInfosUrl: null };
+                        return { title: movieTitle, description: "Non trouvée", pageInfosUrl: null };
                     }
                     // Extraction de l'URL de l'image
                     const imgVertical = document.querySelector('div.card.entity-card img.thumbnail-img')?.getAttribute('data-src') || "";
@@ -135,7 +135,7 @@ async function run() {
                     
 
                     return { title, description, stars: starsList, imgVertical: imgVertical, pageInfosUrl: pageInfosUrl };
-                });
+                }, movie.title);
 
                 // si description est vide on passe au suivanteeE
                 if (!details.pageInfosUrl) {

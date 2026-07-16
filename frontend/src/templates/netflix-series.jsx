@@ -1,6 +1,6 @@
 export const config = {
   maxWidth: '1600px',
-  cardWidth: 220,
+  cardWidth: 240,
   cardHeight: 145,
   posterAspect: '16/9',
   showNumber: true,
@@ -8,6 +8,7 @@ export const config = {
   numberPosition: 'top',
   numberOffset: '-8px',
   numberBleed: '3rem',
+  borderClass: 'border-2 border-white/50',
 }
 
 export function CardInfo({ movie }) {

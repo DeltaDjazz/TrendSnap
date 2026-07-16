@@ -6,7 +6,7 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
   const width = cardWidth ?? config.cardWidth
   const height = cardHeight ?? config.cardHeight
   const aspectClass = config.posterAspect === '16/9' ? 'aspect-video' : 'aspect-[2/3]'
-  const borderClass = config.cardBorderClass ?? ''
+  const borderClass = config.borderClass ?? ''
 
   const handleSelect = (event) => {
     if (event.button !== 0) return
@@ -22,7 +22,6 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
   return (
     <div
       className="relative"
-      style={{ width: `${width}px` }}
     >
       {config.showNumber && number != null && (
         <RankNumber

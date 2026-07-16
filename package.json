@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "scrapn": "node scrapers/jobs/netflixWeekly.mjs",
-    "scrapam": "node scrapers/jobs/appleMovies.mjs"
+    "scrapns": "node scrapers/jobs/netflixSeries.mjs",
+    "scrapnm": "node scrapers/jobs/netflixMovies.mjs",
+    "scrapam": "node scrapers/jobs/appleMovies.mjs",
+    "scrapas": "node scrapers/jobs/appleSeries.mjs"
   },
   "dependencies": {
     "puppeteer": "^25.3.0"

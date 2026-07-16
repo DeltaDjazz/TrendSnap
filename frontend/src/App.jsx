@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import movies from './data/movies.json'
 import netflixSeries from './data/netflix-series.json'
+import netflixMovies from './data/netflix-movies.json'
 import appleSeries from './data/apple-series.json'
 import amazonSeries from './data/amazon-series.json'
 import appleMovies from './data/apple-movies.json'
 import { TopSlider } from './components/TopSlider'
 import { MovieModal } from './components/MovieModal'
+
+import netflixBg from './assets/netflix-bg7.webp'
 
 function App() {
   const [selection, setSelection] = useState(null)
@@ -20,28 +23,44 @@ function App() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <header className="px-6 py-4 border-b border-zinc-600 flex items-center justify-between">
+      <header className="header-gradient-border px-6 py-4 flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">TrendSnap</h1>
       </header>
       <main className="px-0 py-10">
         <h2 className="text-lg text-center font-semibold mb-6">Top 10 des films du moment</h2>
         <TopSlider movies={movies.slice(0, 10)} template="cinema" onMovieSelect={handleMovieSelect} />
+        
+        {/* Netflix Section */}
+        <section
+          className="relative bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${netflixBg})` }}
+        >
+          <div className="absolute inset-0" aria-hidden="true" />
+          <div className="relative">
+            <div className="pt-10">
+              <h2 className="text-lg text-center font-semibold">Top 10 des films Netflix</h2>
+              <TopSlider movies={netflixMovies.slice(0, 10)} template="netflix-series" onMovieSelect={handleMovieSelect} />
+            </div>
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-[#FFFFFF] to-transparent" />
+            <div className="pt-10">
+              <h2 className="text-lg text-center font-semibold">Top 10 des séries Netflix</h2>
+              <TopSlider movies={netflixSeries.slice(0, 10)} template="netflix-series" onMovieSelect={handleMovieSelect} />
+            </div>
+          </div>
+        </section>
 
-        <div className="bg-color-red bg-zinc-700/50 pb-10">
-          <h2 className="text-lg text-center font-semibold mb-6 mt-10">Top 10 des séries Netflix</h2>
-          <TopSlider movies={netflixSeries.slice(0, 10)} template="netflix-series" onMovieSelect={handleMovieSelect} />
-        </div>
-
-        <div className="">
-          <h2 className="text-lg text-center font-semibold  mt-10">Top 10 des séries Apple TV+</h2>
-          <TopSlider movies={appleSeries.slice(0, 10)} template="apple-series" onMovieSelect={handleMovieSelect} />
-        </div>
-
-        <div className="bg-color-red pb-10">
-          <h2 className="text-lg text-center font-semibold ">Top 10 des films Apple TV+</h2>
-          <TopSlider movies={appleMovies.slice(0, 10)} template="apple-movies" onMovieSelect={handleMovieSelect} />
-        </div>
-
+        {/* Apple Section */}
+        <section className="bg-gray-400">
+          <div className="pt-5">
+            <h2 className="text-lg text-center font-semibold  mt-10">Top 10 des séries Apple TV+</h2>
+            <TopSlider movies={appleSeries.slice(0, 10)} template="apple-series" onMovieSelect={handleMovieSelect} />
+          </div>
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#959595] to-transparent" />
+          <div className="pb-10 mt-10">
+            <h2 className="text-lg text-center font-semibold ">Top 10 des films Apple TV+</h2>
+            <TopSlider movies={appleMovies.slice(0, 10)} template="apple-movies" onMovieSelect={handleMovieSelect} />
+          </div>
+        </section>
         <div className="bg-zinc-700/50 py-10 ">
           <h2 className="text-lg text-center font-semibold mb-6 mt-10">Top 10 des séries Amazon Prime</h2>
           <TopSlider movies={amazonSeries.slice(0, 10)} template="amazon-series" onMovieSelect={handleMovieSelect} />

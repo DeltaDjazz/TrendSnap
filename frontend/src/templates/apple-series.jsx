@@ -9,6 +9,7 @@ export const config = {
   numberPosition: 'top',
   numberOffset: '10px',
   numberBleed: '4rem',
+  borderClass: 'border-2 border-black/20',
 }
 
 export function CardInfo({ movie }) {

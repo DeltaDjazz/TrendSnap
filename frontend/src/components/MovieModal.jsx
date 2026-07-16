@@ -47,32 +47,39 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
   const isWide = modalPoster === "" ? true : false
   const genreLabel = formatGenre(genre)
 
-  const handleBackdropClick = (event) => {
-    if (event.target === event.currentTarget) {
-      onClose()
-    }
+  const handleBackdropClick = () => {
+    onClose()
   }
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-mist-600/80 p-4"
+      className="fixed inset-0 z-[9999] overflow-y-auto overscroll-contain bg-mist-600/80"
       onClick={handleBackdropClick}
       role="presentation"
     >
-      <div className="relative isolate flex w-full flex-col max-w-4xl items-start  rounded-2xl border border-zinc-700 bg-zinc-950 shadow-2xl">
+      <div className="flex min-h-full items-center justify-center p-4">
+      <div
+        className="relative isolate flex w-full max-w-4xl flex-col items-start rounded-2xl border border-zinc-700 bg-zinc-950 shadow-2xl"
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+      >
   
         {/* L'effet lumineux avec z-[-1] ou z-0 */}
         <div className="absolute top-[-3px] left-[-3px] z-[-1] w-[273px] h-[249px] rounded-tl-[20px] rounded-br-[200px] bg-gradient-to-br from-[#3ca2f6] to-transparent filter blur-[5px]" />
         <div className="absolute bottom-[-6px] right-[-6px] z-[-1] w-[273px] h-[249px] rounded-br-[20px] rounded-tl-[200px] bg-gradient-to-br from-[#3ca2f6] to-transparent filter blur-[5px]" />
-        <div className="bg-zinc-950 rounded-2xl">
-          <button
-            type="button"
-            onClick={onClose}
-            className="absolute right-3 top-3 z-10 rounded-full bg-zinc-950/80 p-2 text-zinc-400 backdrop-blur-sm transition hover:bg-zinc-800 hover:text-white"
-            aria-label="Fermer la modale"
-          >
-            ×
-          </button>
+        {/*<div className="modal-glass-panel">*/}
+        <div className="bg-zinc-950 rounded-2xl pb-5">
+          <div className="w-full flex justify-end">
+            <button
+              type="button"
+              onClick={onClose}
+              className=" z-10 rounded-full  p-2 pr-4 text-2xl text-zinc-400 backdrop-blur-sm transition hover:text-white"
+              aria-label="Fermer la modale"
+            >
+              ×
+            </button>
+          </div>  
 
           <div className="flex flex-rows">
             <div className="shrink-0 p-4 ">
@@ -87,13 +94,13 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
               )}
               {trailerUrl && (
                 <div className="flex flex-col gap-2">
-                  <a className="text-sm text-zinc-300 text-center bg-blue-700/50 px-4 py-2 mt-4 rounded-md" href={trailerUrl} target="_blank" rel="noopener noreferrer">Bande annonce</a>
+                  <a className="text-sm text-zinc-300 text-center  bg-[#1A2E3E] border border-blue-700/50 px-4 py-2 mt-4 rounded-md" href={trailerUrl} target="_blank" rel="noopener noreferrer">Bande annonce</a>
                 </div>
               )}
             </div>
 
             <div className="min-w-0 flex-1 p-2 md:p-6 pr-4 md:pr-6 pt-5">
-              <h3 className="text-2xl font-semibold text-white mb-4">{title}</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{title}</h3>
               <div className="flex flex-col md:flex-row  gap-2">
                 <InfoField label="Année" value={year} />
                 <InfoField label="Genre" value={genreLabel} />
@@ -138,7 +145,8 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
         
 
 
-      </div>   
+      </div>
+      </div>
     </div>
   )
 }
