@@ -69,7 +69,7 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
         <div className="absolute top-[-3px] left-[-3px] z-[-1] w-[273px] h-[249px] rounded-tl-[20px] rounded-br-[200px] bg-gradient-to-br from-[#3ca2f6] to-transparent filter blur-[5px]" />
         <div className="absolute bottom-[-6px] right-[-6px] z-[-1] w-[273px] h-[249px] rounded-br-[20px] rounded-tl-[200px] bg-gradient-to-br from-[#3ca2f6] to-transparent filter blur-[5px]" />
         {/*<div className="modal-glass-panel">*/}
-        <div className="bg-zinc-950 rounded-2xl pb-5">
+        <div className="w-full bg-zinc-950 rounded-2xl pb-5">
           <div className="w-full flex justify-end">
             <button
               type="button"

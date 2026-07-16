@@ -1,7 +1,7 @@
-import * as cinema from './cinema'
-import * as netflixSeries from './netflix-series'
-import * as appleSeries from './apple-series'
-import * as amazonSeries from './amazon-series'
+import * as cinema from './movieCard/cinema'
+import * as netflixSeries from './movieCard/netflix-series'
+import * as appleSeries from './movieCard/apple-series'
+import * as amazonSeries from './movieCard/amazon-series'
 
 
 export const CARD_TEMPLATES = {

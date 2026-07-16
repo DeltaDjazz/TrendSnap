@@ -169,12 +169,12 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   }
 
   return (
-    <div className="flex items-center justify-center mx-auto" style={{ maxWidth: '1800px' }}>
+    <div className="flex items-center justify-center mx-auto relative" style={{ maxWidth: '1680px' }}>
       <button
         onClick={() => slide('left')}
         disabled={!canGoPrev}
-        className="shrink-0 w-8 h-12 flex items-center justify-center
-                   text-6xl text-zinc-400 hover:text-white
+        className="shrink-0 w-8 h-12 flex items-center justify-center absolute left-0 top-[-20px] md:top-1/2 -translate-y-1/2 pb-5 z-99
+                   text-6xl text-blue-500 hover:text-white bg-black/40
                    disabled:opacity-0 disabled:pointer-events-none transition-opacity z-99"
       >
         ‹
@@ -227,8 +227,8 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
       <button
         onClick={() => slide('right')}
         disabled={!canGoNext}
-        className="shrink-0 w-8 h-12 flex items-center justify-center
-                   text-6xl text-zinc-400 hover:text-white
+        className="shrink-0 w-8 h-12 flex items-center justify-center absolute right-0 top-[-20px] md:top-1/2 -translate-y-1/2 pb-5 z-99
+                   text-6xl text-blue-400 hover:text-white bg-black/70
                    disabled:opacity-0 disabled:pointer-events-none transition-opacity z-99"
       >
         ›
