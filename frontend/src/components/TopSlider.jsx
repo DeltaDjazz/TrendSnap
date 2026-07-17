@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { MovieCard } from './MovieCard'
-import { getCardTemplate } from '../templates'
+import { getCardTemplate } from '../templates/cardTemplates'
+import { getSliderTemplate } from '../templates/sliderTemplates'
 
 const GAP = 36
 const SWIPE_THRESHOLD = 80
@@ -14,14 +15,19 @@ function getMaxStartIndex(totalCards, visibleCount) {
 }
 
 export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, backgroundColor, onMovieSelect }) {
-  const { config } = getCardTemplate(template)
-  const resolvedWidth = cardWidth ?? config.cardWidth
-  const resolvedHeight = cardHeight ?? config.cardHeight
-  const mobileScale = config.mobileCardScale ?? DEFAULT_MOBILE_SCALE
+  const { config: cardConfig } = getCardTemplate(template)
+  const { config: sliderConfig } = getSliderTemplate(template)
+  const resolvedWidth = cardWidth ?? cardConfig.cardWidth
+  const resolvedHeight = cardHeight ?? cardConfig.cardHeight
+  const mobileScale = sliderConfig.mobileCardScale ?? DEFAULT_MOBILE_SCALE
   const sliderStyle = {
-    maxWidth: config.maxWidth ?? '1600px',
-    backgroundColor: backgroundColor ?? 'transparent',
+    maxWidth: sliderConfig.maxWidth ?? '1600px',
+    backgroundColor: backgroundColor ?? sliderConfig.backgroundColor ?? 'transparent',
   }
+  const navButtonBaseClass = sliderConfig.navButtonBaseClass ?? ''
+  const navButtonPrevClass = sliderConfig.navButtonPrevClass ?? ''
+  const navButtonNextClass = sliderConfig.navButtonNextClass ?? ''
+  const mobileTopPosition = sliderConfig.mobileTopPosition ?? ''
 
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < MOBILE_BREAKPOINT)
   const [visibleCount, setVisibleCount] = useState(1)
@@ -169,13 +175,14 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   }
 
   return (
-    <div className="flex items-center justify-center mx-auto relative" style={{ maxWidth: '1680px' }}>
+    <div
+      className="flex items-center justify-center mx-auto relative"
+      style={{ maxWidth: sliderConfig.wrapperMaxWidth ?? '1680px' }}
+    >
       <button
         onClick={() => slide('left')}
         disabled={!canGoPrev}
-        className="shrink-0 w-8 h-12 flex items-center justify-center absolute left-0 top-[-20px] md:top-1/2 -translate-y-1/2 pb-5 z-99
-                   text-6xl text-blue-500 hover:text-white bg-black/40
-                   disabled:opacity-0 disabled:pointer-events-none transition-opacity z-99"
+        className={`${navButtonBaseClass} ${navButtonPrevClass} ${mobileTopPosition}`}
       >
         ‹
       </button>
@@ -185,7 +192,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
           ref={viewportRef}
           className="min-w-0 overflow-clip select-none"
           style={{
-            overflowClipMargin: config.numberBleed ?? '2rem',
+            overflowClipMargin: sliderConfig.numberBleed ?? '2rem',
             touchAction: 'pan-y',
             cursor: isDragging ? 'grabbing' : 'grab',
           }}
@@ -227,9 +234,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
       <button
         onClick={() => slide('right')}
         disabled={!canGoNext}
-        className="shrink-0 w-8 h-12 flex items-center justify-center absolute right-0 top-[-20px] md:top-1/2 -translate-y-1/2 pb-5 z-99
-                   text-6xl text-blue-400 hover:text-white bg-black/70
-                   disabled:opacity-0 disabled:pointer-events-none transition-opacity z-99"
+        className={`${navButtonBaseClass} ${navButtonNextClass} ${mobileTopPosition}`}
       >
         ›
       </button>

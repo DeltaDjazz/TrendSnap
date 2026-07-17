@@ -1,5 +1,4 @@
 export const config = {
-  maxWidth: '1600px',
   cardWidth: 220,
   cardHeight: 340,
   posterAspect: '2/3',
@@ -7,7 +6,6 @@ export const config = {
   rankNumberVariant: 'portrait',
   numberPosition: 'bottom',
   numberOffset: '96px',
-  numberBleed: '4rem',
 }
 
 export function CardInfo({ movie }) {

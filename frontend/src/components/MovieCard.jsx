@@ -1,4 +1,4 @@
-import { getCardTemplate } from '../templates'
+import { getCardTemplate } from '../templates/cardTemplates'
 import { RankNumber } from '../templates/RankNumber'
 
 export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardHeight, onSelect }) {

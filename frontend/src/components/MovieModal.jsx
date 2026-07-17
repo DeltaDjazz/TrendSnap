@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { getCardTemplate } from '../templates'
+import { getCardTemplate } from '../templates/cardTemplates'
 
 function formatGenre(genre) {
   if (!genre) return null

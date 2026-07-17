@@ -1,5 +1,4 @@
 export const config = {
-  maxWidth: '1600px',
   cardWidth: 182,
   cardHeight: 273,
   cardBorderClass: 'border-2 border-zinc-500/50',
@@ -8,7 +7,6 @@ export const config = {
   rankNumberVariant: 'portrait',
   numberPosition: 'top',
   numberOffset: '10px',
-  numberBleed: '4rem',
   borderClass: 'border-2 border-black/20',
 }
 
