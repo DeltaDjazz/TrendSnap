@@ -5,65 +5,119 @@ import { saveSnapshot } from '../utils/saveSnapshot.mjs';
 try {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
-    await page.goto('https://tv.apple.com/fr');
+    await page.goto('https://www.primevideo.com/-/fr/tv');
     await page.waitForSelector('h1');
-    const title = await page.$eval('h1', el => el.textContent);
-    console.log(title);
+    
 
-    // --- ÉTAPE 1 : Récupérer les 10 premiers films titre, poster, logo, detailsPageUrl---
-    const top10Movies = await page.evaluate(() => {
-        // 1. On trouve tous les h2 de la page
-        const headings = Array.from(document.querySelectorAll('h2'));
-        
-        // 2. On cherche celui qui contient "Top 10 : films" (on nettoie les espaces éventuels)
-        const top10Heading = headings.find(h => h.textContent.trim() === "Top 10 : films");
-        
-        if (!top10Heading) {
-          return []; // Retourne un tableau vide si la section n'est pas trouvée
-        }
-      
-        // 3. On remonte au conteneur le plus proche qui englobe le titre ET la liste (souvent un <section> ou une div parente)
-        const shelfSection = top10Heading.closest('div.section') || top10Heading.parentElement;
-      
-        // 4. On récupère les éléments de la liste uniquement à l'intérieur de cette section
-        const items = shelfSection.querySelectorAll('.shelf-grid__list-item');
-      
-        // 5. On extrait les données des éléments (limité à 10 par sécurité)
-        return Array.from(items).slice(0, 10).map((item, index) => {
-            const posterSrcset = item.querySelector('[data-testid="artwork"] source[type="image/webp"]')?.getAttribute('srcset');
-            const poster = posterSrcset ? posterSrcset.split(' ')[0] : null;
-      
-            const logoSrcset = item.querySelector('[data-testid="logo"] source[type="image/webp"]')?.getAttribute('srcset');
-            const logo = logoSrcset ? logoSrcset.split(' ')[0] : null;
-      
-            const rawTitle = item.querySelector('[data-testid="logo"] img')?.getAttribute('alt') || null;
-            // Si rawTitle existe, on le coupe au niveau du premier ":" et on prend la première partie, sinon null
-            const title = rawTitle ? rawTitle.split(':')[0].trim() : null;
-
-            const genre = item.querySelector('[data-testid="caption"]')?.textContent || null;
-
-            const detailsPageUrl = item.querySelector('a')?.getAttribute('href') || null;
-            return { id: index + 1, title, poster, logo, genre, detailsPageUrl };
+    // 🔽 SCROLLER EN BAS DE PAGE
+    await page.evaluate(async () => {
+        await new Promise((resolve) => {
+            let totalHeight = 0;
+            const distance = 100;
+            const timer = setInterval(() => {
+                const scrollHeight = document.body.scrollHeight;
+                window.scrollBy(0, distance);
+                totalHeight += distance;
+                
+                if (totalHeight >= scrollHeight) {
+                    clearInterval(timer);
+                    resolve();
+                }
+            }, 100);
         });
+    });
+    
+    // Attendre que le contenu chargé
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // --- ÉTAPE 1 : Récupérer les 10 premiers films titre, poster, logo, detailsPageUrl--
+    const top10Movies = await page.evaluate(() => {
+        
+        // 1. Trouver la section du Top 10
+        const headings = Array.from(document.querySelectorAll('section h2 span span'));
+        //on console.log le texte de chaque heading
+        headings.forEach(h => {
+            console.log("Heading: " + h.textContent.trim());
+        });
+
+        // Nettoyer le texte avant de comparer
+        const top10Heading = Array.from(document.querySelectorAll('section h2')).find(h => {
+            const cleanText = h.textContent.replace(/\s+/g, ' ').trim();
+            return cleanText.includes('Top 10 des séries');
+        });
+
+
+        //const top10Heading = headings.find(h => h.textContent.trim() === "Top 10 des films en France");
+        const topSection = top10Heading?.closest('section[data-testid="charts-container"]');
+        if (!topSection) {
+            return [];
+        }
+
+              // 2. Récupérer tous les éléments de film (li) dans cette section
+        const movieItems = topSection.querySelectorAll('ul li');
+        const moviesData = [];
+        // 2. On récupère les éléments de la liste uniquement à l'intérieur de cette section
+              // Itérer sur chaque élément de film
+        movieItems.forEach((item, index) => {
+            // Trouver l'article à l'intérieur du li
+            const article = item.querySelector('article');
+            if (!article) return;
+
+            // --- Extraire les données ---
+
+            // TITRE (title) : depuis l'attribut data-card-title de l'article
+            const title = article.getAttribute('data-card-title') || '';
+            //on garde ce qui y'a avant les :
+            let titleClean = title.split(':')[0];
+            // on garde ce qu'il y'a avant ' - '
+            titleClean = titleClean.split(' - ')[0];
+
+            // URL DE L'IMAGE (poster) : depuis l'image principale de la carte
+            const posterImage = article.querySelector('.BVySw9 img');
+            const poster = posterImage ? posterImage.src : '';
+
+            // LIEN DE LA PAGE DETAILL (detailsPageUrl)
+            const detailLink = article.querySelector('a[href*="/-/fr/detail/"]');
+            const detailsPageUrl = detailLink ? detailLink.href : '';
+
+            // Ajouter l'objet film au tableau
+            moviesData.push({
+            id: index + 1,
+            title: titleClean,
+            poster: poster,
+            detailsPageUrl: detailsPageUrl,
+            });
+        });
+        return moviesData;
     });
       
     console.log(top10Movies);
 
-    // --- ÉTAPE 2 : Aller sur la page de détail de chaque film  pour récupérer les infos : year ---
+    // --- ÉTAPE 2 : Aller sur la page de détail pour récupérer year, genre, duration description ---
     for (let i = 0; i < top10Movies.length; i++) {
         const movie = top10Movies[i];
-        console.log(`[${i+1}/${top10Movies.length}] Recherche de l'année de sortie de : ${movie.title}...`);
+        console.log(`[${i+1}/${top10Movies.length}] Métadonnées Amazon de : ${movie.title}...`);
         
         if (!movie.detailsPageUrl) { continue;}
 
 
         await page.goto(movie.detailsPageUrl, { waitUntil: 'domcontentloaded' });
-        const year = await page.evaluate(() => {
-            return document
-                .querySelector('.details [data-testid="metadata-list"] span:first-child')
+        const meta = await page.evaluate(() => {
+            const year = document
+                .querySelector('[data-automation-id="release-year-badge"]')
                 ?.textContent?.trim() || null;
+
+            const genre =
+                document.querySelector('[data-testid="dv-node-dp-genres"] [data-testid="genre-texts"] a')?.textContent?.trim() || null;
+
+            const description = document.querySelector('[data-testid="dp-atf-synopsis"]')?.textContent?.trim() || null;
+
+
+            return { year, genre, description };
         });
-        movie.year = year;
+        movie.year = meta.year;
+        movie.genre = meta.genre;
+        movie.description = meta.description;
     }
 
     // --- ÉTAPE 3 : Aller sur allocine pour chaque film ---
@@ -75,7 +129,7 @@ try {
         console.log(`[${i+1}/${top10Movies.length}] Recherche Allociné de : ${movie.title}...`);
 
         try {
-            const searchUrl = `https://www.allocine.fr/rechercher/movie/?q=${encodeURIComponent(movie.title)}`;
+            const searchUrl = `https://www.allocine.fr/rechercher/series/?q=${encodeURIComponent(movie.title)}`;
             await page.goto(searchUrl, { waitUntil: 'domcontentloaded' });
 
             // --- BLOC COOKIES ISOLÉ ---
@@ -130,14 +184,15 @@ try {
                 // -- logique pour trouver le bon film --
                 const cards = Array.from(document.querySelectorAll('div.card.entity-card'));
 
-                const findMatchingCard = (yearToMatch) =>
+                let findMatchingCard = (yearToMatch) =>
                     cards.find(card =>
                         titleMatches(card) &&
                         (!yearToMatch || getCardYear(card) === String(yearToMatch))
                     );
 
                 if (cards.length === 0) {
-                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null, matchedYear: null };
+                    //si y'a qu'un seul card on le retourne
+                    return { title: fallbackTitle, pageInfosUrl: null, matchedYear: null };
                 }
 
                 let mainCard = null;
@@ -161,8 +216,14 @@ try {
                     mainCard = cards.find(card => titleMatches(card));
                 }
 
+
+                if (cards.length === 1 && !mainCard) {
+                    mainCard = cards[0];
+                }
+
+
                 if (!mainCard) {
-                    return { title: fallbackTitle, description: "Non trouvée", pageInfosUrl: null, matchedYear: null };
+                    return { title: fallbackTitle, pageInfosUrl: null, matchedYear: null };
                 }
 
                 const imgVertical = mainCard.querySelector('img.thumbnail-img')?.getAttribute('data-src') || "";
@@ -220,7 +281,9 @@ try {
                 });
 
                 const originCountry = document.querySelector('div.card.entity-card div.meta-body-item.meta-body-nationality a') ?.textContent.trim() || "";   
-
+                const nbSaisons = document.querySelector('section#synopsis-details div.stats-numbers-row-item div.stats-item') ?.textContent.trim() || "";
+                const nbEpisodes = document.querySelector('section#synopsis-details div.stats-numbers-row-item:nth-child(2) div.stats-item') ?.textContent.trim() || "";
+                
                 //  Extraction de l'ID Dailymotion et génération de l'URL
                 let trailerUrl = "";
                 const playerElement = document.querySelector('figure.player');
@@ -241,11 +304,13 @@ try {
                 }
 
 
-                return { originCountry: originCountry, trailerUrl: trailerUrl};
+                return { originCountry: originCountry, nbSaisons: nbSaisons, nbEpisodes: nbEpisodes, trailerUrl: trailerUrl};
             });
 
             movie.genres = detailsInfos.genres;
             movie.originCountry = detailsInfos.originCountry;
+            movie.nbSaisons = detailsInfos.nbSaisons;
+            movie.nbEpisodes = detailsInfos.nbEpisodes;
             movie.trailerUrl = detailsInfos.trailerUrl;
 
 
@@ -254,6 +319,8 @@ try {
             movie.description = "";
             movie.stars = [];
             movie.imgVertical = "";
+            movie.nbSaisons = "";
+            movie.nbEpisodes = "";
             movie.trailerUrl = "";
         }
         // Petit temps de pause pour être poli avec les serveurs d'allocine et éviter d'être bloqué
@@ -262,7 +329,7 @@ try {
 
         console.log(top10Movies);
 
-         saveSnapshot('apple-movies.json', top10Movies);
+         saveSnapshot('amazon-series.json', top10Movies);
 
 
 } catch (error) {

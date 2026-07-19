@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import movies from './data/movies.json'
-import netflixSeries from './data/netflix-series.json'
-import netflixMovies from './data/netflix-movies.json'
-import appleSeries from './data/apple-series.json'
-import amazonSeries from './data/amazon-series.json'
-import appleMovies from './data/apple-movies.json'
+import { loadSnapshot } from './data/loadSnapshots'
 import { Header } from './components/Header'
 import { TopSlider } from './components/TopSlider'
 import { MovieModal } from './components/MovieModal'
 import { getSliderTemplate } from './templates/sliderTemplates'
 
 import netflixBg from './assets/netflix-bgRB.png'
+
+const netflixSeries = loadSnapshot('netflix-series.json')
+const netflixMovies = loadSnapshot('netflix-movies.json')
+const appleSeries = loadSnapshot('apple-series.json')
+const appleMovies = loadSnapshot('apple-movies.json')
+const amazonSeries = loadSnapshot('amazon-series.json')
+const amazonMovies = loadSnapshot('amazon-movies.json')
 
 function App() {
   const [selection, setSelection] = useState(null)
@@ -65,10 +68,20 @@ function App() {
           </div>
         </section>
 
-        <div className="bg-zinc-700/50 py-10 ">
-          <h2 className={`${getSliderTemplate('amazon-series').config.titleClass} mt-10`}>Top 10 des séries Amazon Prime</h2>
-          <TopSlider movies={amazonSeries.slice(0, 10)} template="amazon-series" onMovieSelect={handleMovieSelect} />
-        </div>
+        {/* Amazon Section */}
+        <section className="bg-blue-700/50">
+          <div className="pt-5">
+            <h2 className={`${getSliderTemplate('amazon-series').config.titleClass} mt-10`}>Top 10 des séries Amazon Prime</h2>
+            <TopSlider movies={amazonSeries.slice(0, 10)} template="amazon-series" onMovieSelect={handleMovieSelect} />
+          </div>
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#000] to-transparent" />
+          <div className="pb-10 mt-10 ">
+            <h2 className={`${getSliderTemplate('amazon-movies').config.titleClass} mt-10`}>Top 10 des films Amazon Prime</h2>
+            <TopSlider movies={amazonMovies.slice(0, 10)} template="amazon-movies" onMovieSelect={handleMovieSelect} />
+          </div>
+        </section>
+
+
       </main>
 
       <MovieModal

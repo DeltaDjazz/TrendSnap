@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
-import fs from 'fs';
-import { getWeekNumber } from '../utils/weekNumber.mjs';
+import { saveSnapshot } from '../utils/saveSnapshot.mjs';
 
 async function run() {
     // 1. Lancer le navigateur en mode background (headless: true)
@@ -206,14 +205,8 @@ async function run() {
             await new Promise(resolve => setTimeout(resolve, 1000));
         }
         console.log(movies);
-        
-        // 4. Générer le nom du fichier avec le numéro de la semaine
-        const weekNum = getWeekNumber();
-        const filename = `netflix-series-${weekNum}.json`;
 
-        // 5. Enregistrer le tableau au format JSON
-        fs.writeFileSync(filename, JSON.stringify(movies, null, 2), 'utf-8');
-        console.log(`Fichier sauvegardé avec succès sous le nom : ${filename}`);
+        saveSnapshot('netflix-series.json', movies);
         
 
     } catch (error) {
