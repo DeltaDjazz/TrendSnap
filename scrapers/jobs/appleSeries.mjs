@@ -2,8 +2,9 @@
 import puppeteer from 'puppeteer';
 import { saveSnapshot } from '../utils/saveSnapshot.mjs';
 
+let browser;
 try {
-    const browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto('https://tv.apple.com/fr');
     await page.waitForSelector('h1');
@@ -204,4 +205,9 @@ try {
 
 } catch (error) {
     console.error('Erreur lors du scraping :', error);
+} finally {
+    if (browser) {
+        await browser.close();
+        console.log('Navigateur fermé.');
+    }
 }

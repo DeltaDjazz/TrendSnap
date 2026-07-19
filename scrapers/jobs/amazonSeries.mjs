@@ -2,8 +2,9 @@
 import puppeteer from 'puppeteer';
 import { saveSnapshot } from '../utils/saveSnapshot.mjs';
 
+let browser;
 try {
-    const browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto('https://www.primevideo.com/-/fr/tv');
     await page.waitForSelector('h1');
@@ -113,11 +114,21 @@ try {
             const description = document.querySelector('[data-testid="dp-atf-synopsis"]')?.textContent?.trim() || null;
 
 
-            return { year, genre, description };
+            // On récupère le nombre de saisons
+            const genresContainer = document.querySelector('[data-testid="dv-node-dp-genres"]');
+            // 2. On remonte au parent commun pour chercher le span de la saison
+            const parent = genresContainer.parentElement;
+            // 3. On cherche le span qui possède un aria-label contenant "saison"
+            const saisonSpan = parent.querySelector('span[aria-label*="saison"]');
+            // 4. On retourne le texte nettoyé (ex: "1 saison")
+            const nbSaisons = saisonSpan ? saisonSpan.textContent.trim() : null;
+
+            return { year, genre, description, nbSaisons };
         });
         movie.year = meta.year;
         movie.genre = meta.genre;
         movie.description = meta.description;
+        movie.nbSaisons = meta.nbSaisons;
     }
 
     // --- ÉTAPE 3 : Aller sur allocine pour chaque film ---
@@ -334,4 +345,9 @@ try {
 
 } catch (error) {
     console.error('Erreur lors du scraping :', error);
+} finally {
+    if (browser) {
+        await browser.close();
+        console.log('Navigateur fermé.');
+    }
 }
