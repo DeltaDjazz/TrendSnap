@@ -6,7 +6,8 @@
     "scrapns": "node scrapers/jobs/netflixSeries.mjs",
     "scrapnm": "node scrapers/jobs/netflixMovies.mjs",
     "scrapam": "node scrapers/jobs/appleMovies.mjs",
-    "scrapas": "node scrapers/jobs/appleSeries.mjs"
+    "scrapas": "node scrapers/jobs/appleSeries.mjs",
+    "scrapall": "node scrapers/scrapeAll.mjs"
   },
   "dependencies": {
     "puppeteer": "^25.3.0"
