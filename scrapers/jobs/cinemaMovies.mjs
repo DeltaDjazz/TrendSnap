@@ -41,10 +41,7 @@ function loadEnvFile() {
 }
 
 function getAuth() {
-    const accessToken =
-        process.env.TMDB_ACCESS_TOKEN ||
-        process.env.TMDB_READ_ACCESS_TOKEN ||
-        process.env.TMDB_BEARER_TOKEN;
+    const accessToken = process.env.TMDB_ACCESS_TOKEN;
     const apiKey = process.env.TMDB_API_KEY;
 
     if (!accessToken && !apiKey) {
@@ -84,6 +81,13 @@ function posterUrl(posterPath) {
     return `${IMAGE_BASE}${posterPath}`;
 }
 
+/** Convertit une date ISO YYYY-MM-DD en dd/mm/yyyy. */
+function formatDateFr(isoDate) {
+    if (!isoDate || !/^\d{4}-\d{2}-\d{2}/.test(isoDate)) return '';
+    const [yyyy, mm, dd] = isoDate.slice(0, 10).split('-');
+    return `${dd}/${mm}/${yyyy}`;
+}
+
 function pickTrailerUrl(videos) {
     const results = videos?.results ?? [];
     const youtube = results.filter((v) => v.site === 'YouTube');
@@ -96,7 +100,7 @@ function pickTrailerUrl(videos) {
     return trailer?.key ? `https://www.youtube.com/watch?v=${trailer.key}` : '';
 }
 
-async function enrichMovie(listItem, rank, auth) {
+async function enrichMovie(listItem, rank, auth, { withDateDeSortie = false } = {}) {
     const details = await tmdbFetch(`/movie/${listItem.id}`, auth, {
         language: LANGUAGE,
         append_to_response: 'credits,videos',
@@ -114,10 +118,9 @@ async function enrichMovie(listItem, rank, auth) {
         '';
 
     const releaseDate = details.release_date || listItem.release_date || '';
-    const year = releaseDate ? releaseDate.slice(0, 4) : '';
     const image = posterUrl(details.poster_path || listItem.poster_path);
 
-    return {
+    const movie = {
         id: rank,
         poster: image,
         title: details.title || listItem.title || '',
@@ -125,14 +128,44 @@ async function enrichMovie(listItem, rank, auth) {
         stars,
         imgVertical: image,
         pageInfosUrl: `https://www.themoviedb.org/movie/${listItem.id}`,
-        year,
         genres,
         originCountry,
         trailerUrl: pickTrailerUrl(details.videos),
     };
+
+    if (withDateDeSortie) {
+        movie.dateDeSortie = formatDateFr(releaseDate);
+    } else {
+        movie.year = releaseDate ? releaseDate.slice(0, 4) : '';
+    }
+
+    return movie;
 }
 
-async function fetchTop10(listPath, auth, label) {
+function fallbackMovie(item, rank, { withDateDeSortie = false } = {}) {
+    const movie = {
+        id: rank,
+        poster: posterUrl(item.poster_path),
+        title: item.title || '',
+        description: item.overview || '',
+        stars: [],
+        imgVertical: posterUrl(item.poster_path),
+        pageInfosUrl: `https://www.themoviedb.org/movie/${item.id}`,
+        genres: [],
+        originCountry: '',
+        trailerUrl: '',
+    };
+
+    if (withDateDeSortie) {
+        movie.dateDeSortie = formatDateFr(item.release_date || '');
+    } else {
+        movie.year = item.release_date ? item.release_date.slice(0, 4) : '';
+    }
+
+    return movie;
+}
+
+async function fetchTop10(listPath, auth, label, options = {}) {
     console.log(`Récupération TMDB ${label} (${listPath})...`);
     const data = await tmdbFetch(listPath, auth, {
         language: LANGUAGE,
@@ -151,22 +184,10 @@ async function fetchTop10(listPath, auth, label) {
         const item = top[i];
         console.log(`[${i + 1}/${top.length}] Enrichissement : ${item.title}...`);
         try {
-            movies.push(await enrichMovie(item, i + 1, auth));
+            movies.push(await enrichMovie(item, i + 1, auth, options));
         } catch (err) {
             console.error(`Échec enrichissement "${item.title}":`, err.message);
-            movies.push({
-                id: i + 1,
-                poster: posterUrl(item.poster_path),
-                title: item.title || '',
-                description: item.overview || '',
-                stars: [],
-                imgVertical: posterUrl(item.poster_path),
-                pageInfosUrl: `https://www.themoviedb.org/movie/${item.id}`,
-                year: item.release_date ? item.release_date.slice(0, 4) : '',
-                genres: [],
-                originCountry: '',
-                trailerUrl: '',
-            });
+            movies.push(fallbackMovie(item, i + 1, options));
         }
     }
 
@@ -181,14 +202,16 @@ async function run() {
         const nowPlaying = await fetchTop10(
             '/movie/now_playing',
             auth,
-            'films en salles'
+            'films en salles',
+            { withDateDeSortie: true }
         );
         saveSnapshot('cinema-movies.json', nowPlaying);
 
         const upcoming = await fetchTop10(
             '/movie/upcoming',
             auth,
-            'films à venir'
+            'films à venir',
+            { withDateDeSortie: true }
         );
         saveSnapshot('cinema-upcoming.json', upcoming);
 
