@@ -1,0 +1,18 @@
+{
+  "name": "mon-scraper-puppeteer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "scrapns": "node scrapers/jobs/netflixSeries.mjs",
+    "scrapnm": "node scrapers/jobs/netflixMovies.mjs",
+    "scrapapm": "node scrapers/jobs/appleMovies.mjs",
+    "scrapaps": "node scrapers/jobs/appleSeries.mjs",
+    "scrapamm": "node scrapers/jobs/amazonMovies.mjs",
+    "scrapams": "node scrapers/jobs/amazonSeries.mjs",
+    "scrapall": "node scrapers/scrapeAll.mjs",
+    "set-date": "node scrapers/setActiveDate.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.3.0"
+  }
+}

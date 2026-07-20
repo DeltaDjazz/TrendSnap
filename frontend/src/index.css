@@ -1,10 +1,42 @@
 @import "tailwindcss";
 
+@layer components {
+  .modal-glass-panel {
+    max-width: 102.7rem;
+    border-radius: 2.4rem;
+    background-color: rgba(23, 23, 23, 0.3);
+    background-image: url('./assets/b2c-bg.png');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(16px);
+    box-shadow:
+      rgba(255, 255, 255, 0.12) -1px 0 0 0 inset,
+      rgba(255, 255, 255, 0.12) 0 -1px 0 0 inset,
+      rgb(255, 255, 255) -2px -2px 2px -3px inset,
+      rgba(255, 255, 255, 0.24) 0 1px 0 0 inset,
+      rgba(255, 255, 255, 0.16) 1px 0 0 0 inset,
+      rgb(255, 255, 255) 4px 4px 1px -5px inset,
+      rgba(0, 0, 0, 0.01) 0 0 0 2px inset;
+  }
+}
+
 @layer utilities {
   .text-stroke-white {
     -webkit-text-stroke: 2px white;
   }
   .text-stroke-zinc {
     -webkit-text-stroke: 1px #52525b;
+  }
+  .header-gradient-border {
+    position: relative;
+  }
+  .header-gradient-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(135deg, rgb(245, 43, 120) 0%, rgb(63, 89, 228) 50%, rgb(38, 255, 10) 100%);
   }
 }

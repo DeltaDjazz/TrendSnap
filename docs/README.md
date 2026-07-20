@@ -1,1 +1,0 @@
-Project docs folder. See planning-technique-trendsnap.md for technical plan.
