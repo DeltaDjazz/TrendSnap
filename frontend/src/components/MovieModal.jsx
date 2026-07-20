@@ -27,7 +27,7 @@ function InfoField({ label, value }) {
   )
 }
 
-export function MovieModal({ isOpen, title, description, poster, modalPoster, year, genre, saison, episodes, stars, originCountry, trailerUrl, template = 'cinema', onClose }) {
+export function MovieModal({ isOpen, title, description, poster, modalPoster, year, dateDeSortie, genre, saison, episodes, stars, originCountry, trailerUrl, template = 'cinema', onClose }) {
   useEffect(() => {
     if (!isOpen) return
 
@@ -102,7 +102,11 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
             <div className="min-w-0 flex-1 p-2 md:p-6 pr-4 md:pr-6 pt-5">
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{title}</h3>
               <div className="flex flex-col md:flex-row  gap-2">
-                <InfoField label="Année" value={year} />
+                {dateDeSortie ? (
+                  <InfoField label="Date de sortie" value={dateDeSortie} />
+                ) : (
+                  <InfoField label="Année" value={year} />
+                )}
                 <InfoField label="Genre" value={genreLabel} />
                 {saison && (
                   <InfoField
