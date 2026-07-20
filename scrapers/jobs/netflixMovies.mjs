@@ -24,11 +24,11 @@ async function run() {
     });
 
     try {
-        // 2. Naviguer vers l'URL cible (remplacez par votre URL)
-        console.log("Navigation vers la page cible...");
         await page.goto('https://www.netflix.com/tudum/top10/france', { waitUntil: 'domcontentloaded' });
         
-        console.log("Extraction des données...");
+
+        // --- ÉTAPE 1 : Récupérer les 10 premiers films titre, poster, detailsPageUrl ---
+        console.log("Récupération des 10 premiers films...");
         const movies = await page.evaluate(() => {
             const rows = document.querySelectorAll('section.medCard table tr');
             const dataTable = [];
@@ -153,7 +153,10 @@ async function run() {
 
                 await page.goto(movie.pageInfosUrl, { waitUntil: 'domcontentloaded' });
                 const detailsInfos = await page.evaluate(() => {
-                    const genreElements = document.querySelectorAll('div.card.entity-card .meta-body-info a');
+                    const date = document.querySelector('div.card.entity-card .meta-body-info a.date ') ?.textContent.trim() || "";
+                    //on garde que l'année de la date au format YYYY qui nous est donné  au format long dd mois yyyy
+                    const year = date.split(' ')[2];
+                    const genreElements = document.querySelectorAll('div.card.entity-card .meta-body-info a.dark-grey-link');
                     const genresList = [];
                     genreElements.forEach(el => {
                         const genre = el.textContent.trim();
@@ -184,9 +187,10 @@ async function run() {
                     }
 
 
-                    return { genres: genresList, originCountry: originCountry, trailerUrl: trailerUrl};
+                    return { year: year, genres: genresList, originCountry: originCountry, trailerUrl: trailerUrl};
                 });
 
+                movie.year = detailsInfos.year;
                 movie.genres = detailsInfos.genres;
                 movie.originCountry = detailsInfos.originCountry;
                 movie.trailerUrl = detailsInfos.trailerUrl;

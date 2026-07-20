@@ -72,7 +72,7 @@ async function run() {
         // --- ÉTAPE 2 : Aller sur allocine pour chaque movie ---
         for (let i = 0; i < movies.length; i++) {
             const movie = movies[i];
-            console.log(`[${i+1}/${movies.length}] Recherche de : ${movie.title}...`);
+            console.log(`[${i+1}/${movies.length}] Recherche allocine de la série : ${movie.title}...`);
 
             try {
                 // Utilisation de l'URL de recherche directe d'allocine
@@ -151,7 +151,24 @@ async function run() {
 
                 await page.goto(movie.pageInfosUrl, { waitUntil: 'domcontentloaded' });
                 const detailsInfos = await page.evaluate(() => {
-                    const genreElements = document.querySelectorAll('div.card.entity-card .meta-body-info a');
+
+                    let year = "";
+                    //On récuppère la date de sortie de la série
+                    const element = document.querySelector('div.card.entity-card .meta-body-item.meta-body-info');
+                    if (element) {
+                        // 1. On extrait le texte brut et on retire les espaces superflus
+                        const cleanText = element.textContent.trim();
+                        
+                        // 2. On cherche le premier groupe de 4 chiffres consécutifs (\d{4})
+                        const match = cleanText.match(/\d{4}/);
+                        
+                        // 3. Si un nombre à 4 chiffres est trouvé, c'est notre année
+                        if (match) {
+                            year = match[0];
+                        }
+                    }
+
+                    const genreElements = document.querySelectorAll('div.card.entity-card .meta-body-info a.dark-grey-link');
                     const genresList = [];
                     genreElements.forEach(el => {
                         const genre = el.textContent.trim();
@@ -184,9 +201,10 @@ async function run() {
                     }
 
 
-                    return { genres: genresList, originCountry: originCountry, nbSaisons: nbSaisons, nbEpisodes: nbEpisodes, trailerUrl: trailerUrl};
+                    return { year: year, genres: genresList, originCountry: originCountry, nbSaisons: nbSaisons, nbEpisodes: nbEpisodes, trailerUrl: trailerUrl};
                 });
 
+                movie.year = detailsInfos.year;
                 movie.genres = detailsInfos.genres;
                 movie.originCountry = detailsInfos.originCountry;
                 movie.nbSaisons = detailsInfos.nbSaisons;
