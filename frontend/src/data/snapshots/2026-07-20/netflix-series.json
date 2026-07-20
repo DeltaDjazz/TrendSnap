@@ -82,7 +82,7 @@
   },
   {
     "id": 5,
-    "poster": "https://dnm.nflximg.net/api/v6/0Qzqdxw-HG1AiOKLWWPsFOUDA2E/AAAABaT_tSSr7WRWdg3s8LlItdKOYO4hgzqyxvlOeVzDXNQyN_M8J2OyqJi8GfDITgwv7tzDUs75N-AxrNSbzDFpSHBkMjJTrwhLBdM.jpg?r=250",
+    "poster": "https://dnm.nflximg.net/api/v6/L-z_Qgqd1m6sZc1d8FxyH1iz9f0/AAAABYC0eZlCuY10jiKSCqtRhqXAMrX66lFW4UKeGErV0yqpr8_4ey_Zk53hMLIdpBNWBloXai1ayBOfQr3lNGysqbaq59RLnKOyLsF7An29e4h9rcqRbbeUbhUYev4bKi2UAf8.jpg",
     "title": "Agent Kim Reactivated",
     "description": "Père célibataire, chef d'entreprise et ancien membre des forces spéciales, l'agent Kim menait une vie ordinaire jusqu'à la disparition de sa fille, Min-ji.",
     "stars": [
@@ -142,11 +142,8 @@
     "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/img/26/43/2643140d65e6645256728bafc9a18fa6.jpg",
     "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000002540.html",
     "year": "2026",
-    "genres": [
-      "Action",
-      "Drame"
-    ],
-    "originCountry": "Corée du Sud",
+    "genres": [],
+    "originCountry": "",
     "nbSaisons": "1 Saison",
     "nbEpisodes": "10 Episodes",
     "trailerUrl": "https://www.dailymotion.com/video/xaao6ls"
@@ -169,8 +166,11 @@
     "imgVertical": "https://fr.web.img4.acsta.net/c_310_420/pictures/22/08/01/09/32/3357326.jpg",
     "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=32168.html",
     "year": "2022",
-    "genres": [],
-    "originCountry": "",
+    "genres": [
+      "Drame",
+      "Romance"
+    ],
+    "originCountry": "Turquie",
     "nbSaisons": "3 Saisons",
     "nbEpisodes": "24 Episodes",
     "trailerUrl": "https://www.dailymotion.com/video/x8cjd3t"

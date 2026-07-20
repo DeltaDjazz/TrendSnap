@@ -85,48 +85,6 @@
   },
   {
     "id": 5,
-    "title": "Plaisir Maximum Garanti",
-    "poster": "https://is1-ssl.mzstatic.com/image/thumb/BvhI-ayRVJFapHOjkA0m0Q/225x338nr.webp",
-    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Is4TZ_9sgIeCD2dTDXsWMQ/100x33bb.webp",
-    "genre": "Thriller",
-    "detailsPageUrl": "https://tv.apple.com/fr/show/plaisir-maximum-garanti/umc.cmc.10k6tes7rmc2ti0ho1ozgwezc?ctx_agid=9ff0b4b5",
-    "year": "2026",
-    "description": "Paula, une mère récemment divorcée, est entraînée dans une spirale infernale. Persuadée d’avoir été témoin d’un meurtre, elle décide de mener sa propre enquête, tout en se battant pour la garde de sa fille. Bien qu’elle arrive petit à petit à reconstruire sa famille et son estime de soi, elle se retrouve prise au piège d'une affaire mêlant chantage et meurtre.",
-    "stars": [
-      "Tatiana Maslany",
-      "Jake Johnson",
-      "Jessy Hodges"
-    ],
-    "imgVertical": "https://fr.web.img2.acsta.net/c_310_420/img/73/ee/73eee397ef9426e5817a8ab7e93b8b5f.jpg",
-    "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000589.html",
-    "originCountry": "U.S.A.",
-    "nbSaisons": "1 Saison",
-    "nbEpisodes": "10 Episodes",
-    "trailerUrl": "https://www.dailymotion.com/video/xa4y98e"
-  },
-  {
-    "id": 6,
-    "title": "Widow's Bay",
-    "poster": "https://is1-ssl.mzstatic.com/image/thumb/T1FZ_viSU4B6_Xhm2ltE6Q/225x338nr.webp",
-    "logo": "https://is1-ssl.mzstatic.com/image/thumb/vXNv4MQ8aLXIkWQTZxw-BQ/100x33bb.webp",
-    "genre": "Suspense",
-    "detailsPageUrl": "https://tv.apple.com/fr/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2?ctx_agid=9ff0b4b5",
-    "year": "2026",
-    "description": "Sur une île mystérieusement maudite de la Nouvelle-Angleterre, ses citoyens superstitieux sont dirigés par un maire qui refuse de croire leurs avertissements.",
-    "stars": [
-      "Matthew Rhys",
-      "Kate O'Flynn",
-      "Kevin Carroll"
-    ],
-    "imgVertical": "https://fr.web.img4.acsta.net/c_310_420/img/c5/97/c59731c3711b904a65fa82198f1ffd4c.jpg",
-    "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=37485.html",
-    "originCountry": "U.S.A.",
-    "nbSaisons": "2 Saisons",
-    "nbEpisodes": "10 Episodes",
-    "trailerUrl": "https://www.dailymotion.com/video/xa43yqk"
-  },
-  {
-    "id": 7,
     "title": "For All Mankind",
     "poster": "https://is1-ssl.mzstatic.com/image/thumb/f7zzmtaPWy36Cd5b2ED1rg/225x338nr.webp",
     "logo": "https://is1-ssl.mzstatic.com/image/thumb/v-xqGz_rdBcQ-OZ4HvFeVw/100x33bb.webp",
@@ -147,28 +105,49 @@
     "trailerUrl": "https://www.dailymotion.com/video/x8a3y0q"
   },
   {
-    "id": 8,
-    "title": "Severance",
-    "poster": "https://is1-ssl.mzstatic.com/image/thumb/_705uGqVmFkkNIXfLCXHRw/225x338nr.webp",
-    "logo": "https://is1-ssl.mzstatic.com/image/thumb/l9HZvLGoIYC_wGWFjIniIA/100x33bb.webp",
+    "id": 6,
+    "title": "Plaisir Maximum Garanti",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/BvhI-ayRVJFapHOjkA0m0Q/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Is4TZ_9sgIeCD2dTDXsWMQ/100x33bb.webp",
     "genre": "Thriller",
-    "detailsPageUrl": "https://tv.apple.com/fr/show/severance/umc.cmc.1srk2goyh2q2zdxcx605w8vtx?ctx_agid=9ff0b4b5",
-    "year": "2022",
-    "description": "La vie quotidienne des employés d'une entreprise \" Lumen Industries \" qui se veut précurseuse dans la considération et le bien-être de leurs agents.",
+    "detailsPageUrl": "https://tv.apple.com/fr/show/plaisir-maximum-garanti/umc.cmc.10k6tes7rmc2ti0ho1ozgwezc?ctx_agid=9ff0b4b5",
+    "year": "2026",
+    "description": "Paula, une mère récemment divorcée, est entraînée dans une spirale infernale. Persuadée d’avoir été témoin d’un meurtre, elle décide de mener sa propre enquête, tout en se battant pour la garde de sa fille. Bien qu’elle arrive petit à petit à reconstruire sa famille et son estime de soi, elle se retrouve prise au piège d'une affaire mêlant chantage et meurtre.",
     "stars": [
-      "Adam Scott",
-      "Zach Cherry",
-      "Britt Lower"
+      "Tatiana Maslany",
+      "Jake Johnson",
+      "Jessy Hodges"
     ],
-    "imgVertical": "https://fr.web.img2.acsta.net/c_310_420/pictures/21/12/16/17/19/2294099.jpg",
-    "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=26062.html",
+    "imgVertical": "https://fr.web.img2.acsta.net/c_310_420/img/73/ee/73eee397ef9426e5817a8ab7e93b8b5f.jpg",
+    "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=1000000589.html",
     "originCountry": "U.S.A.",
-    "nbSaisons": "3 Saisons",
-    "nbEpisodes": "29 Episodes",
-    "trailerUrl": "https://www.dailymotion.com/video/x8a1gq3"
+    "nbSaisons": "1 Saison",
+    "nbEpisodes": "10 Episodes",
+    "trailerUrl": "https://www.dailymotion.com/video/xa4y98e"
   },
   {
-    "id": 9,
+    "id": 7,
+    "title": "Widow's Bay",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/T1FZ_viSU4B6_Xhm2ltE6Q/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/vXNv4MQ8aLXIkWQTZxw-BQ/100x33bb.webp",
+    "genre": "Suspense",
+    "detailsPageUrl": "https://tv.apple.com/fr/show/widows-bay/umc.cmc.1zzly0vah46bnvnwf0qkrjhh2?ctx_agid=9ff0b4b5",
+    "year": "2026",
+    "description": "Sur une île mystérieusement maudite de la Nouvelle-Angleterre, ses citoyens superstitieux sont dirigés par un maire qui refuse de croire leurs avertissements.",
+    "stars": [
+      "Matthew Rhys",
+      "Kate O'Flynn",
+      "Kevin Carroll"
+    ],
+    "imgVertical": "https://fr.web.img4.acsta.net/c_310_420/img/c5/97/c59731c3711b904a65fa82198f1ffd4c.jpg",
+    "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=37485.html",
+    "originCountry": "U.S.A.",
+    "nbSaisons": "2 Saisons",
+    "nbEpisodes": "10 Episodes",
+    "trailerUrl": "https://www.dailymotion.com/video/xa43yqk"
+  },
+  {
+    "id": 8,
     "title": "Ted Lasso",
     "poster": "https://is1-ssl.mzstatic.com/image/thumb/MEK-8GCPhPdtqifOJ_d8ag/225x338nr.webp",
     "logo": "https://is1-ssl.mzstatic.com/image/thumb/Cc6MMzxFzD1gVqnd6IslKA/100x33bb.webp",
@@ -187,6 +166,27 @@
     "nbSaisons": "5 Saisons",
     "nbEpisodes": "47 Episodes",
     "trailerUrl": "https://www.dailymotion.com/video/x8a23km"
+  },
+  {
+    "id": 9,
+    "title": "Severance",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/_705uGqVmFkkNIXfLCXHRw/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/l9HZvLGoIYC_wGWFjIniIA/100x33bb.webp",
+    "genre": "Thriller",
+    "detailsPageUrl": "https://tv.apple.com/fr/show/severance/umc.cmc.1srk2goyh2q2zdxcx605w8vtx?ctx_agid=9ff0b4b5",
+    "year": "2022",
+    "description": "La vie quotidienne des employés d'une entreprise \" Lumen Industries \" qui se veut précurseuse dans la considération et le bien-être de leurs agents.",
+    "stars": [
+      "Adam Scott",
+      "Zach Cherry",
+      "Britt Lower"
+    ],
+    "imgVertical": "https://fr.web.img2.acsta.net/c_310_420/pictures/21/12/16/17/19/2294099.jpg",
+    "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=26062.html",
+    "originCountry": "U.S.A.",
+    "nbSaisons": "3 Saisons",
+    "nbEpisodes": "29 Episodes",
+    "trailerUrl": "https://www.dailymotion.com/video/x8a1gq3"
   },
   {
     "id": 10,
