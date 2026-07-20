@@ -8,6 +8,8 @@ Chaque scrape écrit ses JSON dans un dossier daté :
 
 ```text
 frontend/src/data/snapshots/YYYY-MM-DD/
+  cinema-movies.json
+  cinema-upcoming.json
   netflix-series.json
   netflix-movies.json
   apple-series.json

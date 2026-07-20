@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import movies from './data/movies.json'
 import { loadSnapshot } from './data/loadSnapshots'
 import { Header } from './components/Header'
 import { TopSlider } from './components/TopSlider'
@@ -8,6 +7,8 @@ import { getSliderTemplate } from './templates/sliderTemplates'
 
 import netflixBg from './assets/netflix-bgRB.png'
 
+const cinemaMovies = loadSnapshot('cinema-movies.json')
+const cinemaUpcoming = loadSnapshot('cinema-upcoming.json')
 const netflixSeries = loadSnapshot('netflix-series.json')
 const netflixMovies = loadSnapshot('netflix-movies.json')
 const appleSeries = loadSnapshot('apple-series.json')
@@ -30,12 +31,8 @@ function App() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <Header />
 
+      
       <main className="px-0 py-10">
-        <section className="bg-[#620051] py-10">
-          <h2 className={`${getSliderTemplate('cinema').config.titleClass}`}>Top 10 des films du moment</h2>
-          <TopSlider movies={movies.slice(0, 10)} template="cinema" onMovieSelect={handleMovieSelect} />
-        </section>
-
         {/* Netflix Section */}
         <section
           className="relative bg-cover bg-center bg-no-repeat"
@@ -80,6 +77,16 @@ function App() {
             <TopSlider movies={amazonMovies.slice(0, 10)} template="amazon-movies" onMovieSelect={handleMovieSelect} />
           </div>
         </section>
+
+        {/* Cinema Section */}
+        <section className="bg-[#620051] py-10">
+          <h2 className={`${getSliderTemplate('cinema').config.titleClass}`}>Top 10 des films cinéma du moment</h2>
+          <TopSlider movies={cinemaMovies.slice(0, 10)} template="cinema" onMovieSelect={handleMovieSelect} />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#FFFFFF]/40 to-transparent my-10" />
+          <h2 className={`${getSliderTemplate('cinema').config.titleClass}`}>Top 10 des films cinéma à venir</h2>
+          <TopSlider movies={cinemaUpcoming.slice(0, 10)} template="cinema" onMovieSelect={handleMovieSelect} />
+        </section>
+
 
 
       </main>

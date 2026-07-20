@@ -9,6 +9,7 @@
     "scrapaps": "node scrapers/jobs/appleSeries.mjs",
     "scrapamm": "node scrapers/jobs/amazonMovies.mjs",
     "scrapams": "node scrapers/jobs/amazonSeries.mjs",
+    "scrapcinema": "node scrapers/jobs/cinemaMovies.mjs",
     "scrapall": "node scrapers/scrapeAll.mjs",
     "set-date": "node scrapers/setActiveDate.mjs"
   },

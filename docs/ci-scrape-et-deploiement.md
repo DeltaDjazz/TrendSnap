@@ -102,7 +102,9 @@ Le workflow demande :
 - `contents: write` — pousser les commits de snapshots sur `main`.
 - `pages: write` et `id-token: write` — déploiement OIDC vers GitHub Pages.
 
-Le `GITHUB_TOKEN` fourni par Actions suffit ; aucun secret personnalisé n’est requis pour le scrape ni pour Pages.
+Le `GITHUB_TOKEN` fourni par Actions suffit pour le commit et Pages.
+
+Pour le job cinéma (API TMDB), ajoutez le secret de dépôt **`TMDB_ACCESS_TOKEN`** (jeton d’accès en lecture) : **Settings** → **Secrets and variables** → **Actions**.
 
 ## Date des dossiers snapshot
 
@@ -139,6 +141,7 @@ Pour un rollback **sans** rescrape, le plus simple reste : modifier `active-date
 ## Checklist de mise en service
 
 - [ ] Fusionner le workflow sur `main`.
+- [ ] Ajouter le secret **`TMDB_ACCESS_TOKEN`** (job cinéma).
 - [ ] Vérifier **Settings → Pages → GitHub Actions** comme source de déploiement.
 - [ ] Lancer une fois **Daily scrape and deploy** manuellement et contrôler le commit + l’URL Pages.
 - [ ] Confirmer que tous les jobs Puppeteer démarrent (args `--no-sandbox` si besoin sur Apple/Amazon).

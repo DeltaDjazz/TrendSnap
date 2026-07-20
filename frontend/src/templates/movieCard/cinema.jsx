@@ -1,5 +1,5 @@
 export const config = {
-  cardWidth: 220,
+  cardWidth: 180,
   cardHeight: 340,
   posterAspect: '2/3',
   showNumber: true,
@@ -13,8 +13,7 @@ export function CardInfo({ movie }) {
     <div className="p-3">
       <h2 className="font-semibold text-sm text-zinc-100 truncate">{movie.title}</h2>
       <div className="flex items-center justify-between mt-1">
-        <span className="text-xs text-zinc-400">{movie.year}</span>
-        <span className="text-xs font-bold text-yellow-400">★ {movie.rating}</span>
+        <span className="text-xs text-zinc-400">{movie.genres[0]}</span>
       </div>
     </div>
   )
