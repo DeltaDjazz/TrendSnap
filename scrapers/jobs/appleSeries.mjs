@@ -4,7 +4,15 @@ import { saveSnapshot } from '../utils/saveSnapshot.mjs';
 
 let browser;
 try {
-    browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({ 
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-blink-features=AutomationControlled' 
+        ]
+    });
+    
     const page = await browser.newPage();
     await page.goto('https://tv.apple.com/fr');
     await page.waitForSelector('h1');

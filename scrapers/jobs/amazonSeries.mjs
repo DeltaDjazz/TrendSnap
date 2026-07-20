@@ -4,7 +4,15 @@ import { saveSnapshot } from '../utils/saveSnapshot.mjs';
 
 let browser;
 try {
-    browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({ 
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-blink-features=AutomationControlled' 
+        ]
+    });
+    
     const page = await browser.newPage();
     await page.goto('https://www.primevideo.com/-/fr/tv');
     await page.waitForSelector('h1');
