@@ -56,9 +56,8 @@ Pour lancer à la main : **Actions** → **Daily scrape and deploy** → **Run w
 Le job s’exécute sur `ubuntu-latest` :
 
 1. `npm ci` à la racine (dépendance `puppeteer`).
-2. `npx puppeteer browsers install chrome` — télécharge le Chrome attendu par la version de Puppeteer du lockfile.
-3. `apt-get install …` — installe les bibliothèques système Linux manquantes sur le runner (`libgbm`, `libnss3`, etc.).
-4. Variable `CI=true` (convention pour distinguer l’environnement CI du poste local).
+2. `npx puppeteer browsers install chrome --install-deps` — télécharge Chrome (version du lockfile) et installe les paquets système Linux adaptés au runner (évite les erreurs `apt` exit 100 sur Ubuntu 24.04).
+3. Variable `CI=true` (convention pour distinguer l’environnement CI du poste local).
 
 Les scripts Netflix utilisent déjà `--no-sandbox` et `--disable-setuid-sandbox`, souvent **nécessaires** sur les runners GitHub. Si un job Apple ou Amazon échoue au lancement du navigateur, alignez `puppeteer.launch()` sur les mêmes `args` que les jobs Netflix.
 
