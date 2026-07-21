@@ -15,6 +15,8 @@ const appleSeries = loadSnapshot('apple-series.json')
 const appleMovies = loadSnapshot('apple-movies.json')
 const amazonSeries = loadSnapshot('amazon-series.json')
 const amazonMovies = loadSnapshot('amazon-movies.json')
+const paramountSeries = loadSnapshot('paramount-series.json')
+const hboSeries = loadSnapshot('hbo-series.json')
 
 function App() {
   const [selection, setSelection] = useState(null)
@@ -77,6 +79,20 @@ function App() {
             <TopSlider movies={amazonMovies.slice(0, 10)} template="amazon-movies" onMovieSelect={handleMovieSelect} />
           </div>
         </section>
+
+        {/* HBO Paramount+ Section */}
+        <section className="bg-gradient-to-b from-[#000] via-[#0044cc] to-[#001f6e] py-10">
+          <div className="py-10">
+            <h2 className={getSliderTemplate('paramount-series').config.titleClass}>Top 10 des séries Paramount+</h2>
+            <TopSlider movies={paramountSeries.slice(0, 10)} template="paramount-series" onMovieSelect={handleMovieSelect} />
+          </div>
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#fff] to-transparent" />
+          <div className="py-10">
+            <h2 className={getSliderTemplate('hbo-series').config.titleClass}>Top 10 des séries HBO Max</h2>
+            <TopSlider movies={hboSeries.slice(0, 10)} template="hbo-series" onMovieSelect={handleMovieSelect} />
+          </div>
+        </section>
+
 
         {/* Cinema Section */}
         <section className="bg-gradient-to-t from-[#1e1845] via-[#920073] to-[#1e1845] py-10">

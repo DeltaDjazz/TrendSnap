@@ -7,6 +7,7 @@ export const config = {
   rankNumberVariant: 'portrait',
   numberPosition: 'top',
   numberOffset: '10px',
+  numberSize: '3.75rem',
   borderClass: 'border-2 border-black/20',
 }
 

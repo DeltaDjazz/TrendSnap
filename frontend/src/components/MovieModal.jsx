@@ -114,8 +114,14 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
                     value={
                       <>
                         {saison}
+                        {!isNaN(Number(saison)) && (
+                          <span> {Number(saison) === 1 ? "saison" : "saisons"}</span>
+                        )}
                         <br />
                         {episodes}
+                        {!isNaN(Number(episodes)) && (
+                          <span> {Number(episodes) === 1 ? "épisode" : "épisodes"}</span>
+                        )}
                       </>
                     }
                   />
