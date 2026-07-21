@@ -29,6 +29,7 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
           variant={config.rankNumberVariant}
           position={config.numberPosition ?? 'bottom'}
           offset={config.numberOffset ?? '8px'}
+          size={config.numberSize}
         />
       )}
       <div

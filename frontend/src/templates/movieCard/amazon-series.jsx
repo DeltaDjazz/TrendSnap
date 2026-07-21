@@ -6,6 +6,7 @@ export const config = {
   rankNumberVariant: 'landscape',
   numberPosition: 'bottom',
   numberOffset: '20px',
+  numberSize: '3rem',
 }
 
 export function CardInfo({ movie }) {

@@ -6,14 +6,17 @@ export const config = {
     rankNumberVariant: 'landscape',
     numberPosition: 'top',
     numberOffset: '-8px',
+    numberSize: '3rem',
     borderClass: 'border-2 border-white/50',
   }
   
   export function CardInfo({ movie }) {
-    //si movie.genres est un tableau, alors on affiche le premier genre
+    const genre = Array.isArray(movie.genres) ? movie.genres[0] : movie.genre
+    if (!genre) return null
+
     return (
       <div className="px-2 py-1.5">
-        <h2 className="font-semibold text-xs text-center text-white truncate">{movie.genres[0]}</h2>
+        <h2 className="font-semibold text-xs text-center text-white truncate">{genre}</h2>
       </div>
     )
   }

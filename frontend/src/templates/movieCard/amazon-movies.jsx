@@ -6,6 +6,7 @@ export const config = {
     rankNumberVariant: 'landscape',
     numberPosition: 'top',
     numberOffset: '-8px',
+    numberSize: '3rem',
     borderClass: 'border-2 border-white/50',
   }
   

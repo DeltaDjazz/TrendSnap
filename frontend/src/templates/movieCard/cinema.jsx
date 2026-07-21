@@ -4,8 +4,9 @@ export const config = {
   posterAspect: '2/3',
   showNumber: true,
   rankNumberVariant: 'portrait',
-  numberPosition: 'bottom',
-  numberOffset: '96px',
+  numberPosition: 'top',
+  numberOffset: '-20px',
+  numberSize: '2.7rem',
 }
 
 export function CardInfo({ movie }) {
