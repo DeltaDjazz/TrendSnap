@@ -1,0 +1,246 @@
+[
+  {
+    "id": 1,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/v/w350/v9zc0czpy5apsfay6tgb6i1zwgv.webp",
+    "title": "South Park",
+    "description": "La petite ville de South Park dans le Colorado est le théâtre des aventures de Cartman, Stan, Kyle et Kenny, quatre enfants au langage quelque peu... décalé !",
+    "stars": [
+      "Trey Parker",
+      "Matt Stone",
+      "Mona Marshall",
+      "Jennifer Howell"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/v/w350/v9zc0czpy5apsfay6tgb6i1zwgv.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/2190",
+    "genres": [
+      "Animation",
+      "Comédie"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "1997",
+    "nbSaisons": 29,
+    "nbEpisodes": 337
+  },
+  {
+    "id": 2,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/h/w350/h2xvccfqmqsbb6zhyxohmtawrmp.webp",
+    "title": "FROM",
+    "description": "Découvrez le mystère d'une ville cauchemardesque dans le centre des États-Unis qui piège tous ceux qui y entrent. Alors que les habitants réticents se battent pour garder un sentiment de normalité et cherchent une issue, ils doivent également survivre aux menaces de la forêt environnante, y compris les créatures terrifiantes qui sortent lorsque le soleil se couche.",
+    "stars": [
+      "Harold Perrineau",
+      "Catalina Sandino Moreno",
+      "Ricky He",
+      "David Alpay",
+      "Chloe Van Landschoot"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/h/w350/h2xvccfqmqsbb6zhyxohmtawrmp.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/124364",
+    "genres": [
+      "Mystère",
+      "Drame",
+      "Science-Fiction & Fantastique"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2022",
+    "nbSaisons": 4,
+    "nbEpisodes": 40
+  },
+  {
+    "id": 3,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/p/w350/penc0eyc3tqja6x4tdkcbpnp4t0.webp",
+    "title": "Yellowstone",
+    "description": "Dans le Montana, la famille Dutton possède le plus grand ranch des États-Unis près du parc national de Yellowstone. Menée par le patriarche John, la famille se bat contre des politiciens et des promoteurs immobiliers.",
+    "stars": [
+      "Luke Grimes",
+      "Kelly Reilly",
+      "Wes Bentley",
+      "Cole Hauser",
+      "Kelsey Asbille"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/p/w350/penc0eyc3tqja6x4tdkcbpnp4t0.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/73586",
+    "genres": [
+      "Western",
+      "Drame"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=TtJd1TXU1oE",
+    "year": "2018",
+    "nbSaisons": 5,
+    "nbEpisodes": 53
+  },
+  {
+    "id": 4,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/7/w350/7tcwgx7oqkxcwyehsprmahe6uln.webp",
+    "title": "Esprits criminels",
+    "description": "L'équipe des profilers étudie les comportements et les esprits torturés des criminels les plus dangereux du pays, afin d'anticiper les crimes d'un éventuel tueur. Chaque membre de cette unité d'élite a sa personnalité, son histoire mais aussi sa spécialité. Ils sont tous dépendants les uns des autres et les résultats dépendent aussi de cette complémentarité.",
+    "stars": [
+      "Joe Mantegna",
+      "Paget Brewster",
+      "Adam Rodriguez",
+      "Kirsten Vangsness",
+      "A.J. Cook"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/7/w350/7tcwgx7oqkxcwyehsprmahe6uln.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/4057",
+    "genres": [
+      "Crime",
+      "Drame",
+      "Mystère"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2005",
+    "nbSaisons": 19,
+    "nbEpisodes": 364
+  },
+  {
+    "id": 5,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/r/w350/roylwcdaifputpltf1whxyaxemt.webp",
+    "title": "Tulsa King",
+    "description": "Dwight Manfredi, surnommé « Le Général », vient de sortir de prison où il a passé 25 ans. Cet ancien membre de la mafia new-yorkaise est cependant contraint de s'exiler à Tulsa dans l'Oklahoma. Il va y rassembler sa propre « famille » pour développer un empire criminel.",
+    "stars": [
+      "Sylvester Stallone",
+      "Martin Starr",
+      "Jay Will",
+      "Annabella Sciorra",
+      "Neal McDonough"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/r/w350/roylwcdaifputpltf1whxyaxemt.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/153312",
+    "genres": [
+      "Crime",
+      "Drame"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=ZNtSJcTTp4s",
+    "year": "2022",
+    "nbSaisons": 4,
+    "nbEpisodes": 29
+  },
+  {
+    "id": 6,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/j/w350/jmcbw1z9ha1mx0gh7qxrfzhx75u.webp",
+    "title": "Fire Country : Pompiers sur Appel",
+    "description": "En quête de rédemption et d'une peine de prison raccourcie, le jeune condamné Bode Donovan rejoint un programme de lutte contre les incendies qui le ramène dans sa petite ville natale du nord de la Californie, où lui et d'autres détenus travaillent aux côtés de pompiers d'élite pour éteindre d'énormes incendies dans la région.",
+    "stars": [
+      "Max Thieriot",
+      "Kevin Alejandro",
+      "Jordan Calloway",
+      "Jules Latimer",
+      "Diane Farr"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/j/w350/jmcbw1z9ha1mx0gh7qxrfzhx75u.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/202297",
+    "genres": [
+      "Drame",
+      "Crime"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2022",
+    "nbSaisons": 5,
+    "nbEpisodes": 72
+  },
+  {
+    "id": 7,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/z/w350/zdukxqkg8eemvldbn43chdm0mjl.webp",
+    "title": "Bob l'éponge",
+    "description": "Mignon à croquer, tendre et drôle, Bob l'éponge est un personnage pétillant. Vivant au fond de l'océan à Bikini Bottom, Bob l'éponge distille avec le savoir-faire des studios Nickelodeon un second degré de clins d'oeil et de parodies. Retrouvez-le dans ses nouvelles aventures !",
+    "stars": [
+      "Tom Kenny",
+      "Bill Fagerbakke",
+      "Rodger Bumpass",
+      "Clancy Brown",
+      "Carolyn Lawrence"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/z/w350/zdukxqkg8eemvldbn43chdm0mjl.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/387",
+    "genres": [
+      "Animation",
+      "Comédie",
+      "Familial"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=0wGq5gpkBC0",
+    "year": "1999",
+    "nbSaisons": 17,
+    "nbEpisodes": 656
+  },
+  {
+    "id": 8,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/y/w350/ydmfhei5cj4nrgcupdewk8i8y5q.webp",
+    "title": "Dexter",
+    "description": "Brillant expert scientifique du service médico-légal de la police de Miami, Dexter Morgan est spécialisé dans l'analyse de prélèvements et d'éclaboussures de sang. Mais Dexter cache un terrible secret : c'est également un tueur en série ! Un serial killer pas comme les autres, avec sa propre vision de la justice, qui, grâce au code fourni par son père adoptif, ne s'en prend qu'à des personnes coupables de meurtres affreux ou de délits répréhensibles. Mais Dexter n'attend pas que la justice les libère ou les relâche, faute de preuves. Il les assassine, avant même que la police ne remonte jusqu'à eux et efface ses traces. Sa demi-sœur, Debra, travaille dans le même commissariat que lui et n'a de cesse de traquer tous les meurtriers, quels qu'ils soient... sans savoir qu'elle en fréquente un, tous les jours !",
+    "stars": [
+      "Michael C. Hall",
+      "Jennifer Carpenter",
+      "Geoff Pierson",
+      "David Zayas",
+      "James Remar"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/y/w350/ydmfhei5cj4nrgcupdewk8i8y5q.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/1405",
+    "genres": [
+      "Crime",
+      "Drame",
+      "Mystère"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=_9YrRq23l2M",
+    "year": "2006",
+    "nbSaisons": 8,
+    "nbEpisodes": 96
+  },
+  {
+    "id": 9,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/x/w350/xsieccxd8lkcaluw0wwwbw5cwsv.webp",
+    "title": "Dutton Ranch",
+    "description": "Rip Wheeler et Beth Dutton misent tout sur une nouvelle vie dans le sud du Texas, mais leur rêve de se construire un avenir loin des fantômes de Yellowstone se heurte à de nouvelles réalités et à un ranch rival prêt à tout pour protéger son empire.",
+    "stars": [
+      "Kelly Reilly",
+      "Cole Hauser",
+      "Finn Little",
+      "Juan Pablo Raba",
+      "Jai Courtney"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/x/w350/xsieccxd8lkcaluw0wwwbw5cwsv.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/299167",
+    "genres": [
+      "Western",
+      "Drame"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=SL4Ky_nFDgo",
+    "year": "2026",
+    "nbSaisons": 1,
+    "nbEpisodes": 9
+  },
+  {
+    "id": 10,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/n/w350/ninfaven1ifpricmgnkenovvut2.webp",
+    "title": "Marshals: A Yellowstone Story",
+    "description": "Le ranch du Yellowstone derrière lui, Kayce Dutton rejoint une unité des U.S. Marhals. Cowboy et ancien Navy SEAL, il apporte la justice dans le Montana. Lui et ses coéquipiers sont le dernier rempart de la région dans la guerre contre la violence.",
+    "stars": [
+      "Luke Grimes",
+      "Logan Marshall-Green",
+      "Arielle Kebbel",
+      "Ash Santos",
+      "Tatanka Means"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/n/w350/ninfaven1ifpricmgnkenovvut2.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/290856",
+    "genres": [
+      "Drame",
+      "Crime",
+      "Action & Adventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2026",
+    "nbSaisons": 2,
+    "nbEpisodes": 16
+  }
+]
