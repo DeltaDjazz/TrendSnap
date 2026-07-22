@@ -3,7 +3,7 @@ name: Daily scrape and deploy
 on:
   schedule:
     # Tous les jours à 08:00 UTC
-    - cron: '17 10 * * *'
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:
