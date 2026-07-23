@@ -1,0 +1,239 @@
+[
+  {
+    "id": 1,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/1/w350/1x4h40fcb4wwumibk0aut4zrbav.webp",
+    "title": "House of the Dragon",
+    "description": "Près de 200 ans avant les évènements de Game of Thrones, le continent de Westeros est en proie à de nombreux dangers. Une guerre civile se prépare dans différents endroits du royaume : cette guerre sera appelée la Danse des Dragons. De son côté, la maison Targaryen se disloque peu à peu et le règne des dragons est menacé.",
+    "stars": [
+      "Matt Smith",
+      "Emma D'Arcy",
+      "Olivia Cooke",
+      "James Norton",
+      "Steve Toussaint"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/1/w350/1x4h40fcb4wwumibk0aut4zrbav.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/94997",
+    "genres": [
+      "Science-Fiction & Fantastique",
+      "Drame",
+      "Action & Adventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=a2zgNEUfGyA",
+    "year": "2022",
+    "nbSaisons": 3,
+    "nbEpisodes": 26
+  },
+  {
+    "id": 2,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/q/w350/qjdfo3ahgamf2rcmhoqngjbbzw1.webp",
+    "title": "Rick et Morty",
+    "description": "Rick, un scientifique sociopathe, entraîne son nigaud de petit-fils Morty dans des aventures extrêmement périlleuses aux quatre coins de l’univers.",
+    "stars": [
+      "Chris Parnell",
+      "Spencer Grammer",
+      "Sarah Chalke",
+      "Ian Cardoni",
+      "Harry Belden"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/q/w350/qjdfo3ahgamf2rcmhoqngjbbzw1.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/60625",
+    "genres": [
+      "Animation",
+      "Comédie",
+      "Science-Fiction & Fantastique",
+      "Action & Adventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2013",
+    "nbSaisons": 9,
+    "nbEpisodes": 91
+  },
+  {
+    "id": 3,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/e/w350/ea8lwlhaufqrzzek25xggzcgimu.webp",
+    "title": "Life, Larry and the Pursuit of Unhappiness: An Almost History of America",
+    "description": "Le président et Mme Obama voulaient rendre hommage au 250e anniversaire des États-Unis mais c'est alors que Larry David a appelé.",
+    "stars": [
+      "Larry David"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/e/w350/ea8lwlhaufqrzzek25xggzcgimu.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/295780",
+    "genres": [
+      "Comédie"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2026",
+    "nbSaisons": 1,
+    "nbEpisodes": 7
+  },
+  {
+    "id": 4,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/6/w350/6mfcuxwifm21dcj6enarnx10fx9.webp",
+    "title": "Proud",
+    "description": "Filip est un jeune homme gay, effronté et irresponsable, convaincu que le monde lui appartient. Lorsqu’une tragédie familiale éclate, son égocentrisme se mue en un sentiment de culpabilité persistant. Alors qu’il prend en charge sa jeune nièce, Filip aspire à sa liberté, mais l’idée de confier le bébé à des inconnus réveille en lui ses propres traumatismes d’enfance. Pour s’occuper d’elle, il doit affronter ses faiblesses, ses échecs et les préjugés de la société.",
+    "stars": [
+      "Ignacy Liss",
+      "Alicja Lewczuk",
+      "Maria Sobocińska",
+      "Kamil Studnicki",
+      "Maja Ostaszewska"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/6/w350/6mfcuxwifm21dcj6enarnx10fx9.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/315610",
+    "genres": [
+      "Drame"
+    ],
+    "originCountry": "Poland",
+    "trailerUrl": "https://www.youtube.com/watch?v=JCmUb1s907Q",
+    "year": "2026",
+    "nbSaisons": 1,
+    "nbEpisodes": 8
+  },
+  {
+    "id": 5,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/k/w350/kpfsxqwj2e6d3mir4yovhayrytz.webp",
+    "title": "Il était une seconde fois",
+    "description": "Vincent Dauda, la trentaine, rêve de reconquérir son ex, l’envoûtante Louise. Il traîne son chagrin jusqu’au jour où un livreur lui remet un colis qu’il n’a pas commandé. Une boîte étrange, sans fond, au travers de laquelle il expérimente un voyage temporel qui le ramène… aux côtés de Louise avant leur séparation.",
+    "stars": [
+      "Gaspard Ulliel",
+      "Freya Mavor",
+      "Patrick d'Assumçao",
+      "Claire Sermonne",
+      "Richard Dillane"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/k/w350/kpfsxqwj2e6d3mir4yovhayrytz.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/92647",
+    "genres": [
+      "Science-Fiction & Fantastique",
+      "Drame"
+    ],
+    "originCountry": "France",
+    "trailerUrl": "https://www.youtube.com/watch?v=1zGqRUlLdQk",
+    "year": "2019",
+    "nbSaisons": 1,
+    "nbEpisodes": 4
+  },
+  {
+    "id": 6,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/i/w350/itkrtdtzprmak0rlhtiglhveuud.webp",
+    "title": "The Iris Affair",
+    "description": "Iris Nixon, énigmatique génie qui résout une série d'énigmes complexes en ligne, se retrouve sur une place de Florence où elle rencontre Cameron Beck, un entrepreneur charismatique. Celui-ci l'invite à travailler pour lui afin de débloquer une technologie puissante et top secrète.",
+    "stars": [
+      "Niamh Algar",
+      "Tom Hollander",
+      "Sacha Dhawan",
+      "Maya Sansa",
+      "Meréana Tomlinson"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/i/w350/itkrtdtzprmak0rlhtiglhveuud.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/253368",
+    "genres": [
+      "Crime",
+      "Action & Adventure"
+    ],
+    "originCountry": "United Kingdom",
+    "trailerUrl": "",
+    "year": "2025",
+    "nbSaisons": 1,
+    "nbEpisodes": 8
+  },
+  {
+    "id": 7,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/1/w350/1x4h40fcb4wwumibk0aut4zrbav.webp",
+    "title": "House of the Dragon",
+    "description": "Près de 200 ans avant les évènements de Game of Thrones, le continent de Westeros est en proie à de nombreux dangers. Une guerre civile se prépare dans différents endroits du royaume : cette guerre sera appelée la Danse des Dragons. De son côté, la maison Targaryen se disloque peu à peu et le règne des dragons est menacé.",
+    "stars": [
+      "Matt Smith",
+      "Emma D'Arcy",
+      "Olivia Cooke",
+      "James Norton",
+      "Steve Toussaint"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/1/w350/1x4h40fcb4wwumibk0aut4zrbav.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/94997",
+    "genres": [
+      "Science-Fiction & Fantastique",
+      "Drame",
+      "Action & Adventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=a2zgNEUfGyA",
+    "year": "2022",
+    "nbSaisons": 3,
+    "nbEpisodes": 26
+  },
+  {
+    "id": 8,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/9/w350/9jdl1aqdaqiyyyq2xcqbhaeczt8.webp",
+    "title": "Task",
+    "description": "Dans la périphérie industrielle de Philadelphie, un agent du FBI supervise une équipe spéciale dont la mission est d'éradiquer une succession de cambriolages orchestrés par un père de famille insoupçonnable.",
+    "stars": [
+      "Mark Ruffalo",
+      "Tom Pelphrey",
+      "Emilia Jones",
+      "Fabien Frankel",
+      "Thuso Mbedu"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/9/w350/9jdl1aqdaqiyyyq2xcqbhaeczt8.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/228305",
+    "genres": [
+      "Crime",
+      "Drame"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=_dQh8V6ghxU",
+    "year": "2025",
+    "nbSaisons": 2,
+    "nbEpisodes": 7
+  },
+  {
+    "id": 9,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/d/w350/dhr8h0x0cn1cx7biub1gajcsauh.webp",
+    "title": "The House That Dragons Built",
+    "description": "Une plongée dans les coulisses de la production de la série originale de HBO, \"House of the Dragon\".",
+    "stars": [
+      "Emma D'Arcy",
+      "Olivia Cooke",
+      "Matt Smith",
+      "Fabien Frankel",
+      "Steve Toussaint"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/d/w350/dhr8h0x0cn1cx7biub1gajcsauh.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/325709",
+    "genres": [
+      "Documentaire"
+    ],
+    "originCountry": "US",
+    "trailerUrl": "",
+    "year": "2022",
+    "nbSaisons": 3,
+    "nbEpisodes": 26
+  },
+  {
+    "id": 10,
+    "poster": "https://flixpatrol.com/runtime/cache/files/posters/t/w350/tu9skgqguzvsh5dgfb3xsymh8p2.webp",
+    "title": "My Adventures with Superman",
+    "description": "Clark Kent construit son identité secrète de Superman et embrasse son rôle de héros de Metropolis - et peut-être du monde entier. Lois, devenue une journaliste d'investigation de premier plan, prend sous son aile Jimmy Olsen, un photographe en herbe. Pendant ce temps, Clark et Lois tombent amoureux, partagent des aventures, s'attaquent aux méchants, découvrent des secrets et découvrent ce que cela signifie d'être Superman et Lois Lane.",
+    "stars": [
+      "Alice Lee",
+      "Ishmel Sahid",
+      "Kiana Madeira",
+      "Jack Quaid"
+    ],
+    "imgVertical": "https://flixpatrol.com/runtime/cache/files/posters/t/w350/tu9skgqguzvsh5dgfb3xsymh8p2.webp",
+    "pageInfosUrl": "https://www.themoviedb.org/tv/125928",
+    "genres": [
+      "Animation",
+      "Action & Adventure",
+      "Science-Fiction & Fantastique"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "year": "2023",
+    "nbSaisons": 3,
+    "nbEpisodes": 30
+  }
+]

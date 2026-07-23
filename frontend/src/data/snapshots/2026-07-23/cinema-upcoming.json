@@ -1,0 +1,228 @@
+[
+  {
+    "id": 1,
+    "poster": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+    "title": "Spider-Man: Brand New Day",
+    "description": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+    "stars": [
+      "Tom Holland",
+      "Zendaya",
+      "Sadie Sink",
+      "Jacob Batalon",
+      "Jon Bernthal"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/969681",
+    "genres": [
+      "Science-Fiction",
+      "Action",
+      "Aventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=rCmTualxVwU",
+    "dateDeSortie": "28/07/2026"
+  },
+  {
+    "id": 2,
+    "poster": "https://image.tmdb.org/t/p/w500/e7f4AKWg1xGuHO4yOGGGbo5CHHS.jpg",
+    "title": "undertone",
+    "description": "Animatrice d’un podcast consacré aux phénomènes paranormaux, Evy retourne dans la maison de son enfance pour veiller sa mère mourante. Un jour, elle reçoit d’étranges enregistrements. En les diffusant dans son émission, Evy réalise que les événements décrits semblent déteindre sur la réalité. Les sons deviennent de plus en plus troublants, comme si quelque chose cherchait à lui parler. Et plus elle écoute, plus la menace se rapproche.",
+    "stars": [
+      "Nina Kiri",
+      "Adam DiMarco",
+      "Keana Bastidas",
+      "Jeff Yung",
+      "Michèle Duquet"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/e7f4AKWg1xGuHO4yOGGGbo5CHHS.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1480387",
+    "genres": [
+      "Horreur",
+      "Mystère"
+    ],
+    "originCountry": "Canada",
+    "trailerUrl": "https://www.youtube.com/watch?v=Ft8bcaY9bm4",
+    "dateDeSortie": "12/03/2026"
+  },
+  {
+    "id": 3,
+    "poster": "https://image.tmdb.org/t/p/w500/1flRy4qysdwjhlqw2BZ1Wm1zcpM.jpg",
+    "title": "La fin d’Oak Street",
+    "description": "Lorsqu’un mystérieux événement cosmique arrache Oak Street à sa paisible banlieue et la transporte vers un lieu inconnu, la famille Platt, désorientée dans ce nouvel environnement hostile, comprend vite qu’il leur faudra rester unis pour survivre.",
+    "stars": [
+      "Anne Hathaway",
+      "Ewan McGregor",
+      "Christian Convery",
+      "Maisy Stella",
+      "Jordan Alexa Davis"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/1flRy4qysdwjhlqw2BZ1Wm1zcpM.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1101383",
+    "genres": [
+      "Science-Fiction",
+      "Mystère",
+      "Thriller"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=TuL-7P1-B4k",
+    "dateDeSortie": "12/08/2026"
+  },
+  {
+    "id": 4,
+    "poster": "https://image.tmdb.org/t/p/w500/c987gxFjXqYOxZEZKcTkS1ONTWH.jpg",
+    "title": "Ice Cream Man",
+    "description": "Un marchand de glaces commence à servir aux enfants des douceurs aux conséquences terrifiantes...",
+    "stars": [
+      "Ari Millen",
+      "Charlie Zeltzer",
+      "Shiloh O’Reilly",
+      "Kiori Mirza Waldman",
+      "Sarah Abbott"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/c987gxFjXqYOxZEZKcTkS1ONTWH.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1477712",
+    "genres": [
+      "Horreur",
+      "Thriller"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "dateDeSortie": "05/08/2026"
+  },
+  {
+    "id": 5,
+    "poster": "https://image.tmdb.org/t/p/w500/iprKhXVhUuGo3LbPurtB7Zcq6ph.jpg",
+    "title": "La Pat’ Patrouille : Le film mission Dino",
+    "description": "Lorsqu’une mystérieuse tempête surprend leur navire, la Pat’ Patrouille s’échoue sur une île tropicale encore inexplorée… et peuplée de dinosaures ! Ils y rencontrent Rex, un chiot courageux installé sur l’île depuis des années et devenu un véritable expert des dinosaures. Mais leur ennemi de toujours, M. Hellinger, arrive lui aussi sur l’île avec un projet dangereux : exploiter ses richesses naturelles en creusant des mines. Ses actions imprudentes déclenchent bientôt l’éruption d’un gigantesque volcan endormi. La Pat’ Patrouille se retrouve alors entraînée dans une série de missions de sauvetage spectaculaires, plus impressionnantes que tout ce qu’elle a connu jusqu’ici. Elle devra arrêter M. Hellinger et sauver l’île avant qu’il ne soit trop tard.",
+    "stars": [
+      "Carter Young",
+      "Hayden Chamberlen",
+      "Mckenna Grace",
+      "Rain Janjua",
+      "Henry Bolan"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/iprKhXVhUuGo3LbPurtB7Zcq6ph.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1185806",
+    "genres": [
+      "Aventure",
+      "Animation",
+      "Comédie",
+      "Familial"
+    ],
+    "originCountry": "Canada",
+    "trailerUrl": "https://www.youtube.com/watch?v=qELH7nUUs14",
+    "dateDeSortie": "31/07/2026"
+  },
+  {
+    "id": 6,
+    "poster": "https://image.tmdb.org/t/p/w500/sxI1qKDHZRAi2LPmJUPhQ2x1u07.jpg",
+    "title": "Rise Roar Revolt (RRR)",
+    "description": "Inde coloniale, années 1920. Deux hommes d’une détermination de fer se rencontrent par hasard et nouent une amitié fulgurante : Komaram Bheem, guerrier gond déterminé à arracher une fillette de sa tribu des griffes du gouverneur britannique, et Alluri Sitarama Raju, un mystérieux officier militaire au service de l’Empire, aux motivations impénétrables. Le destin poussera ces deux « frères de cœur » à un affrontement inévitable, jusqu’à ce qu’une vérité inattendue éclate.",
+    "stars": [
+      "N.T. Rama Rao Jr.",
+      "Ram Charan",
+      "Olivia Morris",
+      "Ray Stevenson",
+      "Alison Doody"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/sxI1qKDHZRAi2LPmJUPhQ2x1u07.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/579974",
+    "genres": [
+      "Action",
+      "Histoire",
+      "Drame"
+    ],
+    "originCountry": "India",
+    "trailerUrl": "https://www.youtube.com/watch?v=UrN4oyanERU",
+    "dateDeSortie": "24/03/2022"
+  },
+  {
+    "id": 7,
+    "poster": "https://image.tmdb.org/t/p/w500/jEXGkKEIuyc6012BFpFJpaGOW5a.jpg",
+    "title": "Lawrence d'Arabie",
+    "description": "Pendant la Première Guerre mondiale, le lieutenant britannique T.E. Lawrence reçoit l'ordre de soutenir les Arabes dans leur lutte contre les Turcs alliés des Allemands. Le Britannique réussit à gagner la sympathie des Arabes et en particulier du prince Feisal. Une amitié particulière prend naissance entre les deux chefs volontaires.",
+    "stars": [
+      "Peter O'Toole",
+      "Alec Guinness",
+      "Omar Sharif",
+      "Anthony Quinn",
+      "Jack Hawkins"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/jEXGkKEIuyc6012BFpFJpaGOW5a.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/947",
+    "genres": [
+      "Aventure",
+      "Histoire",
+      "Guerre"
+    ],
+    "originCountry": "United Kingdom",
+    "trailerUrl": "https://www.youtube.com/watch?v=8v1R5IFSb5s",
+    "dateDeSortie": "11/12/1962"
+  },
+  {
+    "id": 8,
+    "poster": "https://image.tmdb.org/t/p/w500/oeAFYZ56LDqucUkm5bZmBi2qRtl.jpg",
+    "title": "I Want Your Sex",
+    "description": "Lorsque le jeune et innocent Elliot décroche un emploi de rêve auprès d'Erika Tracy, artiste de renom, icône et provocatrice, ses fantasmes deviennent réalité : Erika fait de lui sa muse. Mais Elliot se retrouve vite dépassé par les événements, entraîné par Erika dans un voyage bien plus profond qu'il n'aurait jamais pu l'imaginer, un monde de sexe, d'obsession, de pouvoir, de trahison et de meurtre.",
+    "stars": [
+      "Olivia Wilde",
+      "Cooper Hoffman",
+      "Mason Gooding",
+      "Chase Sui Wonders",
+      "Daveed Diggs"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/oeAFYZ56LDqucUkm5bZmBi2qRtl.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1288059",
+    "genres": [
+      "Drame",
+      "Comédie"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=5V0a6x7gtkY",
+    "dateDeSortie": "29/07/2026"
+  },
+  {
+    "id": 9,
+    "poster": "https://image.tmdb.org/t/p/w500/bW8uJOLrtdBnQcQbG9BUQjDgUaT.jpg",
+    "title": "Insidious : L'Invasion du Lointain",
+    "description": "Un trio de harceleurs s'infiltre dans une banlieue tranquille et force une nouvelle famille à entrer dans le plan astral, où ils découvrent une vérité terrifiante : l'Autre saigne dans le monde réel.",
+    "stars": [
+      "Amelia Eve",
+      "Brandon Perea",
+      "Lin Shaye",
+      "Maisie Richardson-Sellers",
+      "Sam Spruell"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/bW8uJOLrtdBnQcQbG9BUQjDgUaT.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1291595",
+    "genres": [
+      "Horreur",
+      "Thriller"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=7OsXkoivRW0",
+    "dateDeSortie": "19/08/2026"
+  },
+  {
+    "id": 10,
+    "poster": "https://image.tmdb.org/t/p/w500/rfRLWbxLZPq2eboKPsBvh1NgNwM.jpg",
+    "title": "Mutiny",
+    "description": "Après que son patron industriel milliardaire ait été assassiné sous ses yeux, Cole Reed est désigné pour endosser le crime, ce qui le met en fuite alors qu'il s'efforce de découvrir une conspiration internationale.",
+    "stars": [
+      "Jason Statham",
+      "Annabelle Wallis",
+      "Roland Møller",
+      "Arnas Fedaravičius",
+      "Adrian Lester"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/rfRLWbxLZPq2eboKPsBvh1NgNwM.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1288445",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "originCountry": "United Kingdom",
+    "trailerUrl": "https://www.youtube.com/watch?v=4n16R2EEA-k",
+    "dateDeSortie": "19/08/2026"
+  }
+]
