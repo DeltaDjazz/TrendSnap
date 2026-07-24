@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "poster": "https://image.tmdb.org/t/p/w500/5WzPybmv7J9lwfRfhHpuk0pySNc.jpg",
+    "title": "L'Odyssée",
+    "description": "Vingt ans après son départ pour la guerre de Troie, le roi Ulysse rentre enfin à Ithaque, mais son voyage est parsemé d'aventures et d'épreuves.",
+    "stars": [
+      "Matt Damon",
+      "Tom Holland",
+      "Anne Hathaway",
+      "Robert Pattinson",
+      "Himesh Patel"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/5WzPybmv7J9lwfRfhHpuk0pySNc.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1368337",
+    "genres": [
+      "Aventure",
+      "Action",
+      "Fantastique"
+    ],
+    "originCountry": "United Kingdom",
+    "trailerUrl": "https://www.youtube.com/watch?v=9YGuN8sQpL0",
+    "dateDeSortie": "15/07/2026"
+  },
+  {
+    "id": 2,
+    "poster": "https://image.tmdb.org/t/p/w500/fN4YJFr6d1Zx2fNBlzGLyShO6sc.jpg",
+    "title": "Vaiana, la légende du bout du monde",
+    "description": "Dans l'ancienne Polynésie, lorsqu'une terrible malédiction lancée par Maui atteint l'île d'un chef impétueux, sa fille obstinée répond à l'appel de l'océan et part à la recherche du demi-dieu pour rétablir la situation. Live-Action du film Vaiana, la Légende du bout du monde de Disney en 2016.",
+    "stars": [
+      "Catherine Lagaʻaia",
+      "Dwayne Johnson",
+      "Rena Owen",
+      "John Tui",
+      "Frankie Adams"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/fN4YJFr6d1Zx2fNBlzGLyShO6sc.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1108427",
+    "genres": [
+      "Familial",
+      "Fantastique",
+      "Comédie",
+      "Aventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=gC4H01RlSdQ",
+    "dateDeSortie": "08/07/2026"
+  },
+  {
+    "id": 3,
+    "poster": "https://image.tmdb.org/t/p/w500/thQQ3BBBhGDtWm3UTtabhyDJd8U.jpg",
+    "title": "Backrooms",
+    "description": "Une étrange porte apparaît dans le sous-sol d'un magasin de meubles.",
+    "stars": [
+      "Chiwetel Ejiofor",
+      "Renate Reinsve",
+      "Finn Bennett",
+      "Lukita Maxwell",
+      "Mark Duplass"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/thQQ3BBBhGDtWm3UTtabhyDJd8U.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1083381",
+    "genres": [
+      "Horreur",
+      "Mystère",
+      "Science-Fiction"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=mTPEEk55gZo",
+    "dateDeSortie": "27/05/2026"
+  },
+  {
+    "id": 4,
+    "poster": "https://image.tmdb.org/t/p/w500/1QV4GubAlUvGX3FjqWWWfQiYkN4.jpg",
+    "title": "Supergirl",
+    "description": "Lorsqu’un ennemi inattendu et impitoyable surgit, Kara Zor-El est forcée, malgré elle, de faire équipe avec un compagnon improbable. Ensemble, ils se lancent dans une épopée cosmique où la vengeance et la justice sont en jeu, et où Kara doit affronter ses origines pour trouver sa propre voie en tant qu’héroïne.",
+    "stars": [
+      "Milly Alcock",
+      "Eve Ridley",
+      "Matthias Schoenaerts",
+      "Jason Momoa",
+      "David Krumholtz"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/1QV4GubAlUvGX3FjqWWWfQiYkN4.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1081003",
+    "genres": [
+      "Action",
+      "Aventure",
+      "Science-Fiction"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=ORQa-D2D3jw",
+    "dateDeSortie": "24/06/2026"
+  },
+  {
+    "id": 5,
+    "poster": "https://image.tmdb.org/t/p/w500/jMOf0SSthlNp5uXhEXz4e3tqDX5.jpg",
+    "title": "Des Minions et des monstres",
+    "description": "L’histoire turbulente, absurde et évidemment vraie des Minions et la manière dont ils ont conquis Hollywood, sont devenus de véritables stars de cinéma, ont tout perdu, ont libéré des monstres dans notre monde, puis ont tenté de sauver la planète du chaos qu’ils avaient créé.",
+    "stars": [
+      "Pierre Coffin",
+      "Trey Parker",
+      "Allison Janney",
+      "Christoph Waltz",
+      "Jeff Bridges"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/jMOf0SSthlNp5uXhEXz4e3tqDX5.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1315772",
+    "genres": [
+      "Aventure",
+      "Animation",
+      "Comédie",
+      "Familial",
+      "Fantastique"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=JgFFh6z9vEY",
+    "dateDeSortie": "24/06/2026"
+  },
+  {
+    "id": 6,
+    "poster": "https://image.tmdb.org/t/p/w500/b2bt3UomRX41rHHZmIsSNmXzidU.jpg",
+    "title": "Toy Story 5",
+    "description": "Buzz, Woody, Jessie et le reste de la bande verront leur travail remis en question lorsqu'ils découvriront que ce qui obsède les enfants d'aujourd'hui s’appelle… l'électronique !",
+    "stars": [
+      "Tom Hanks",
+      "Tim Allen",
+      "Joan Cusack",
+      "Greta Lee",
+      "Conan O'Brien"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/b2bt3UomRX41rHHZmIsSNmXzidU.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1084244",
+    "genres": [
+      "Animation",
+      "Familial",
+      "Comédie",
+      "Aventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=R7xZRSgmqw4",
+    "dateDeSortie": "17/06/2026"
+  },
+  {
+    "id": 7,
+    "poster": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+    "title": "Spider-Man: Brand New Day",
+    "description": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+    "stars": [
+      "Tom Holland",
+      "Zendaya",
+      "Sadie Sink",
+      "Jacob Batalon",
+      "Jon Bernthal"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/969681",
+    "genres": [
+      "Science-Fiction",
+      "Action",
+      "Aventure"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=rCmTualxVwU",
+    "dateDeSortie": "28/07/2026"
+  },
+  {
+    "id": 8,
+    "poster": "https://image.tmdb.org/t/p/w500/ndDY118G0Xn6W8aKP3sLz0ESkGq.jpg",
+    "title": "On l'appelait Robin des Bois",
+    "description": "Hanté par son passé après une vie de crimes et de violence, Robin des Bois est laissé pour mort à l’issue d’un combat qu’il pensait être le dernier. Recueilli par une femme mystérieuse, il se voit offrir une ultime chance de rédemption…",
+    "stars": [
+      "Hugh Jackman",
+      "Jodie Comer",
+      "Bill Skarsgård",
+      "Murray Bartlett",
+      "Noah Jupe"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/ndDY118G0Xn6W8aKP3sLz0ESkGq.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1284465",
+    "genres": [
+      "Aventure",
+      "Drame",
+      "Thriller",
+      "Action"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "",
+    "dateDeSortie": "18/06/2026"
+  },
+  {
+    "id": 9,
+    "poster": "https://image.tmdb.org/t/p/w500/twkjKuOf4hVAmXxOwpyRy682VZR.jpg",
+    "title": "Evil Dead Burn",
+    "description": "Après l’enterrement de son mari, Alice se rend dans la maison isolée de sa belle-famille pour partager un dernier repas à sa mémoire. Mais la réunion familiale bascule dans l’horreur lorsque ses proches se transforment, l’un après l’autre, en créatures démoniaques. Confrontée à cet enfer, Alice découvre que les vœux prononcés autrefois continuent de la lier à son mari… bien au-delà de la mort.",
+    "stars": [
+      "Souheila Yacoub",
+      "Tandi Wright",
+      "Hunter Doohan",
+      "Luciane Buchanan",
+      "Erroll Shand"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/twkjKuOf4hVAmXxOwpyRy682VZR.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1212763",
+    "genres": [
+      "Horreur",
+      "Thriller"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=x_mPdvdAKk8",
+    "dateDeSortie": "07/07/2026"
+  },
+  {
+    "id": 10,
+    "poster": "https://image.tmdb.org/t/p/w500/pEoqbqtLc4CcwDUDqxmEDSWpWTZ.jpg",
+    "title": "Matrix",
+    "description": "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber‐espace. À cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui‐ci l'exhorte à aller au‐delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est‐ce que la Matrice ? Nul ne le sait, et aucun homme n'est encore parvenu à en percer les défenses. Mais Morpheus est persuadé que Neo est l'Élu, le libérateur mythique de l'humanité annoncé selon la prophétie. Ensemble, ils se lancent dans une lutte sans retour contre la Matrice et ses terribles agents…",
+    "stars": [
+      "Keanu Reeves",
+      "Laurence Fishburne",
+      "Carrie-Anne Moss",
+      "Hugo Weaving",
+      "Gloria Foster"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/pEoqbqtLc4CcwDUDqxmEDSWpWTZ.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/603",
+    "genres": [
+      "Action",
+      "Science-Fiction"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=8xx91zoASLY",
+    "dateDeSortie": "31/03/1999"
+  }
+]
