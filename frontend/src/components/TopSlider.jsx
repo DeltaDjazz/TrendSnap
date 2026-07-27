@@ -4,14 +4,20 @@ import { getCardTemplate } from '../templates/cardTemplates'
 import { getSliderTemplate } from '../templates/sliderTemplates'
 
 const GAP = 36
-const SWIPE_THRESHOLD = 80
 const DRAG_THRESHOLD = 5
 const MOBILE_BREAKPOINT = 768
 const MOBILE_GAP = 10
 const DEFAULT_MOBILE_SCALE = 0.5
+const VELOCITY_SAMPLE_MS = 100
+const INERTIA_FRICTION = 0.0035
+const MIN_INERTIA_VELOCITY = 0.04
 
 function getMaxStartIndex(totalCards, visibleCount) {
   return Math.max(0, totalCards - visibleCount)
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value))
 }
 
 export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, backgroundColor, onMovieSelect }) {
@@ -40,6 +46,9 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const dragStartXRef = useRef(0)
   const pointerIdRef = useRef(null)
   const didDragRef = useRef(false)
+  const moveSamplesRef = useRef([])
+  const inertiaRafRef = useRef(null)
+  const maxOffsetRef = useRef(0)
   const effectiveWidth = isMobile ? Math.round(resolvedWidth * mobileScale) : resolvedWidth
   const effectiveHeight = isMobile ? Math.round(resolvedHeight * mobileScale) : resolvedHeight
   const effectiveGap = isMobile ? MOBILE_GAP : GAP
@@ -51,6 +60,65 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
   const visualOffsetX = positionOffset - dragOffsetX
   const canGoPrev = positionOffset > 0
   const canGoNext = positionOffset < maxOffset
+
+  maxOffsetRef.current = maxOffset
+
+  const stopInertia = () => {
+    if (inertiaRafRef.current === null) return
+    cancelAnimationFrame(inertiaRafRef.current)
+    inertiaRafRef.current = null
+  }
+
+  const startInertia = (startPosition, velocityPxPerMs) => {
+    stopInertia()
+
+    if (Math.abs(velocityPxPerMs) < MIN_INERTIA_VELOCITY) {
+      setPositionOffset(clamp(startPosition, 0, maxOffsetRef.current))
+      return
+    }
+
+    let position = startPosition
+    let velocity = velocityPxPerMs
+    let lastTime = performance.now()
+
+    const tick = (now) => {
+      const dt = Math.min(now - lastTime, 64)
+      lastTime = now
+
+      const bound = maxOffsetRef.current
+      position = clamp(position - velocity * dt, 0, bound)
+
+      if (position <= 0 || position >= bound) {
+        velocity = 0
+      } else {
+        velocity *= Math.exp(-INERTIA_FRICTION * dt)
+      }
+
+      setPositionOffset(position)
+
+      if (Math.abs(velocity) >= MIN_INERTIA_VELOCITY) {
+        inertiaRafRef.current = requestAnimationFrame(tick)
+        return
+      }
+
+      inertiaRafRef.current = null
+    }
+
+    inertiaRafRef.current = requestAnimationFrame(tick)
+  }
+
+  const getReleaseVelocity = () => {
+    const now = performance.now()
+    const samples = moveSamplesRef.current.filter((sample) => now - sample.t <= VELOCITY_SAMPLE_MS)
+    if (samples.length < 2) return 0
+
+    const last = samples[samples.length - 1]
+    const first = samples[0]
+    const dt = last.t - first.t
+    if (dt <= 0) return 0
+
+    return (last.x - first.x) / dt
+  }
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
@@ -83,6 +151,8 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     setPositionOffset((offset) => Math.min(offset, nextMaxOffset))
   }, [visibleCount, movies.length, cardStep])
 
+  useEffect(() => () => stopInertia(), [])
+
   const resetDrag = () => {
     setIsDragging(false)
     setDragOffsetX(0)
@@ -99,9 +169,11 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     if (event.pointerType === 'mouse' && event.button !== 0) return
     if (isSliding) return
 
+    stopInertia()
     dragStartXRef.current = event.clientX
     pointerIdRef.current = event.pointerId
     didDragRef.current = false
+    moveSamplesRef.current = [{ x: event.clientX, t: performance.now() }]
     setDragOffsetX(0)
   }
 
@@ -109,6 +181,12 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     if (pointerIdRef.current === null || event.pointerId !== pointerIdRef.current) return
 
     const nextOffset = event.clientX - dragStartXRef.current
+    const now = performance.now()
+    const samples = moveSamplesRef.current
+    samples.push({ x: event.clientX, t: now })
+    while (samples.length > 1 && now - samples[0].t > VELOCITY_SAMPLE_MS) {
+      samples.shift()
+    }
 
     if (!didDragRef.current) {
       if (Math.abs(nextOffset) < DRAG_THRESHOLD) return
@@ -130,16 +208,13 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
     }
 
     const deltaX = event.clientX - dragStartXRef.current
+    const nextPosition = clamp(positionOffset - deltaX, 0, maxOffset)
+    const velocity = getReleaseVelocity()
 
-    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
-      const nextPosition = Math.min(maxOffset, Math.max(0, positionOffset - deltaX))
-      setPositionOffset(nextPosition)
-    } else {
-      setPositionOffset((offset) => Math.min(maxOffset, Math.max(0, offset - dragOffsetX)))
-    }
-
+    setPositionOffset(nextPosition)
     setDragOffsetX(0)
     resetDrag()
+    startInertia(nextPosition, velocity)
   }
 
   const handleClickCapture = (event) => {
@@ -155,6 +230,8 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
 
     const container = containerRef.current
     if (!container) return
+
+    stopInertia()
 
     const nextOffset = direction === 'right'
       ? Math.min(positionOffset + visibleCount * cardStep, maxOffset)
