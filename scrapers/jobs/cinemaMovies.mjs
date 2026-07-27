@@ -13,6 +13,8 @@ const REGION = 'FR';
 const TOP_N = 10;
 const NOW_PLAYING_MAX_MONTHS = 4;
 const NOW_PLAYING_MAX_PAGES = 5;
+/** Priorité des types de sortie TMDB : 3 = salles, 2 = salles limitées, 1 = avant-première */
+const RELEASE_TYPE_PRIORITY = [3, 2, 1];
 
 /** Charge un fichier .env à la racine du projet (sans dépendance externe). */
 function loadEnvFile() {
@@ -105,11 +107,51 @@ function isReleaseDateInNowPlayingWindow(releaseDate, todayIso) {
     return iso <= todayIso && iso >= minDate;
 }
 
+/** Films à venir : date de sortie >= aujourd'hui. */
+function isUpcomingReleaseDate(releaseDate, todayIso) {
+    if (!releaseDate || !/^\d{4}-\d{2}-\d{2}/.test(releaseDate)) return false;
+    return releaseDate.slice(0, 10) >= todayIso;
+}
+
 /** Convertit une date ISO YYYY-MM-DD en dd/mm/yyyy. */
 function formatDateFr(isoDate) {
     if (!isoDate || !/^\d{4}-\d{2}-\d{2}/.test(isoDate)) return '';
     const [yyyy, mm, dd] = isoDate.slice(0, 10).split('-');
     return `${dd}/${mm}/${yyyy}`;
+}
+
+/**
+ * Date de sortie en salles pour la région cible (ex. FR).
+ * `release_date` seul sur /movie/{id} est souvent la sortie US, pas la date française.
+ */
+function pickRegionalReleaseDate(releaseDatesPayload, regionCode = REGION) {
+    const country = releaseDatesPayload?.results?.find(
+        (entry) => entry.iso_3166_1 === regionCode
+    );
+    if (!country?.release_dates?.length) return '';
+
+    for (const type of RELEASE_TYPE_PRIORITY) {
+        const match = country.release_dates.find((entry) => entry.type === type);
+        if (match?.release_date) {
+            return match.release_date.slice(0, 10);
+        }
+    }
+
+    const dates = country.release_dates
+        .map((entry) => entry.release_date?.slice(0, 10))
+        .filter(Boolean)
+        .sort();
+
+    return dates[0] || '';
+}
+
+function resolveReleaseDate(details, listItem) {
+    return (
+        pickRegionalReleaseDate(details.release_dates) ||
+        listItem.release_date ||
+        details.release_date ||
+        ''
+    );
 }
 
 function pickTrailerUrl(videos) {
@@ -127,7 +169,7 @@ function pickTrailerUrl(videos) {
 async function enrichMovie(listItem, rank, auth, { withDateDeSortie = false } = {}) {
     const details = await tmdbFetch(`/movie/${listItem.id}`, auth, {
         language: LANGUAGE,
-        append_to_response: 'credits,videos',
+        append_to_response: 'credits,videos,release_dates',
     });
 
     const stars = (details.credits?.cast ?? [])
@@ -141,7 +183,7 @@ async function enrichMovie(listItem, rank, auth, { withDateDeSortie = false } = 
         details.origin_country?.[0] ||
         '';
 
-    const releaseDate = details.release_date || listItem.release_date || '';
+    const releaseDate = resolveReleaseDate(details, listItem);
     const image = posterUrl(details.poster_path || listItem.poster_path);
 
     const movie = {
@@ -190,7 +232,7 @@ function fallbackMovie(item, rank, { withDateDeSortie = false } = {}) {
 }
 
 async function fetchTop10(listPath, auth, label, options = {}) {
-    const { filterNowPlayingWindow = false } = options;
+    const { filterNowPlayingWindow = false, filterUpcomingOnly = false } = options;
     const today = getDateToday();
     const minDate = filterNowPlayingWindow ? getMinReleaseDate(today) : null;
 
@@ -199,6 +241,8 @@ async function fetchTop10(listPath, auth, label, options = {}) {
         console.log(
             `Filtre date de sortie : ${minDate} → ${today} (max ${NOW_PLAYING_MAX_MONTHS} mois)`
         );
+    } else if (filterUpcomingOnly) {
+        console.log(`Filtre date de sortie : à partir du ${today}`);
     }
 
     const top = [];
@@ -215,10 +259,16 @@ async function fetchTop10(listPath, auth, label, options = {}) {
         if (results.length === 0) break;
 
         for (const item of results) {
+            const releaseDate = item.release_date || '';
+
             if (
                 filterNowPlayingWindow &&
-                !isReleaseDateInNowPlayingWindow(item.release_date || '', today)
+                !isReleaseDateInNowPlayingWindow(releaseDate, today)
             ) {
+                continue;
+            }
+
+            if (filterUpcomingOnly && !isUpcomingReleaseDate(releaseDate, today)) {
                 continue;
             }
 
@@ -271,7 +321,7 @@ async function run() {
             '/movie/upcoming',
             auth,
             'films à venir',
-            { withDateDeSortie: true }
+            { withDateDeSortie: true, filterUpcomingOnly: true }
         );
         saveSnapshot('cinema-upcoming.json', upcoming);
 
