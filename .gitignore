@@ -6,3 +6,4 @@ backend/node_modules
 scrapers/node_modules
 frontend/dist
 scrapers/logs/
+frontend/src/data/snapshots/**/*.json

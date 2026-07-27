@@ -8,12 +8,26 @@ const JOBS_DIR = path.join(__dirname, 'jobs');
 const LOGS_DIR = path.join(__dirname, 'logs');
 
 const SUCCESS_MARKER = 'Fichier sauvegardé avec succès';
+const MAINTENANCE_JOB_PATTERN = /^cleanup/i;
+
+function isMaintenanceJob(scriptName) {
+    return MAINTENANCE_JOB_PATTERN.test(scriptName);
+}
 
 function listJobScripts() {
     return fs
         .readdirSync(JOBS_DIR)
         .filter((name) => /\.(mjs|js)$/i.test(name))
-        .sort((a, b) => a.localeCompare(b));
+        .sort((a, b) => {
+            const aMaintenance = isMaintenanceJob(a);
+            const bMaintenance = isMaintenanceJob(b);
+
+            if (aMaintenance !== bMaintenance) {
+                return aMaintenance ? -1 : 1;
+            }
+
+            return a.localeCompare(b);
+        });
 }
 
 function timestamp() {
@@ -28,7 +42,7 @@ function formatDuration(ms) {
     return `${m}m${String(s).padStart(2, '0')}s`;
 }
 
-function runJob(scriptName) {
+function runJob(scriptName, { requireSnapshot = true } = {}) {
     const scriptPath = path.join(JOBS_DIR, scriptName);
 
     return new Promise((resolve) => {
@@ -64,7 +78,7 @@ function runJob(scriptName) {
 
         child.on('close', (exitCode) => {
             const saved = output.includes(SUCCESS_MARKER);
-            const ok = exitCode === 0 && saved;
+            const ok = exitCode === 0 && (!requireSnapshot || saved);
 
             resolve({
                 script: scriptName,
@@ -118,7 +132,8 @@ async function runScrapers() {
     for (const script of jobs) {
         log(`▶ ${script}`);
         const jobStarted = Date.now();
-        const result = await runJob(script);
+        const maintenance = isMaintenanceJob(script);
+        const result = await runJob(script, { requireSnapshot: !maintenance });
         const duration = formatDuration(Date.now() - jobStarted);
 
         if (result.ok) {
@@ -127,7 +142,7 @@ async function runScrapers() {
             log(`❌ ${script} — échec au lancement (${duration}) : ${result.error}`);
         } else if (result.exitCode !== 0) {
             log(`❌ ${script} — échec (${duration}, exit ${result.exitCode})`);
-        } else if (!result.saved) {
+        } else if (!maintenance && !result.saved) {
             log(
                 `❌ ${script} — échec (${duration}, exit 0 mais snapshot non sauvegardé)`
             );
