@@ -11,6 +11,7 @@
     ],
     "imgVertical": "https://fr.web.img5.acsta.net/c_310_420/img/e8/d3/e8d38200a60b591440f2c947d79789f9.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000044041.html",
+    "year": "",
     "genres": [
       "Drame",
       "Erotique"
@@ -30,6 +31,7 @@
     ],
     "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/commons/v9/common/empty/empty_portrait.png",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=293118.html",
+    "year": "",
     "genres": [
       "Action",
       "Comédie",
@@ -50,6 +52,7 @@
     ],
     "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/img/28/eb/28eb6a6b0ab23a26a3543bcca38edc92.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000038255.html",
+    "year": "",
     "genres": [
       "Action",
       "Drame"
@@ -69,6 +72,7 @@
     ],
     "imgVertical": "https://fr.web.img5.acsta.net/c_310_420/img/b2/41/b24104bb6e917a3aabbcd7f3641d1fde.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000024814.html",
+    "year": "",
     "genres": [
       "Romance"
     ],
@@ -83,6 +87,7 @@
     "stars": [],
     "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/commons/v9/common/empty/empty_portrait.png",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000035306.html",
+    "year": "",
     "genres": [
       "Documentaire"
     ],
@@ -92,11 +97,7 @@
   {
     "id": 6,
     "poster": "https://dnm.nflximg.net/api/v6/0Qzqdxw-HG1AiOKLWWPsFOUDA2E/AAAABduCQcgvvH5BovFEQD5CvBGfGmeIlCtwRS92oJraZmACfKzmlD-n81K7NDhyv6BTGf6JN0ATFIY4upkFZgIZwat4WAo0JDAEL08.jpg?r=0b2",
-    "title": "What’s With This Granny!?",
-    "description": "",
-    "stars": [],
-    "imgVertical": "",
-    "trailerUrl": ""
+    "title": "What’s With This Granny!?"
   },
   {
     "id": 7,
@@ -110,6 +111,7 @@
     ],
     "imgVertical": "https://fr.web.img3.acsta.net/c_310_420/img/d9/05/d905e3a3dbea878a0196b14c412af868.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=323333.html",
+    "year": "",
     "genres": [
       "Aventure",
       "Famille",

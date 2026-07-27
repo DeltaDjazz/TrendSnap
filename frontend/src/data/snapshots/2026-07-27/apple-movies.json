@@ -15,6 +15,9 @@
     ],
     "imgVertical": "https://fr.web.img5.acsta.net/c_310_420/img/f2/e8/f2e8d9af29e4f84b40294afc8aa048f1.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000012300.html",
+    "genres": [
+      "Comédie"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/xai52ua"
   },
@@ -34,6 +37,11 @@
     ],
     "imgVertical": "https://fr.web.img4.acsta.net/c_310_420/img/4e/09/4e099f8359089cfaa3dbfd69d9cec063.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=302868.html",
+    "genres": [
+      "Action",
+      "Romance",
+      "Thriller"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x9ahbl2"
   },
@@ -53,6 +61,12 @@
     ],
     "imgVertical": "https://fr.web.img5.acsta.net/c_310_420/img/f5/ef/f5ef38ebb3fe51787e6104ac29abec8d.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=311115.html",
+    "genres": [
+      "Action",
+      "Comédie",
+      "Policier",
+      "Thriller"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x909l9s"
   },
@@ -72,6 +86,13 @@
     ],
     "imgVertical": "https://fr.web.img5.acsta.net/c_310_420/pictures/23/10/18/16/31/2876053.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=287126.html",
+    "genres": [
+      "22 novembre 2023",
+      "Aventure",
+      "Biopic",
+      "Guerre",
+      "Historique"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x8pli0j"
   },
@@ -91,6 +112,10 @@
     ],
     "imgVertical": "https://fr.web.img4.acsta.net/c_310_420/img/f9/c0/f9c05f51baf19d16d44e0e1a80a0cd51.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=314258.html",
+    "genres": [
+      "Action",
+      "Aventure"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x9h6tkw"
   },
@@ -110,30 +135,17 @@
     ],
     "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/pictures/22/07/07/10/19/0454872.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=254698.html",
+    "genres": [
+      "Animation",
+      "Aventure",
+      "Comédie",
+      "Famille"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x8cay6x"
   },
   {
     "id": 7,
-    "title": "Palmer",
-    "poster": "https://is1-ssl.mzstatic.com/image/thumb/xYkB-QXA_m5CtmlnyK-Pow/225x338nr.webp",
-    "logo": "https://is1-ssl.mzstatic.com/image/thumb/H_tthaTJXUCy3-F_GbnHTQ/100x33bb.webp",
-    "genre": "Drame",
-    "detailsPageUrl": "https://tv.apple.com/fr/movie/palmer/umc.cmc.40qrv09i2yfh8iilyi4s8vfi?ctx_agid=9ff0b4b5",
-    "year": "2021",
-    "description": "Un ex-détenu, ancienne star de football universitaire, Eddie Palmer, se lie d'amitié avec un jeune garçon délaissé par sa mère junkie.",
-    "stars": [
-      "Justin Timberlake",
-      "Juno Temple",
-      "June Squibb"
-    ],
-    "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/pictures/20/12/18/10/24/4751126.jpg",
-    "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=256048.html",
-    "originCountry": "",
-    "trailerUrl": "https://www.dailymotion.com/video/x8a1yi8"
-  },
-  {
-    "id": 8,
     "title": "The Family Plan 2",
     "poster": "https://is1-ssl.mzstatic.com/image/thumb/ETEFi3ORE3xGO31vxsvFUQ/225x338nr.webp",
     "logo": "https://is1-ssl.mzstatic.com/image/thumb/lwMTBp6xUPJVppCaxW-Kqw/100x33bb.webp",
@@ -148,11 +160,16 @@
     ],
     "imgVertical": "https://fr.web.img3.acsta.net/c_310_420/img/75/bc/75bc4265c12d6061b9596fd06ddf0401.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=328262.html",
+    "genres": [
+      "Action",
+      "Comédie",
+      "Famille"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x9s4k1u"
   },
   {
-    "id": 9,
+    "id": 8,
     "title": "The Family Plan",
     "poster": "https://is1-ssl.mzstatic.com/image/thumb/bPdjzNmz1np6iAajg7RYuQ/225x338nr.webp",
     "logo": "https://is1-ssl.mzstatic.com/image/thumb/J7vM2h0h2cFSUDB5x44EKg/100x33bb.webp",
@@ -167,8 +184,34 @@
     ],
     "imgVertical": "https://fr.web.img5.acsta.net/c_310_420/pictures/23/11/02/12/38/1748080.jpg",
     "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=307227.html",
+    "genres": [
+      "Action",
+      "Comédie"
+    ],
     "originCountry": "",
     "trailerUrl": "https://www.dailymotion.com/video/x8piqm5"
+  },
+  {
+    "id": 9,
+    "title": "Palmer",
+    "poster": "https://is1-ssl.mzstatic.com/image/thumb/xYkB-QXA_m5CtmlnyK-Pow/225x338nr.webp",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/H_tthaTJXUCy3-F_GbnHTQ/100x33bb.webp",
+    "genre": "Drame",
+    "detailsPageUrl": "https://tv.apple.com/fr/movie/palmer/umc.cmc.40qrv09i2yfh8iilyi4s8vfi?ctx_agid=9ff0b4b5",
+    "year": "2021",
+    "description": "Un ex-détenu, ancienne star de football universitaire, Eddie Palmer, se lie d'amitié avec un jeune garçon délaissé par sa mère junkie.",
+    "stars": [
+      "Justin Timberlake",
+      "Juno Temple",
+      "June Squibb"
+    ],
+    "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/pictures/20/12/18/10/24/4751126.jpg",
+    "pageInfosUrl": "https://www.allocine.fr/film/fichefilm_gen_cfilm=256048.html",
+    "genres": [
+      "Drame"
+    ],
+    "originCountry": "",
+    "trailerUrl": "https://www.dailymotion.com/video/x8a1yi8"
   },
   {
     "id": 10,

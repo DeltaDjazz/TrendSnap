@@ -2,7 +2,7 @@
   {
     "id": 1,
     "poster": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
-    "title": "Spider-Man: Brand New Day",
+    "title": "Spider-Man : Brand New Day",
     "description": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
     "stars": [
       "Tom Holland",
@@ -20,7 +20,7 @@
     ],
     "originCountry": "United States of America",
     "trailerUrl": "https://www.youtube.com/watch?v=rCmTualxVwU",
-    "dateDeSortie": "28/07/2026"
+    "dateDeSortie": "29/07/2026"
   },
   {
     "id": 2,
@@ -65,7 +65,7 @@
     ],
     "originCountry": "Canada",
     "trailerUrl": "https://www.youtube.com/watch?v=Ft8bcaY9bm4",
-    "dateDeSortie": "12/03/2026"
+    "dateDeSortie": "12/08/2026"
   },
   {
     "id": 4,
@@ -89,7 +89,7 @@
     ],
     "originCountry": "Canada",
     "trailerUrl": "https://www.youtube.com/watch?v=qELH7nUUs14",
-    "dateDeSortie": "23/07/2026"
+    "dateDeSortie": "05/08/2026"
   },
   {
     "id": 5,
@@ -111,56 +111,10 @@
     ],
     "originCountry": "United States of America",
     "trailerUrl": "",
-    "dateDeSortie": "05/08/2026"
+    "dateDeSortie": "07/08/2026"
   },
   {
     "id": 6,
-    "poster": "https://image.tmdb.org/t/p/w500/sxI1qKDHZRAi2LPmJUPhQ2x1u07.jpg",
-    "title": "Rise Roar Revolt (RRR)",
-    "description": "Inde coloniale, années 1920. Deux hommes d’une détermination de fer se rencontrent par hasard et nouent une amitié fulgurante : Komaram Bheem, guerrier gond déterminé à arracher une fillette de sa tribu des griffes du gouverneur britannique, et Alluri Sitarama Raju, un mystérieux officier militaire au service de l’Empire, aux motivations impénétrables. Le destin poussera ces deux « frères de cœur » à un affrontement inévitable, jusqu’à ce qu’une vérité inattendue éclate.",
-    "stars": [
-      "N.T. Rama Rao Jr.",
-      "Ram Charan",
-      "Olivia Morris",
-      "Ray Stevenson",
-      "Alison Doody"
-    ],
-    "imgVertical": "https://image.tmdb.org/t/p/w500/sxI1qKDHZRAi2LPmJUPhQ2x1u07.jpg",
-    "pageInfosUrl": "https://www.themoviedb.org/movie/579974",
-    "genres": [
-      "Action",
-      "Histoire",
-      "Drame"
-    ],
-    "originCountry": "India",
-    "trailerUrl": "https://www.youtube.com/watch?v=UrN4oyanERU",
-    "dateDeSortie": "24/03/2022"
-  },
-  {
-    "id": 7,
-    "poster": "https://image.tmdb.org/t/p/w500/jEXGkKEIuyc6012BFpFJpaGOW5a.jpg",
-    "title": "Lawrence d'Arabie",
-    "description": "Pendant la Première Guerre mondiale, le lieutenant britannique T.E. Lawrence reçoit l'ordre de soutenir les Arabes dans leur lutte contre les Turcs alliés des Allemands. Le Britannique réussit à gagner la sympathie des Arabes et en particulier du prince Feisal. Une amitié particulière prend naissance entre les deux chefs volontaires.",
-    "stars": [
-      "Peter O'Toole",
-      "Alec Guinness",
-      "Omar Sharif",
-      "Anthony Quinn",
-      "Jack Hawkins"
-    ],
-    "imgVertical": "https://image.tmdb.org/t/p/w500/jEXGkKEIuyc6012BFpFJpaGOW5a.jpg",
-    "pageInfosUrl": "https://www.themoviedb.org/movie/947",
-    "genres": [
-      "Aventure",
-      "Histoire",
-      "Guerre"
-    ],
-    "originCountry": "United Kingdom",
-    "trailerUrl": "https://www.youtube.com/watch?v=8v1R5IFSb5s",
-    "dateDeSortie": "11/12/1962"
-  },
-  {
-    "id": 8,
     "poster": "https://image.tmdb.org/t/p/w500/rfRLWbxLZPq2eboKPsBvh1NgNwM.jpg",
     "title": "Mutiny",
     "description": "Après que son patron industriel milliardaire ait été assassiné sous ses yeux, Cole Reed est désigné pour endosser le crime, ce qui le met en fuite alors qu'il s'efforce de découvrir une conspiration internationale.",
@@ -182,7 +136,7 @@
     "dateDeSortie": "19/08/2026"
   },
   {
-    "id": 9,
+    "id": 7,
     "poster": "https://image.tmdb.org/t/p/w500/bW8uJOLrtdBnQcQbG9BUQjDgUaT.jpg",
     "title": "Insidious : L'Invasion du Lointain",
     "description": "Un trio de harceleurs s'infiltre dans une banlieue tranquille et force une nouvelle famille à entrer dans le plan astral, où ils découvrent une vérité terrifiante : l'Autre saigne dans le monde réel.",
@@ -204,7 +158,7 @@
     "dateDeSortie": "19/08/2026"
   },
   {
-    "id": 10,
+    "id": 8,
     "poster": "https://image.tmdb.org/t/p/w500/oeAFYZ56LDqucUkm5bZmBi2qRtl.jpg",
     "title": "I Want Your Sex",
     "description": "Lorsque le jeune et innocent Elliot décroche un emploi de rêve auprès d'Erika Tracy, artiste de renom, icône et provocatrice, ses fantasmes deviennent réalité : Erika fait de lui sa muse. Mais Elliot se retrouve vite dépassé par les événements, entraîné par Erika dans un voyage bien plus profond qu'il n'aurait jamais pu l'imaginer, un monde de sexe, d'obsession, de pouvoir, de trahison et de meurtre.",
@@ -224,5 +178,48 @@
     "originCountry": "United States of America",
     "trailerUrl": "https://www.youtube.com/watch?v=LKtRMqPs7KU",
     "dateDeSortie": "29/07/2026"
+  },
+  {
+    "id": 9,
+    "poster": "https://image.tmdb.org/t/p/w500/bhtutm5FfZNB8opuO9ttF7ueekn.jpg",
+    "title": "Toi, Moi et la Toscane",
+    "description": "L'histoire se déroule en Italie et raconte l'aventure d'une jeune cuisinière qui se retrouve prise dans une histoire enflammée après avoir décidé sur un coup de tête de dormir dans la villa toscane d'un homme qu'elle vient de rencontrer pour une nuit.",
+    "stars": [
+      "Halle Bailey",
+      "Regé-Jean Page",
+      "Marco Calvani",
+      "Lorenzo de Moor",
+      "Aziza Scott"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/bhtutm5FfZNB8opuO9ttF7ueekn.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1455079",
+    "genres": [
+      "Romance",
+      "Comédie"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=iBltbuw4aHo",
+    "dateDeSortie": "12/08/2026"
+  },
+  {
+    "id": 10,
+    "poster": "https://image.tmdb.org/t/p/w500/3btHoXx6lJtDJEybsCLhkqhNCb9.jpg",
+    "title": "Fjord",
+    "description": "Les Gheorghiu, un couple roumano-norvégien très pieux, s’installent dans un village au bout d’un fjord où ils se lient rapidement d’amitié avec leurs voisins, les Halberg. Les enfants des deux familles deviennent très proches, malgré des éducations différentes. Lorsque le corps enseignant découvre des ecchymoses sur le corps d’Elia, l’aînée des enfants Gheorghiu, la communauté se demande si l’éducation traditionnelle que les enfants Gheorghiu reçoivent de leurs parents pourrait en être la cause.",
+    "stars": [
+      "Sebastian Stan",
+      "Renate Reinsve",
+      "Lisa Carlehed",
+      "Ellen Dorrit Petersen",
+      "Lisa Loven Kongsli"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/3btHoXx6lJtDJEybsCLhkqhNCb9.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1401459",
+    "genres": [
+      "Drame"
+    ],
+    "originCountry": "Romania",
+    "trailerUrl": "https://www.youtube.com/watch?v=R7d9fl035hE",
+    "dateDeSortie": "19/08/2026"
   }
 ]
