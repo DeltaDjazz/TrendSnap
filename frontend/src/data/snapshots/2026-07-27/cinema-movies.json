@@ -48,29 +48,6 @@
   },
   {
     "id": 3,
-    "poster": "https://image.tmdb.org/t/p/w500/thQQ3BBBhGDtWm3UTtabhyDJd8U.jpg",
-    "title": "Backrooms",
-    "description": "Une étrange porte apparaît dans le sous-sol d'un magasin de meubles.",
-    "stars": [
-      "Chiwetel Ejiofor",
-      "Renate Reinsve",
-      "Finn Bennett",
-      "Lukita Maxwell",
-      "Mark Duplass"
-    ],
-    "imgVertical": "https://image.tmdb.org/t/p/w500/thQQ3BBBhGDtWm3UTtabhyDJd8U.jpg",
-    "pageInfosUrl": "https://www.themoviedb.org/movie/1083381",
-    "genres": [
-      "Horreur",
-      "Mystère",
-      "Science-Fiction"
-    ],
-    "originCountry": "United States of America",
-    "trailerUrl": "https://www.youtube.com/watch?v=mTPEEk55gZo",
-    "dateDeSortie": "27/05/2026"
-  },
-  {
-    "id": 4,
     "poster": "https://image.tmdb.org/t/p/w500/1QV4GubAlUvGX3FjqWWWfQiYkN4.jpg",
     "title": "Supergirl",
     "description": "Lorsqu’un ennemi inattendu et impitoyable surgit, Kara Zor-El est forcée, malgré elle, de faire équipe avec un compagnon improbable. Ensemble, ils se lancent dans une épopée cosmique où la vengeance et la justice sont en jeu, et où Kara doit affronter ses origines pour trouver sa propre voie en tant qu’héroïne.",
@@ -91,6 +68,29 @@
     "originCountry": "United States of America",
     "trailerUrl": "https://www.youtube.com/watch?v=ORQa-D2D3jw",
     "dateDeSortie": "24/06/2026"
+  },
+  {
+    "id": 4,
+    "poster": "https://image.tmdb.org/t/p/w500/thQQ3BBBhGDtWm3UTtabhyDJd8U.jpg",
+    "title": "Backrooms",
+    "description": "Une étrange porte apparaît dans le sous-sol d'un magasin de meubles.",
+    "stars": [
+      "Chiwetel Ejiofor",
+      "Renate Reinsve",
+      "Finn Bennett",
+      "Lukita Maxwell",
+      "Mark Duplass"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/thQQ3BBBhGDtWm3UTtabhyDJd8U.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1083381",
+    "genres": [
+      "Horreur",
+      "Mystère",
+      "Science-Fiction"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=mTPEEk55gZo",
+    "dateDeSortie": "27/05/2026"
   },
   {
     "id": 5,
@@ -143,29 +143,6 @@
   },
   {
     "id": 7,
-    "poster": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
-    "title": "Spider-Man: Brand New Day",
-    "description": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
-    "stars": [
-      "Tom Holland",
-      "Zendaya",
-      "Sadie Sink",
-      "Jacob Batalon",
-      "Jon Bernthal"
-    ],
-    "imgVertical": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
-    "pageInfosUrl": "https://www.themoviedb.org/movie/969681",
-    "genres": [
-      "Science-Fiction",
-      "Action",
-      "Aventure"
-    ],
-    "originCountry": "United States of America",
-    "trailerUrl": "https://www.youtube.com/watch?v=rCmTualxVwU",
-    "dateDeSortie": "28/07/2026"
-  },
-  {
-    "id": 8,
     "poster": "https://image.tmdb.org/t/p/w500/ndDY118G0Xn6W8aKP3sLz0ESkGq.jpg",
     "title": "On l'appelait Robin des Bois",
     "description": "Hanté par son passé après une vie de crimes et de violence, Robin des Bois est laissé pour mort à l’issue d’un combat qu’il pensait être le dernier. Recueilli par une femme mystérieuse, il se voit offrir une ultime chance de rédemption…",
@@ -189,7 +166,7 @@
     "dateDeSortie": "18/06/2026"
   },
   {
-    "id": 9,
+    "id": 8,
     "poster": "https://image.tmdb.org/t/p/w500/psrVewrAPgwYpBQGQvK07AliUjY.jpg",
     "title": "Jana Nayagan",
     "description": "Un choc idéologique. L’un se bat pour le peuple, l’autre se nourrit de contrôle. Leurs chemins se sont déjà croisés. Des années plus tard, la peur silencieuse d’un enfant réveille le passé, entraînant un ancien officier de police dans une bataille qui dépasse de loin la simple vengeance.",
@@ -211,26 +188,46 @@
     "dateDeSortie": "22/07/2026"
   },
   {
-    "id": 10,
-    "poster": "https://image.tmdb.org/t/p/w500/1pnigkWWy8W032o9TKDneBa3eVK.jpg",
-    "title": "Interstellar",
-    "description": "Dans un futur proche, face à une Terre exsangue, un groupe d’explorateurs utilise un vaisseau interstellaire pour franchir un trou de ver permettant de parcourir des distances jusque‐là infranchissables. Leur but : trouver un nouveau foyer pour l’humanité.",
+    "id": 9,
+    "poster": "https://image.tmdb.org/t/p/w500/twkjKuOf4hVAmXxOwpyRy682VZR.jpg",
+    "title": "Evil Dead Burn",
+    "description": "Après l’enterrement de son mari, Alice se rend dans la maison isolée de sa belle-famille pour partager un dernier repas à sa mémoire. Mais la réunion familiale bascule dans l’horreur lorsque ses proches se transforment, l’un après l’autre, en créatures démoniaques. Confrontée à cet enfer, Alice découvre que les vœux prononcés autrefois continuent de la lier à son mari… bien au-delà de la mort.",
     "stars": [
-      "Matthew McConaughey",
-      "Anne Hathaway",
-      "Michael Caine",
-      "Jessica Chastain",
-      "Casey Affleck"
+      "Souheila Yacoub",
+      "Tandi Wright",
+      "Hunter Doohan",
+      "Luciane Buchanan",
+      "Erroll Shand"
     ],
-    "imgVertical": "https://image.tmdb.org/t/p/w500/1pnigkWWy8W032o9TKDneBa3eVK.jpg",
-    "pageInfosUrl": "https://www.themoviedb.org/movie/157336",
+    "imgVertical": "https://image.tmdb.org/t/p/w500/twkjKuOf4hVAmXxOwpyRy682VZR.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/1212763",
     "genres": [
-      "Aventure",
-      "Drame",
-      "Science-Fiction"
+      "Horreur"
     ],
-    "originCountry": "United Kingdom",
-    "trailerUrl": "https://www.youtube.com/watch?v=kTGDxqUowq4",
-    "dateDeSortie": "05/11/2014"
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=x_mPdvdAKk8",
+    "dateDeSortie": "07/07/2026"
+  },
+  {
+    "id": 10,
+    "poster": "https://image.tmdb.org/t/p/w500/nSOJfWJCdVFZQwXQA7RXn7FIIiY.jpg",
+    "title": "Kill Bill : The Whole Bloody Affair",
+    "description": "Kill Bill : The Whole Bloody Affair est une édition complète des deux films d'action d'arts martiaux Kill Bill : Volume 1 et Kill Bill : Volume 2. Le film était à l'origine prévu pour être publié comme une seule partie. Toutefois, en raison de la durée du film plus de 4 heures, il a été divisé en deux parties.",
+    "stars": [
+      "Uma Thurman",
+      "Lucy Liu",
+      "Vivica A. Fox",
+      "Michael Madsen",
+      "Daryl Hannah"
+    ],
+    "imgVertical": "https://image.tmdb.org/t/p/w500/nSOJfWJCdVFZQwXQA7RXn7FIIiY.jpg",
+    "pageInfosUrl": "https://www.themoviedb.org/movie/414419",
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "originCountry": "United States of America",
+    "trailerUrl": "https://www.youtube.com/watch?v=lriK0sOEgCg",
+    "dateDeSortie": "27/03/2011"
   }
 ]

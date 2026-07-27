@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { saveSnapshot } from '../utils/saveSnapshot.mjs';
+import { getDateToday, saveSnapshot } from '../utils/saveSnapshot.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '../..');
@@ -11,6 +11,8 @@ const IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 const LANGUAGE = 'fr-FR';
 const REGION = 'FR';
 const TOP_N = 10;
+const NOW_PLAYING_MAX_MONTHS = 4;
+const NOW_PLAYING_MAX_PAGES = 5;
 
 /** Charge un fichier .env à la racine du projet (sans dépendance externe). */
 function loadEnvFile() {
@@ -79,6 +81,28 @@ async function tmdbFetch(pathname, auth, params = {}) {
 function posterUrl(posterPath) {
     if (!posterPath) return '';
     return `${IMAGE_BASE}${posterPath}`;
+}
+
+function toIsoDate(date) {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+}
+
+function getMinReleaseDate(todayIso) {
+    const date = new Date(`${todayIso}T00:00:00`);
+    date.setMonth(date.getMonth() - NOW_PLAYING_MAX_MONTHS);
+    return toIsoDate(date);
+}
+
+/** Films en salles : entre aujourd'hui − 4 mois et aujourd'hui (inclus). */
+function isReleaseDateInNowPlayingWindow(releaseDate, todayIso) {
+    if (!releaseDate || !/^\d{4}-\d{2}-\d{2}/.test(releaseDate)) return false;
+
+    const iso = releaseDate.slice(0, 10);
+    const minDate = getMinReleaseDate(todayIso);
+    return iso <= todayIso && iso >= minDate;
 }
 
 /** Convertit une date ISO YYYY-MM-DD en dd/mm/yyyy. */
@@ -166,17 +190,53 @@ function fallbackMovie(item, rank, { withDateDeSortie = false } = {}) {
 }
 
 async function fetchTop10(listPath, auth, label, options = {}) {
-    console.log(`Récupération TMDB ${label} (${listPath})...`);
-    const data = await tmdbFetch(listPath, auth, {
-        language: LANGUAGE,
-        region: REGION,
-        page: 1,
-    });
+    const { filterNowPlayingWindow = false } = options;
+    const today = getDateToday();
+    const minDate = filterNowPlayingWindow ? getMinReleaseDate(today) : null;
 
-    const top = (data.results ?? []).slice(0, TOP_N);
+    console.log(`Récupération TMDB ${label} (${listPath})...`);
+    if (filterNowPlayingWindow) {
+        console.log(
+            `Filtre date de sortie : ${minDate} → ${today} (max ${NOW_PLAYING_MAX_MONTHS} mois)`
+        );
+    }
+
+    const top = [];
+    let page = 1;
+
+    while (top.length < TOP_N && page <= NOW_PLAYING_MAX_PAGES) {
+        const data = await tmdbFetch(listPath, auth, {
+            language: LANGUAGE,
+            region: REGION,
+            page,
+        });
+
+        const results = data.results ?? [];
+        if (results.length === 0) break;
+
+        for (const item of results) {
+            if (
+                filterNowPlayingWindow &&
+                !isReleaseDateInNowPlayingWindow(item.release_date || '', today)
+            ) {
+                continue;
+            }
+
+            top.push(item);
+            if (top.length >= TOP_N) break;
+        }
+
+        if (page >= (data.total_pages ?? 1)) break;
+        page++;
+    }
+
     if (top.length === 0) {
         console.warn(`Aucun résultat pour ${label}.`);
         return [];
+    }
+
+    if (top.length < TOP_N) {
+        console.warn(`Seulement ${top.length} film(s) après filtre date pour ${label}.`);
     }
 
     const movies = [];
@@ -203,7 +263,7 @@ async function run() {
             '/movie/now_playing',
             auth,
             'films en salles',
-            { withDateDeSortie: true }
+            { withDateDeSortie: true, filterNowPlayingWindow: true }
         );
         saveSnapshot('cinema-movies.json', nowPlaying);
 
