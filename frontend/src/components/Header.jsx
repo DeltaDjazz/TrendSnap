@@ -1,23 +1,70 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
+function IconFilm({ className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M7 4v16M17 4v16M2 12h20" />
+    </svg>
+  )
+}
+
+function IconStar({ className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5z" />
+    </svg>
+  )
+}
+
+function IconManga({ className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+      <path d="M8 7h8M8 11h6" />
+    </svg>
+  )
+}
+
+function IconMusic({ className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+  )
+}
+
+function IconBook({ className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z" />
+      <path d="M12 2v20" />
+    </svg>
+  )
+}
+
 const NAV_LINKS = [
-  { label: 'Films/Séries', to: '/' },
-  { label: 'Mangas', disabled: true },
-  { label: 'Musiques', disabled: true },
-  { label: 'Livres', disabled: true },
+  { label: 'Films/Séries', to: '/', Icon: IconFilm },
+  { label: 'Mangas', disabled: true, Icon: IconManga },
+  { label: 'Musiques', disabled: true, Icon: IconMusic },
+  { label: 'Livres', disabled: true, Icon: IconBook },
 ]
 
 function navLinkClass({ isActive }) {
   return isActive
-    ? 'text-blue-400 hover:text-blue-300 transition-colors border-b-2 border-blue-400 pb-1'
-    : 'text-gray-400 hover:text-white transition-colors'
+    ? 'inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors border-b-2 border-blue-400 pb-1'
+    : 'inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors'
 }
 
 function favoritesLinkClass({ isActive }) {
   return isActive
-    ? 'text-sm font-medium text-yellow-400 border-b-2 border-yellow-400 pb-0.5'
-    : 'text-sm font-medium text-gray-400 hover:text-yellow-300 transition-colors'
+    ? 'inline-flex items-center gap-1.5 text-sm font-medium text-yellow-400 border-b-2 border-yellow-400 pb-0.5'
+    : 'inline-flex items-center gap-1.5 text-sm font-medium text-gray-400 hover:text-yellow-300 transition-colors'
 }
 
 function mobileNavLinkClass({ isActive }) {
@@ -55,23 +102,31 @@ export function Header() {
               TrendSnap
             </NavLink>
             <NavLink to="/favoris" className={favoritesLinkClass}>
+              <IconStar className="w-3.5 h-3.5" />
               Favoris
             </NavLink>
           </div>
 
           <nav className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm font-medium">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  {link.disabled ? (
-                    <span className="text-gray-600 cursor-not-allowed">{link.label}</span>
-                  ) : (
-                    <NavLink to={link.to} className={navLinkClass} end={link.to === '/'}>
-                      {link.label}
-                    </NavLink>
-                  )}
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const { Icon } = link
+                return (
+                  <li key={link.label}>
+                    {link.disabled ? (
+                      <span className="inline-flex items-center gap-2 text-gray-600 cursor-not-allowed">
+                        <Icon className="w-4 h-4" />
+                        {link.label}
+                      </span>
+                    ) : (
+                      <NavLink to={link.to} className={navLinkClass} end={link.to === '/'}>
+                        <Icon className="w-4 h-4" />
+                        {link.label}
+                      </NavLink>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </nav>
 
@@ -129,36 +184,48 @@ export function Header() {
                       isActive ? (
                         <span className="flex items-center gap-3">
                           <span className="w-1 h-6 bg-yellow-400 rounded-full" />
+                          <IconStar className="w-5 h-5" />
                           Favoris
                         </span>
                       ) : (
-                        'Favoris'
+                        <span className="flex items-center gap-3">
+                          <IconStar className="w-5 h-5" />
+                          Favoris
+                        </span>
                       )
                     }
                   </NavLink>
                 </li>
-                {NAV_LINKS.map((link) => (
-                  <li key={link.label}>
-                    {link.disabled ? (
-                      <span className="text-xl font-medium text-gray-600 cursor-not-allowed block">
-                        {link.label}
-                      </span>
-                    ) : (
-                      <NavLink to={link.to} className={mobileNavLinkClass} end={link.to === '/'} onClick={closeMenu}>
-                        {({ isActive }) =>
-                          isActive ? (
-                            <span className="flex items-center gap-3">
-                              <span className="w-1 h-6 bg-blue-400 rounded-full" />
-                              {link.label}
-                            </span>
-                          ) : (
-                            link.label
-                          )
-                        }
-                      </NavLink>
-                    )}
-                  </li>
-                ))}
+                {NAV_LINKS.map((link) => {
+                  const { Icon } = link
+                  return (
+                    <li key={link.label}>
+                      {link.disabled ? (
+                        <span className="flex items-center gap-3 text-xl font-medium text-gray-600 cursor-not-allowed">
+                          <Icon className="w-5 h-5" />
+                          {link.label}
+                        </span>
+                      ) : (
+                        <NavLink to={link.to} className={mobileNavLinkClass} end={link.to === '/'} onClick={closeMenu}>
+                          {({ isActive }) =>
+                            isActive ? (
+                              <span className="flex items-center gap-3">
+                                <span className="w-1 h-6 bg-blue-400 rounded-full" />
+                                <Icon className="w-5 h-5" />
+                                {link.label}
+                              </span>
+                            ) : (
+                              <span className="flex items-center gap-3">
+                                <Icon className="w-5 h-5" />
+                                {link.label}
+                              </span>
+                            )
+                          }
+                        </NavLink>
+                      )}
+                    </li>
+                  )
+                })}
               </ul>
             </nav>
 
