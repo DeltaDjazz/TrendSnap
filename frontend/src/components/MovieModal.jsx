@@ -119,13 +119,29 @@ export function MovieModal({
           <div className="flex flex-rows">
             <div className="shrink-0 p-4 ">
               {poster && (
-                <img
-                  src={modalPoster !== "" ? modalPoster : poster}
-                  alt={title}
-                  className={`w-36 md:w-60 rounded-lg object-cover ${
-                    isWide ? 'aspect-video' : 'aspect-[2/3]'
-                  }`}
-                />
+                <div className="relative w-36 md:w-60">
+                  <img
+                    src={modalPoster !== "" ? modalPoster : poster}
+                    alt={title}
+                    className={`w-full rounded-lg object-cover ${
+                      isWide ? 'aspect-video' : 'aspect-[2/3]'
+                    }`}
+                  />
+                  {favoriteContent && (
+                    <button
+                      type="button"
+                      onClick={handleToggleFavorite}
+                      className={`absolute top-2 right-2 z-10 rounded-full bg-black/50 p-2 text-xl leading-none backdrop-blur-sm transition hover:scale-110 ${
+                        favorited
+                          ? 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.95)]'
+                          : 'text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.95)]'
+                      }`}
+                      aria-label={favorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                    >
+                      {favorited ? '★' : '☆'}
+                    </button>
+                  )}
+                </div>
               )}
               {trailerUrl && (
                 <div className="flex flex-col gap-2">
@@ -135,23 +151,7 @@ export function MovieModal({
             </div>
 
             <div className="min-w-0 flex-1 p-2 md:p-6 pr-4 md:pr-6 pt-5">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-xl md:text-2xl font-semibold text-white">{title}</h3>
-                {favoriteContent && (
-                  <button
-                    type="button"
-                    onClick={handleToggleFavorite}
-                    className={`shrink-0 rounded-lg border px-3 py-1.5 text-sm font-medium transition ${
-                      favorited
-                        ? 'border-yellow-500/50 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20'
-                        : 'border-zinc-600 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
-                    }`}
-                    aria-label={favorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
-                  >
-                    {favorited ? '★ Favori' : '☆ Favori'}
-                  </button>
-                )}
-              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{title}</h3>
               {limitMessage && (
                 <p className="mb-4 text-sm text-amber-400">
                   Vous avez atteint la limite de {MAX_FAVORITES} favoris.
