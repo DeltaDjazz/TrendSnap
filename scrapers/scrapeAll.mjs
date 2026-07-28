@@ -177,8 +177,12 @@ async function runScrapers() {
     console.log(`\n📄 Log : ${paths.logPath}`);
     console.log(`📄 Dernier log : ${paths.latestPath}`);
 
+    // Les échecs partiels n'interrompent pas le cron (commit / build / deploy).
+    // Le frontend gère les plateformes sans snapshot du jour.
     if (failCount > 0) {
-        process.exitCode = 1;
+        log(
+            `⚠ ${failCount} job(s) en échec — poursuite du pipeline (exit 0).`
+        );
     }
 }
 
