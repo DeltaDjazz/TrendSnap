@@ -20,7 +20,7 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value))
 }
 
-export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, backgroundColor, onMovieSelect }) {
+export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, backgroundColor, snapshotDate, onMovieSelect }) {
   const { config: cardConfig } = getCardTemplate(template)
   const { config: sliderConfig } = getSliderTemplate(template)
   const resolvedWidth = cardWidth ?? cardConfig.cardWidth
@@ -300,7 +300,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
                   template={template}
                   cardWidth={effectiveWidth}
                   cardHeight={effectiveHeight}
-                  onSelect={onMovieSelect}
+                  onSelect={(movie, cardTemplate) => onMovieSelect?.(movie, cardTemplate, snapshotDate)}
                 />
               </div>
             ))}

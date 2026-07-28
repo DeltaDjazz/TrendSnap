@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
-import { getCardTemplate } from '../templates/cardTemplates'
+import { useEffect, useState } from 'react'
+import { useFavorites } from '../features/favorites/useFavorites'
+import { MAX_FAVORITES } from '../features/favorites/constants'
 
 function formatGenre(genre) {
   if (!genre) return null
@@ -27,7 +28,54 @@ function InfoField({ label, value }) {
   )
 }
 
-export function MovieModal({ isOpen, title, description, poster, modalPoster, year, dateDeSortie, genre, saison, episodes, stars, originCountry, trailerUrl, template = 'cinema', onClose }) {
+export function MovieModal({
+  isOpen,
+  title,
+  description,
+  poster,
+  modalPoster,
+  year,
+  dateDeSortie,
+  genre,
+  saison,
+  episodes,
+  stars,
+  originCountry,
+  trailerUrl,
+  template: _template = 'cinema',
+  favoriteContent,
+  onFavoriteRemoveRequest,
+  onClose,
+}) {
+  const { toggleFavorite, isFavorite, isAtLimit } = useFavorites()
+  const [limitMessage, setLimitMessage] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) setLimitMessage(false)
+  }, [isOpen])
+
+  const favorited = favoriteContent ? isFavorite(favoriteContent) : false
+
+  const handleToggleFavorite = () => {
+    if (!favoriteContent) return
+
+    if (favorited) {
+      if (onFavoriteRemoveRequest) {
+        onFavoriteRemoveRequest()
+        return
+      }
+      toggleFavorite(favoriteContent)
+      return
+    }
+
+    if (isAtLimit) {
+      setLimitMessage(true)
+      return
+    }
+
+    setLimitMessage(false)
+    toggleFavorite(favoriteContent)
+  }
   useEffect(() => {
     if (!isOpen) return
 
@@ -41,10 +89,7 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
 
   if (!isOpen) return null
 
-  const { config } = getCardTemplate(template)
-
-  //si modalPoster est egale "", alors isWide est true
-  const isWide = modalPoster === "" ? true : false
+  const isWide = modalPoster === ''
   const genreLabel = formatGenre(genre)
 
   const handleBackdropClick = () => {
@@ -84,13 +129,29 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
           <div className="flex flex-rows">
             <div className="shrink-0 p-4 ">
               {poster && (
-                <img
-                  src={modalPoster !== "" ? modalPoster : poster}
-                  alt={title}
-                  className={`w-36 md:w-60 rounded-lg object-cover ${
-                    isWide ? 'aspect-video' : 'aspect-[2/3]'
-                  }`}
-                />
+                <div className="relative w-36 md:w-60">
+                  <img
+                    src={modalPoster !== "" ? modalPoster : poster}
+                    alt={title}
+                    className={`w-full rounded-lg object-cover ${
+                      isWide ? 'aspect-video' : 'aspect-[2/3]'
+                    }`}
+                  />
+                  {favoriteContent && (
+                    <button
+                      type="button"
+                      onClick={handleToggleFavorite}
+                      className={`absolute top-2 right-2 z-10 rounded-full bg-black/50 p-2 text-xl leading-none backdrop-blur-sm transition hover:scale-110 ${
+                        favorited
+                          ? 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.95)]'
+                          : 'text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.95)]'
+                      }`}
+                      aria-label={favorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                    >
+                      {favorited ? '★' : '☆'}
+                    </button>
+                  )}
+                </div>
               )}
               {trailerUrl && (
                 <div className="flex flex-col gap-2">
@@ -101,6 +162,11 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
 
             <div className="min-w-0 flex-1 p-2 md:p-6 pr-4 md:pr-6 pt-5">
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{title}</h3>
+              {limitMessage && (
+                <p className="mb-4 text-sm text-amber-400">
+                  Vous avez atteint la limite de {MAX_FAVORITES} favoris.
+                </p>
+              )}
               <div className="flex flex-col md:flex-row  gap-2">
                 {dateDeSortie ? (
                   <InfoField label="Date de sortie" value={dateDeSortie} />
