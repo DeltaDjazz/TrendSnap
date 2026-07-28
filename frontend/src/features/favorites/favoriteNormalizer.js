@@ -39,3 +39,32 @@ export function normalizeFavorite(content) {
     },
   }
 }
+
+/**
+ * Reconstruit un objet content utilisable par useFavorites et MovieModal.
+ * @param {object} favorite
+ */
+export function favoriteToContent(favorite) {
+  const { content, source } = favorite
+
+  return {
+    movie: {
+      title: content.title,
+      poster: content.poster,
+      imgVertical: content.modalPoster,
+      description: content.description,
+      genre: content.genre,
+      genres: content.genre,
+      stars: content.stars,
+      year: content.year,
+      dateDeSortie: content.dateDeSortie,
+      saison: content.saison,
+      nbSaisons: content.saison,
+      nbEpisodes: content.episodes,
+      originCountry: content.originCountry,
+      trailerUrl: content.trailerUrl,
+    },
+    template: source.template,
+    snapshotDate: source.snapshotDate,
+  }
+}
