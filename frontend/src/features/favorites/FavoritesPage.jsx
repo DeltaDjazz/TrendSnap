@@ -7,7 +7,7 @@ import { FavoritesGrid } from './components/FavoritesGrid'
 import { FavoritesEmptyState } from './components/FavoritesEmptyState'
 import { MAX_FAVORITES } from './constants'
 
-export function FavoritesPage({ onBackToTrends }) {
+export function FavoritesPage() {
   const { favorites, removeFavorite } = useFavorites()
   const [selectedFavorite, setSelectedFavorite] = useState(null)
 
@@ -31,7 +31,7 @@ export function FavoritesPage({ onBackToTrends }) {
         </div>
 
         {favorites.length === 0 ? (
-          <FavoritesEmptyState onBackToTrends={onBackToTrends} />
+          <FavoritesEmptyState />
         ) : (
           <FavoritesGrid
             favorites={favorites}
