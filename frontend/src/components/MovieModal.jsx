@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
-import { getCardTemplate } from '../templates/cardTemplates'
+import { useEffect, useState } from 'react'
+import { useFavorites } from '../features/favorites/useFavorites'
+import { MAX_FAVORITES } from '../features/favorites/constants'
 
 function formatGenre(genre) {
   if (!genre) return null
@@ -27,7 +28,44 @@ function InfoField({ label, value }) {
   )
 }
 
-export function MovieModal({ isOpen, title, description, poster, modalPoster, year, dateDeSortie, genre, saison, episodes, stars, originCountry, trailerUrl, template = 'cinema', onClose }) {
+export function MovieModal({
+  isOpen,
+  title,
+  description,
+  poster,
+  modalPoster,
+  year,
+  dateDeSortie,
+  genre,
+  saison,
+  episodes,
+  stars,
+  originCountry,
+  trailerUrl,
+  template: _template = 'cinema',
+  favoriteContent,
+  onClose,
+}) {
+  const { toggleFavorite, isFavorite, isAtLimit } = useFavorites()
+  const [limitMessage, setLimitMessage] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) setLimitMessage(false)
+  }, [isOpen])
+
+  const favorited = favoriteContent ? isFavorite(favoriteContent) : false
+
+  const handleToggleFavorite = () => {
+    if (!favoriteContent) return
+
+    if (!favorited && isAtLimit) {
+      setLimitMessage(true)
+      return
+    }
+
+    setLimitMessage(false)
+    toggleFavorite(favoriteContent)
+  }
   useEffect(() => {
     if (!isOpen) return
 
@@ -41,10 +79,7 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
 
   if (!isOpen) return null
 
-  const { config } = getCardTemplate(template)
-
-  //si modalPoster est egale "", alors isWide est true
-  const isWide = modalPoster === "" ? true : false
+  const isWide = modalPoster === ''
   const genreLabel = formatGenre(genre)
 
   const handleBackdropClick = () => {
@@ -100,7 +135,28 @@ export function MovieModal({ isOpen, title, description, poster, modalPoster, ye
             </div>
 
             <div className="min-w-0 flex-1 p-2 md:p-6 pr-4 md:pr-6 pt-5">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{title}</h3>
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-white">{title}</h3>
+                {favoriteContent && (
+                  <button
+                    type="button"
+                    onClick={handleToggleFavorite}
+                    className={`shrink-0 rounded-lg border px-3 py-1.5 text-sm font-medium transition ${
+                      favorited
+                        ? 'border-yellow-500/50 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20'
+                        : 'border-zinc-600 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
+                    }`}
+                    aria-label={favorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                  >
+                    {favorited ? '★ Favori' : '☆ Favori'}
+                  </button>
+                )}
+              </div>
+              {limitMessage && (
+                <p className="mb-4 text-sm text-amber-400">
+                  Vous avez atteint la limite de {MAX_FAVORITES} favoris.
+                </p>
+              )}
               <div className="flex flex-col md:flex-row  gap-2">
                 {dateDeSortie ? (
                   <InfoField label="Date de sortie" value={dateDeSortie} />

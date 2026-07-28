@@ -22,8 +22,8 @@ const hboSeries = loadSnapshot('hbo-series.json')
 function App() {
   const [selection, setSelection] = useState(null)
 
-  const handleMovieSelect = (movie, template) => {
-    setSelection({ movie, template })
+  const handleMovieSelect = (movie, template, snapshotDate) => {
+    setSelection({ movie, template, snapshotDate })
   }
 
   const handleCloseModal = () => {
@@ -45,13 +45,13 @@ function App() {
             <div className="pt-10">
               <h2 className={getSliderTemplate('netflix-series').config.titleClass}>Top 10 des films Netflix</h2>
               <SnapshotNotice {...netflixMovies} />
-              <TopSlider movies={netflixMovies.data.slice(0, 10)} template="netflix-movies" onMovieSelect={handleMovieSelect} />
+              <TopSlider movies={netflixMovies.data.slice(0, 10)} template="netflix-movies" snapshotDate={netflixMovies.snapshotDate} onMovieSelect={handleMovieSelect} />
             </div>
             <div className="h-px w-full bg-gradient-to-r from-transparent via-[#FFFFFF] to-transparent" />
             <div className="pt-10">
               <h2 className={getSliderTemplate('netflix-series').config.titleClass}>Top 10 des séries Netflix</h2>
               <SnapshotNotice {...netflixSeries} />
-              <TopSlider movies={netflixSeries.data.slice(0, 10)} template="netflix-series" onMovieSelect={handleMovieSelect} />
+              <TopSlider movies={netflixSeries.data.slice(0, 10)} template="netflix-series" snapshotDate={netflixSeries.snapshotDate} onMovieSelect={handleMovieSelect} />
             </div>
           </div>
         </section>
@@ -61,13 +61,13 @@ function App() {
           <div className="pt-5">
             <h2 className={`${getSliderTemplate('apple-series').config.titleClass} mt-10`}>Top 10 des séries Apple TV+</h2>
             <SnapshotNotice {...appleSeries} />
-            <TopSlider movies={appleSeries.data.slice(0, 10)} template="apple-series" onMovieSelect={handleMovieSelect} />
+            <TopSlider movies={appleSeries.data.slice(0, 10)} template="apple-series" snapshotDate={appleSeries.snapshotDate} onMovieSelect={handleMovieSelect} />
           </div>
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#000] to-transparent" />
           <div className="pb-10 mt-10">
             <h2 className={getSliderTemplate('apple-movies').config.titleClass}>Top 10 des films Apple TV+</h2>
             <SnapshotNotice {...appleMovies} />
-            <TopSlider movies={appleMovies.data.slice(0, 10)} template="apple-movies" onMovieSelect={handleMovieSelect} />
+            <TopSlider movies={appleMovies.data.slice(0, 10)} template="apple-movies" snapshotDate={appleMovies.snapshotDate} onMovieSelect={handleMovieSelect} />
           </div>
         </section>
 
@@ -76,13 +76,13 @@ function App() {
           <div className="pt-5">
             <h2 className={`${getSliderTemplate('amazon-series').config.titleClass} mt-10`}>Top 10 des séries Amazon Prime</h2>
             <SnapshotNotice {...amazonSeries} />
-            <TopSlider movies={amazonSeries.data.slice(0, 10)} template="amazon-series" onMovieSelect={handleMovieSelect} />
+            <TopSlider movies={amazonSeries.data.slice(0, 10)} template="amazon-series" snapshotDate={amazonSeries.snapshotDate} onMovieSelect={handleMovieSelect} />
           </div>
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#000] to-transparent" />
           <div className="pb-10 mt-10 ">
             <h2 className={`${getSliderTemplate('amazon-movies').config.titleClass} mt-10`}>Top 10 des films Amazon Prime</h2>
             <SnapshotNotice {...amazonMovies} />
-            <TopSlider movies={amazonMovies.data.slice(0, 10)} template="amazon-movies" onMovieSelect={handleMovieSelect} />
+            <TopSlider movies={amazonMovies.data.slice(0, 10)} template="amazon-movies" snapshotDate={amazonMovies.snapshotDate} onMovieSelect={handleMovieSelect} />
           </div>
         </section>
 
@@ -91,13 +91,13 @@ function App() {
           <div className="py-10">
             <h2 className={getSliderTemplate('paramount-series').config.titleClass}>Top 10 des séries Paramount+</h2>
             <SnapshotNotice {...paramountSeries} />
-            <TopSlider movies={paramountSeries.data.slice(0, 10)} template="paramount-series" onMovieSelect={handleMovieSelect} />
+            <TopSlider movies={paramountSeries.data.slice(0, 10)} template="paramount-series" snapshotDate={paramountSeries.snapshotDate} onMovieSelect={handleMovieSelect} />
           </div>
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#fff] to-transparent" />
           <div className="py-10">
             <h2 className={getSliderTemplate('hbo-series').config.titleClass}>Top 10 des séries HBO Max</h2>
             <SnapshotNotice {...hboSeries} />
-            <TopSlider movies={hboSeries.data.slice(0, 10)} template="hbo-series" onMovieSelect={handleMovieSelect} />
+            <TopSlider movies={hboSeries.data.slice(0, 10)} template="hbo-series" snapshotDate={hboSeries.snapshotDate} onMovieSelect={handleMovieSelect} />
           </div>
         </section>
 
@@ -105,11 +105,11 @@ function App() {
         <section className="bg-gradient-to-t from-[#1e1845] via-[#920073] to-[#1e1845] py-10">
           <h2 className={`${getSliderTemplate('cinema').config.titleClass}`}>Top 10 des films cinéma du moment</h2>
           <SnapshotNotice {...cinemaMovies} />
-          <TopSlider movies={cinemaMovies.data.slice(0, 10)} template="cinema" onMovieSelect={handleMovieSelect} />
+          <TopSlider movies={cinemaMovies.data.slice(0, 10)} template="cinema" snapshotDate={cinemaMovies.snapshotDate} onMovieSelect={handleMovieSelect} />
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#FFFFFF]/40 to-transparent my-10" />
           <h2 className={`${getSliderTemplate('cinema').config.titleClass}`}>Top 10 des films cinéma à venir</h2>
           <SnapshotNotice {...cinemaUpcoming} />
-          <TopSlider movies={cinemaUpcoming.data.slice(0, 10)} template="cinema" onMovieSelect={handleMovieSelect} />
+          <TopSlider movies={cinemaUpcoming.data.slice(0, 10)} template="cinema" snapshotDate={cinemaUpcoming.snapshotDate} onMovieSelect={handleMovieSelect} />
         </section>
       </main>
 
@@ -128,6 +128,15 @@ function App() {
         originCountry={selection?.movie.originCountry ?? ""}
         trailerUrl={selection?.movie.trailerUrl ?? ""}
         template={selection?.template}
+        favoriteContent={
+          selection
+            ? {
+                movie: selection.movie,
+                template: selection.template,
+                snapshotDate: selection.snapshotDate ?? null,
+              }
+            : null
+        }
         onClose={handleCloseModal}
       />
     </div>
