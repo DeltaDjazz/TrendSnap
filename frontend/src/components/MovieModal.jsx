@@ -44,6 +44,7 @@ export function MovieModal({
   trailerUrl,
   template: _template = 'cinema',
   favoriteContent,
+  onFavoriteRemoveRequest,
   onClose,
 }) {
   const { toggleFavorite, isFavorite, isAtLimit } = useFavorites()
@@ -58,7 +59,16 @@ export function MovieModal({
   const handleToggleFavorite = () => {
     if (!favoriteContent) return
 
-    if (!favorited && isAtLimit) {
+    if (favorited) {
+      if (onFavoriteRemoveRequest) {
+        onFavoriteRemoveRequest()
+        return
+      }
+      toggleFavorite(favoriteContent)
+      return
+    }
+
+    if (isAtLimit) {
       setLimitMessage(true)
       return
     }

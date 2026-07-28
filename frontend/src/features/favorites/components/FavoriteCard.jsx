@@ -32,7 +32,10 @@ export function FavoriteCard({ favorite, onOpen, onRemove }) {
 
       <button
         type="button"
-        onClick={() => onRemove(favorite.key)}
+        onClick={(event) => {
+          event.stopPropagation()
+          onRemove(favorite)
+        }}
         className="absolute top-2 right-2 rounded-full bg-black/70 p-1.5 text-zinc-300 opacity-0 group-hover:opacity-100 transition hover:bg-red-600 hover:text-white"
         aria-label={`Retirer ${content.title} des favoris`}
       >

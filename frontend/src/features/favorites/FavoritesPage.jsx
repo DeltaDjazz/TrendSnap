@@ -5,14 +5,36 @@ import { useFavorites } from './useFavorites'
 import { favoriteToContent } from './favoriteNormalizer'
 import { FavoritesGrid } from './components/FavoritesGrid'
 import { FavoritesEmptyState } from './components/FavoritesEmptyState'
+import { RemoveFavoriteConfirm } from './components/RemoveFavoriteConfirm'
 import { MAX_FAVORITES } from './constants'
 
 export function FavoritesPage() {
   const { favorites, removeFavorite } = useFavorites()
   const [selectedFavorite, setSelectedFavorite] = useState(null)
+  const [pendingRemoval, setPendingRemoval] = useState(null)
 
   const handleCloseModal = () => {
     setSelectedFavorite(null)
+  }
+
+  const requestRemove = (favorite) => {
+    setPendingRemoval(favorite)
+  }
+
+  const handleCancelRemove = () => {
+    setPendingRemoval(null)
+  }
+
+  const handleConfirmRemove = () => {
+    if (!pendingRemoval) return
+
+    removeFavorite(pendingRemoval.key)
+
+    if (selectedFavorite?.key === pendingRemoval.key) {
+      setSelectedFavorite(null)
+    }
+
+    setPendingRemoval(null)
   }
 
   const selectedContent = selectedFavorite ? favoriteToContent(selectedFavorite) : null
@@ -36,7 +58,7 @@ export function FavoritesPage() {
           <FavoritesGrid
             favorites={favorites}
             onOpen={setSelectedFavorite}
-            onRemove={removeFavorite}
+            onRemove={requestRemove}
           />
         )}
       </main>
@@ -57,7 +79,15 @@ export function FavoritesPage() {
         trailerUrl={selectedMovie?.trailerUrl ?? ''}
         template={selectedContent?.template}
         favoriteContent={selectedContent}
+        onFavoriteRemoveRequest={() => selectedFavorite && requestRemove(selectedFavorite)}
         onClose={handleCloseModal}
+      />
+
+      <RemoveFavoriteConfirm
+        isOpen={pendingRemoval !== null}
+        title={pendingRemoval?.content.title}
+        onConfirm={handleConfirmRemove}
+        onCancel={handleCancelRemove}
       />
     </div>
   )
