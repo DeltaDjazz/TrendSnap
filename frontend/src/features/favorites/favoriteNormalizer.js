@@ -89,6 +89,7 @@ export function favoriteToContent(favorite) {
   const { content, source } = favorite
 
   return {
+    key: favorite.key,
     movie: {
       title: content.title,
       poster: content.poster,
