@@ -1,7 +1,7 @@
-import { runFlixpatrolJob } from '../utils/flixpatrol.mjs';
+import { PROVIDER_IDS, runTmdbProviderSeriesJob } from '../utils/tmdbWatchProviders.mjs';
 
-runFlixpatrolJob({
-    platform: 'hbo-max',
+runTmdbProviderSeriesJob({
+    providerId: PROVIDER_IDS.max,
     snapshotFile: 'hbo-series.json',
-    label: 'HBO Max',
+    label: 'Max (HBO)',
 });
