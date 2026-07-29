@@ -1,7 +1,7 @@
-import { runFlixpatrolJob } from '../utils/flixpatrol.mjs';
+import { PROVIDER_IDS, runTmdbProviderSeriesJob } from '../utils/tmdbWatchProviders.mjs';
 
-runFlixpatrolJob({
-    platform: 'paramount-plus',
+runTmdbProviderSeriesJob({
+    providerId: PROVIDER_IDS.paramountPlus,
     snapshotFile: 'paramount-series.json',
     label: 'Paramount+',
 });
