@@ -55,21 +55,30 @@ function categoryClass({ isActive }) {
 }
 
 export function AppSidebar({ onNavigate, className = '' }) {
-  const handleAnchorClick = (event, anchor) => {
-    const hash = `#${anchor}`
-    const onTrends = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/TrendSnap') || window.location.pathname.endsWith('/TrendSnap/')
+  const navigate = useNavigate()
+  const location = useLocation()
 
-    if (onTrends || window.location.pathname === '/' || window.location.pathname.endsWith('/TrendSnap')) {
+  const handleAnchorClick = (event, anchor) => {
+    event.preventDefault()
+    const scrollToAnchor = () => {
       const el = document.getElementById(anchor)
       if (el) {
-        event.preventDefault()
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        window.history.replaceState(null, '', hash)
-        onNavigate?.()
-        return
       }
     }
+
+    if (location.pathname === '/' || location.pathname === '') {
+      scrollToAnchor()
+      window.history.replaceState(null, '', `#${anchor}`)
+      onNavigate?.()
+      return
+    }
+
+    navigate({ pathname: '/', hash: anchor })
     onNavigate?.()
+    requestAnimationFrame(() => {
+      setTimeout(scrollToAnchor, 50)
+    })
   }
 
   return (
