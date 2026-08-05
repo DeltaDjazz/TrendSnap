@@ -5,6 +5,7 @@ import {
     loadEnvFile,
     pickTrailerUrl,
     posterUrl,
+    backdropUrl,
     REGION,
     tmdbFetch,
 } from '../utils/tmdb.mjs';
@@ -93,6 +94,7 @@ async function enrichMovie(listItem, rank, auth, { withDateDeSortie = false } = 
 
     const releaseDate = resolveReleaseDate(details, listItem);
     const image = posterUrl(details.poster_path || listItem.poster_path);
+    const backdrop = backdropUrl(details.backdrop_path || listItem.backdrop_path);
 
     const movie = {
         id: rank,
@@ -105,6 +107,7 @@ async function enrichMovie(listItem, rank, auth, { withDateDeSortie = false } = 
         genres,
         originCountry,
         trailerUrl: pickTrailerUrl(details.videos),
+        backdropUrl: backdrop,
     };
 
     if (withDateDeSortie) {
