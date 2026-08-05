@@ -41,10 +41,10 @@ export function FavoritesPage() {
   const selectedMovie = selectedContent?.movie
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="app-main">
       <Header />
 
-      <main className="px-6 pt-24 pb-16 max-w-7xl mx-auto">
+      <main className="px-6 pt-8 pb-16 max-w-7xl mx-auto">
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-white">Mes favoris</h1>
           <p className="mt-2 text-zinc-400">

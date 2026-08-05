@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+:root {
+  --bg-app: #0a0a0a;
+  --bg-sidebar: #111111;
+  --bg-elevated: #171717;
+  --accent-red: #e50914;
+  --accent-magenta: #c026d3;
+  --sidebar-width: 15rem;
+  --header-height: 3.75rem;
+  --platform-netflix: #e50914;
+  --platform-apple: #a2aaad;
+  --platform-amazon: #00a8e1;
+  --platform-paramount: #0064ff;
+  --platform-max: #b12a9a;
+  --platform-cinema: #c9a227;
+}
+
 @layer components {
   .modal-glass-panel {
     max-width: 102.7rem;
@@ -18,6 +34,25 @@
       rgb(255, 255, 255) 4px 4px 1px -5px inset,
       rgba(0, 0, 0, 0.01) 0 0 0 2px inset;
   }
+
+  .app-main {
+    min-height: 100vh;
+    padding-top: var(--header-height);
+    background-color: var(--bg-app);
+    color: #f4f4f5;
+  }
+
+  @media (min-width: 768px) {
+    .app-main {
+      padding-left: var(--sidebar-width);
+    }
+  }
+
+  .platform-section {
+    border-left-width: 3px;
+    border-left-style: solid;
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+  }
 }
 
 @layer utilities {
@@ -26,6 +61,11 @@
   }
   .text-stroke-zinc {
     -webkit-text-stroke: 1px #52525b;
+  }
+  .text-stroke-rank {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.85);
+    paint-order: stroke fill;
   }
   .header-gradient-border {
     position: relative;
