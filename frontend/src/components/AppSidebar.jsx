@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { PLATFORMS } from '../platforms'
 import { CATEGORY_LINKS } from '../navCategories'
 
