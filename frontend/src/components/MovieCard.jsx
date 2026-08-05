@@ -7,6 +7,8 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
   const height = cardHeight ?? config.cardHeight
   const aspectClass = config.posterAspect === '16/9' ? 'aspect-video' : 'aspect-[2/3]'
   const borderClass = config.borderClass ?? ''
+  const showNumber = config.showNumber && number != null
+  const rankInset = showNumber ? (String(number).length > 1 ? '2.75rem' : '2rem') : '0px'
 
   const handleSelect = (event) => {
     if (event.button !== 0) return
@@ -20,21 +22,17 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
   }
 
   return (
-    <div
-      className="relative"
-    >
-      {config.showNumber && number != null && (
+    <div className="relative overflow-visible" style={{ width: `${width}px` }}>
+      {showNumber && (
         <RankNumber
           number={number}
           variant={config.rankNumberVariant}
-          position={config.numberPosition ?? 'bottom'}
-          offset={config.numberOffset ?? '8px'}
           size={config.numberSize}
         />
       )}
       <div
-        className={`relative bg-zinc-900 rounded-xl md:hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer ${borderClass}`}
-        style={{ minHeight: `${height}px` }}
+        className={`relative z-10 bg-zinc-900 rounded-xl md:hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer ${borderClass}`}
+        style={{ minHeight: `${height}px`, marginLeft: rankInset }}
         onClick={handleSelect}
         onContextMenu={handleContextMenu}
         role="button"
