@@ -131,6 +131,7 @@ function fallbackMovie(item, rank, { withDateDeSortie = false } = {}) {
         genres: [],
         originCountry: '',
         trailerUrl: '',
+        backdropUrl: backdropUrl(item.backdrop_path),
     };
 
     if (withDateDeSortie) {
