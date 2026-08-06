@@ -110,7 +110,9 @@ export function MovieModal({
   const resolvedBackdropUrl =
     backdropUrl || (posterAspect === '16/9' ? poster || '' : '')
   const isRich = Boolean(resolvedBackdropUrl)
+  const isLandscapePoster = !modalPoster && posterAspect === '16/9'
   const posterSrc = modalPoster || poster
+  const posterAspectClass = isLandscapePoster ? 'aspect-video' : 'aspect-[2/3]'
   const host = trailerHost(trailerUrl)
   const favorited = favoriteContent ? isFavorite(favoriteContent) : false
 
@@ -186,11 +188,17 @@ export function MovieModal({
           <div className={`relative px-4 pb-6 md:px-6 ${isRich ? '-mt-10 md:-mt-14' : 'pt-10'}`}>
             <div className="flex flex-col gap-5 md:flex-row md:gap-6">
               {posterSrc && (
-                <div className="mx-auto w-36 shrink-0 md:mx-0 md:w-44">
+                <div
+                  className={
+                    isLandscapePoster
+                      ? 'mx-auto w-full max-w-sm shrink-0 md:mx-0 md:w-72'
+                      : 'mx-auto w-36 shrink-0 md:mx-0 md:w-44'
+                  }
+                >
                   <img
                     src={posterSrc}
                     alt={title}
-                    className="w-full rounded-xl border border-white/10 object-cover shadow-lg aspect-[2/3]"
+                    className={`w-full rounded-xl border border-white/10 object-cover shadow-lg ${posterAspectClass}`}
                   />
                 </div>
               )}
