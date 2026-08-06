@@ -1,9 +1,9 @@
-import logoNetflix from './assets/logo-netflix.png'
-import logoApple from './assets/logo-apple-tv.png'
-import logoAmazon from './assets/platforms/amazon.svg'
-import logoParamount from './assets/platforms/paramount.svg'
-import logoMax from './assets/platforms/max.svg'
-import logoCinema from './assets/platforms/cinema.svg'
+import logoNetflix from './assets/logos/logo-netflix.png'
+import logoApple from './assets/logos/logo-apple-tv.png'
+import logoAmazon from './assets/logos/prime-video.png'
+import logoParamount from './assets/logos/paramount-plus.png'
+import logoMax from './assets/logos/hbo-max.png'
+import logoCinema from './assets/logos/cinema.png'
 
 /** Templates → plateforme (badge modale, etc.) */
 export const TEMPLATE_PLATFORM = {

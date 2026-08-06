@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useFavorites } from '../features/favorites/useFavorites'
 import { MAX_FAVORITES } from '../features/favorites/constants'
 import { getPlatformForTemplate } from '../platforms'
+import { getCardTemplate } from '../templates/cardTemplates'
 
 function formatGenre(genre) {
   if (!genre) return null
@@ -105,7 +106,10 @@ export function MovieModal({
 
   const platform = getPlatformForTemplate(template)
   const genreLabel = formatGenre(genre)
-  const isRich = Boolean(backdropUrl)
+  const posterAspect = getCardTemplate(template).config.posterAspect
+  const resolvedBackdropUrl =
+    backdropUrl || (posterAspect === '16/9' ? poster || '' : '')
+  const isRich = Boolean(resolvedBackdropUrl)
   const posterSrc = modalPoster || poster
   const host = trailerHost(trailerUrl)
   const favorited = favoriteContent ? isFavorite(favoriteContent) : false
@@ -165,7 +169,7 @@ export function MovieModal({
         >
           {isRich && (
             <div className="relative h-36 w-full md:h-52">
-              <img src={backdropUrl} alt="" className="h-full w-full object-cover" />
+              <img src={resolvedBackdropUrl} alt="" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-elevated)] via-[var(--bg-elevated)]/50 to-transparent" />
             </div>
           )}

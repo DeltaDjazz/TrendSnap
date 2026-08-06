@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 36" fill="none" aria-hidden="true">
-  <rect x="2" y="6" width="22" height="24" rx="3" stroke="#C9A227" stroke-width="2"/>
-  <path d="M8 6v24M18 6v24M2 14h22M2 22h22" stroke="#C9A227" stroke-width="1.5"/>
-  <text x="32" y="23" fill="#C9A227" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Cinéma</text>
-</svg>
