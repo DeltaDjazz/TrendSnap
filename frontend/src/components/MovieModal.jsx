@@ -146,15 +146,6 @@ export function MovieModal({
     toggleFavorite(favoriteContent)
   }
 
-  const infoRows = [
-    dateDeSortie ? { label: 'Date de sortie', value: dateDeSortie } : year ? { label: 'Année', value: year } : null,
-    genreLabel ? { label: 'Genre', value: genreLabel } : null,
-    saisonLabel ? { label: 'Saison(s)', value: saisonLabel } : null,
-    episodesLabel ? { label: 'Épisodes', value: episodesLabel } : null,
-    originCountry ? { label: 'Pays', value: originCountry } : null,
-    platform ? { label: 'Plateforme', value: platform.label } : null,
-  ].filter(Boolean)
-
   return (
     <div
       className="fixed inset-0 z-[9999] overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-sm"
@@ -265,40 +256,25 @@ export function MovieModal({
                   </p>
                 </div>
 
-                {isRich ? (
-                  Array.isArray(stars) && stars.length > 0 && (
+                {Array.isArray(stars) && stars.length > 0 && (
+                  isRich ? (
                     <div className="mt-5">
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
                         Acteurs principaux
                       </p>
                       <p className="mt-1 text-sm text-zinc-300">{stars.join(', ')}</p>
                     </div>
-                  )
-                ) : (
-                  <div className="mt-5 rounded-xl border border-white/10 bg-black/30 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                      Informations disponibles
-                    </p>
-                    <ul className="mt-3 space-y-1.5 text-sm text-zinc-300">
-                      {infoRows.map((row) => (
-                        <li key={row.label}>
-                          <span className="text-zinc-500">{row.label} : </span>
-                          {row.value}
-                        </li>
-                      ))}
-                    </ul>
-                    {infoRows.length < 4 && (
-                      <p className="mt-3 text-xs text-zinc-500">
-                        Certaines informations ne sont pas encore disponibles pour ce titre.
+                  ) : (
+                    <div className="mt-5 rounded-xl border border-white/10 bg-black/30 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                        Informations disponibles
                       </p>
-                    )}
-                    {Array.isArray(stars) && stars.length > 0 && (
                       <p className="mt-3 text-sm text-zinc-300">
                         <span className="text-zinc-500">Acteurs : </span>
                         {stars.join(', ')}
                       </p>
-                    )}
-                  </div>
+                    </div>
+                  )
                 )}
               </div>
             </div>
