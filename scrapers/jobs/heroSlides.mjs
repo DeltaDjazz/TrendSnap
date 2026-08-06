@@ -264,7 +264,7 @@ async function main() {
         await enrichMovieSlide(upcoming, {
             slot: 3,
             kind: 'cinema-upcoming',
-            badge: 'BIENTÔT',
+            badge: 'BIENTÔT AU CINÉMA',
             auth,
         }),
     ];

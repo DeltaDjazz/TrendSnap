@@ -41,20 +41,21 @@ export function TrendsPage() {
       <Header />
 
       <main className="px-0 py-6 md:py-8">
-        <HeroCarousel
-          slides={heroSlides}
-          snapshotDate={heroSnapshot.snapshotDate}
-          onOpenSlide={handleMovieSelect}
-        />
-
         <div className="mb-4 px-4 md:mb-6 md:mx-[30px] md:px-4">
-          <h1 className="text-2xl font-bold text-white md:text-3xl">
+          <h1 className="bg-linear-to-r from-red-500   to-violet-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
             Retrouvez ici les tendances des plateformes de streaming et de cinéma.
           </h1>
           <p className="text-white/70 mt-2">
             Les tendances sont mises à jour quotidiennement.
           </p>
         </div>
+        <HeroCarousel
+          slides={heroSlides}
+          snapshotDate={heroSnapshot.snapshotDate}
+          onOpenSlide={handleMovieSelect}
+        />
+
+        
 
         <div id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection

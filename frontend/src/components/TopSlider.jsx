@@ -264,7 +264,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
         ‹
       </button>
 
-      <div className="flex-1 mx-2 rounded-3xl overflow-hidden py-8" style={sliderStyle}>
+      <div className="flex-1 mx-2 rounded-3xl overflow-hidden py-4" style={sliderStyle}>
         <div
           ref={viewportRef}
           className="min-w-0 overflow-clip select-none"

@@ -19,7 +19,7 @@ export function PlatformSection({
       className={`platform-section py-0 pt-4  ${className}`}
       style={{ borderLeftColor: platform?.colorHex ?? '#52525b' }}
     >
-      <div className="mb-4 flex flex-wrap flex-col gap-3 px-2 md:px-4">
+      <div className=" flex flex-wrap flex-col gap-3 px-2 md:px-4">
         {platform?.logo && (
           <img
             src={platform.logo}

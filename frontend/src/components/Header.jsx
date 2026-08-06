@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AppSidebar } from './AppSidebar'
+import trendSnapLogo from '../assets/TrendSnap-logo1.png'
 
 function IconHeart({ className = 'w-4 h-4' }) {
   return (
@@ -18,9 +19,17 @@ function favoritesLinkClass({ isActive }) {
 
 function BrandLogo({ className = 'text-2xl' }) {
   return (
-    <NavLink to="/" className={`font-bold tracking-tight ${className}`}>
-      <span className="text-white">Trend</span>
-      <span className="bg-gradient-to-r from-[#c026d3] to-[#7c3aed] bg-clip-text text-transparent">Snap</span>
+    <NavLink 
+      to="/" 
+      className={`inline-flex items-center gap-2 font-bold tracking-tight leading-none ${className}`}
+    >
+      <img src={trendSnapLogo} alt="" className="h-8 w-8 shrink-0" />
+      <span className="inline-flex items-center">
+        <span className="text-white">Trend</span>
+        <span className="bg-gradient-to-r from-[#c026d3] to-[#7c3aed] bg-clip-text text-transparent">
+          Snap
+        </span>
+      </span>
     </NavLink>
   )
 }
