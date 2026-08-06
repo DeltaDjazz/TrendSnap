@@ -34,7 +34,7 @@ export function TrendsPage() {
         <div id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="netflix"
-            title="Top 10 des films Netflix"
+            title="Top 10 nouveautés films"
             snapshot={netflixMovies}
             template="netflix-movies"
             onMovieSelect={handleMovieSelect}
@@ -42,7 +42,7 @@ export function TrendsPage() {
           <hr className="my-0 border-white/10" />
           <PlatformSection
             platformId="netflix"
-            title="Top 10 des séries Netflix"
+            title="Top 10 nouveautés séries"
             snapshot={netflixSeries}
             template="netflix-series"
             onMovieSelect={handleMovieSelect}
@@ -52,7 +52,7 @@ export function TrendsPage() {
         <div id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="apple"
-            title="Top 10 des séries Apple TV+"
+            title="Top 10 nouveautés séries"
             snapshot={appleSeries}
             template="apple-series"
             onMovieSelect={handleMovieSelect}
@@ -60,7 +60,7 @@ export function TrendsPage() {
           <hr className="my-0 border-white/10" />
           <PlatformSection
             platformId="apple"
-            title="Top 10 des films Apple TV+"
+            title="Top 10 nouveautés films"
             snapshot={appleMovies}
             template="apple-movies"
             onMovieSelect={handleMovieSelect}
@@ -70,7 +70,7 @@ export function TrendsPage() {
         <div id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="amazon"
-            title="Top 10 des séries Amazon Prime"
+            title="Top 10 nouveautés séries"
             snapshot={amazonSeries}
             template="amazon-series"
             onMovieSelect={handleMovieSelect}
@@ -78,7 +78,7 @@ export function TrendsPage() {
           <hr className="my-0 border-white/10" />
           <PlatformSection
             platformId="amazon"
-            title="Top 10 des films Amazon Prime"
+            title="Top 10 nouveautés films"
             snapshot={amazonMovies}
             template="amazon-movies"
             onMovieSelect={handleMovieSelect}
@@ -88,7 +88,7 @@ export function TrendsPage() {
         <div id="paramount" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="paramount"
-            title="Top 10 des séries Paramount+"
+            title="Top 10 nouveautés séries"
             snapshot={paramountSeries}
             template="paramount-series"
             onMovieSelect={handleMovieSelect}
@@ -97,7 +97,7 @@ export function TrendsPage() {
         <div id="hbo-max" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="max"
-            title="Top 10 des séries Max"
+            title="Top 10 nouveautés séries"
             snapshot={hboSeries}
             template="hbo-series"
             onMovieSelect={handleMovieSelect}

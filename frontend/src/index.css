@@ -42,7 +42,7 @@
     color: #f4f4f5;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .app-main {
       padding-left: var(--sidebar-width);
     }

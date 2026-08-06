@@ -8,7 +8,9 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
   const aspectClass = config.posterAspect === '16/9' ? 'aspect-video' : 'aspect-[2/3]'
   const borderClass = config.borderClass ?? ''
   const showNumber = config.showNumber && number != null
-  const rankInset = showNumber ? (String(number).length > 1 ? '2.75rem' : '2rem') : '0px'
+  const rankInsetClass = showNumber
+    ? (String(number).length > 1 ? 'md:ml-[2.75rem]' : 'md:ml-8')
+    : ''
 
   const handleSelect = (event) => {
     if (event.button !== 0) return
@@ -28,11 +30,12 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
           number={number}
           variant={config.rankNumberVariant}
           size={config.numberSize}
+          className="hidden md:flex"
         />
       )}
       <div
-        className={`relative z-10 bg-zinc-900 rounded-xl md:hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer ${borderClass}`}
-        style={{ minHeight: `${height}px`, marginLeft: rankInset }}
+        className={`relative z-10 bg-zinc-900 rounded-xl md:hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer ${borderClass} ${rankInsetClass}`}
+        style={{ minHeight: `${height}px` }}
         onClick={handleSelect}
         onContextMenu={handleContextMenu}
         role="button"
@@ -44,6 +47,14 @@ export function MovieCard({ movie, number, template = 'cinema', cardWidth, cardH
           }
         }}
       >
+        {showNumber && (
+          <RankNumber
+            number={number}
+            variant={config.rankNumberVariant}
+            placement="overlay"
+            className="md:hidden"
+          />
+        )}
         <img
           src={movie.poster}
           alt={movie.title}

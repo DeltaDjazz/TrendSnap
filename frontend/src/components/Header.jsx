@@ -38,12 +38,12 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 right-0 left-0 z-50 border-b border-white/10 bg-[var(--bg-app)]/90 backdrop-blur-md md:left-[var(--sidebar-width)]">
+      <header className="fixed top-0 right-0 left-0 z-50 border-b border-white/10 bg-[var(--bg-app)]/90 backdrop-blur-md lg:left-[var(--sidebar-width)]">
         <div className="flex items-center justify-between px-4 py-3 md:px-6">
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-3 lg:hidden">
             <BrandLogo className="text-xl" />
           </div>
-          <div className="hidden md:block" aria-hidden="true" />
+          <div className="hidden lg:block" aria-hidden="true" />
 
           <div className="flex items-center gap-2">
             <NavLink to="/favoris" className={favoritesLinkClass}>
@@ -54,7 +54,7 @@ export function Header() {
             <button
               type="button"
               onClick={toggleMenu}
-              className="relative flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+              className="relative flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden"
               aria-label="Ouvrir le menu"
               aria-expanded={isMenuOpen}
             >
@@ -79,7 +79,7 @@ export function Header() {
       </header>
 
       {/* Sidebar desktop */}
-      <div className="fixed top-0 bottom-0 left-0 z-50 hidden w-[var(--sidebar-width)] flex-col border-r border-white/10 bg-[var(--bg-sidebar)] pt-6 md:flex">
+      <div className="fixed top-0 bottom-0 left-0 z-50 hidden w-[var(--sidebar-width)] flex-col border-r border-white/10 bg-[var(--bg-sidebar)] pt-6 lg:flex">
         <div className="px-4 pb-6">
           <BrandLogo />
         </div>
@@ -88,9 +88,9 @@ export function Header() {
         </div>
       </div>
 
-      {/* Drawer mobile */}
+      {/* Drawer mobile / tablette */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
