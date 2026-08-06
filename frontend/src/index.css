@@ -48,6 +48,17 @@
     }
   }
 
+  .media-section {
+    margin: 0px 0px 20px;
+    background-color: var(--bg-elevated);
+  }
+
+  @media (min-width: 768px) {
+    .media-section {
+      margin: 30px;
+    }
+  }
+
   .platform-section {
     border-left-width: 3px;
     border-left-style: solid;

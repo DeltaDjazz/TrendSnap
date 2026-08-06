@@ -16,7 +16,7 @@ export function PlatformSection({
   return (
     <section
       id={id}
-      className={`platform-section py-8 pl-4 md:pl-6 ${className}`}
+      className={`platform-section py-0 pt-4  ${className}`}
       style={{ borderLeftColor: platform?.colorHex ?? '#52525b' }}
     >
       <div className="mb-4 flex flex-wrap items-center gap-3 px-2 md:px-4">

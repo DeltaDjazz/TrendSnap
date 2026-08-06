@@ -49,7 +49,7 @@ export const PLATFORMS = [
     color: 'var(--platform-paramount)',
     colorHex: '#0064FF',
     logo: logoParamount,
-    anchor: 'paramount-hbo',
+    anchor: 'paramount',
   },
   {
     id: 'max',
@@ -57,7 +57,7 @@ export const PLATFORMS = [
     color: 'var(--platform-max)',
     colorHex: '#B12A9A',
     logo: logoMax,
-    anchor: 'paramount-hbo',
+    anchor: 'hbo-max',
   },
   {
     id: 'cinema',

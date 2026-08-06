@@ -1,6 +1,6 @@
 export const config = {
-  cardWidth: 220,
-  cardHeight: 145,
+  cardWidth: 270,
+  cardHeight: 150,
   posterAspect: '16/9',
   showNumber: true,
   rankNumberVariant: 'landscape',

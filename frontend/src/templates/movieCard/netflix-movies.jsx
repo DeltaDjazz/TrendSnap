@@ -1,5 +1,5 @@
 export const config = {
-  cardWidth: 220,
+  cardWidth: 280,
   cardHeight: 145,
   posterAspect: '16/9',
   showNumber: true,

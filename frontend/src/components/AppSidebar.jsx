@@ -50,8 +50,8 @@ const CATEGORY_ICONS = {
 
 function categoryClass({ isActive }) {
   return isActive
-    ? 'flex items-center gap-2.5 rounded-lg bg-[var(--accent-red)] px-3 py-2 text-sm font-medium text-white'
-    : 'flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 transition-colors hover:bg-white/5 hover:text-white'
+    ? 'flex items-center gap-2.5  border-l-4 border-red-500 bg-gradient-to-r from-red-500/20 via-red-500/10 to-red-500/5 px-3 py-2 text-sm text-red-400 font-semibold'
+    : 'flex items-center gap-2.5  px-3 py-2 text-sm font-medium text-zinc-400 transition-colors hover:bg-white/5 hover:text-white'
 }
 
 export function AppSidebar({ onNavigate, className = '' }) {
@@ -84,7 +84,6 @@ export function AppSidebar({ onNavigate, className = '' }) {
   return (
     <aside className={`flex flex-col gap-8 ${className}`}>
       <div>
-        <p className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Catégories</p>
         <ul className="space-y-1">
           {CATEGORY_LINKS.map((link) => {
             const Icon = CATEGORY_ICONS[link.label] ?? IconFilm
@@ -107,7 +106,7 @@ export function AppSidebar({ onNavigate, className = '' }) {
         </ul>
       </div>
 
-      <div>
+      <div className="border-t border-b border-white/10 pt-3 bg-gradient-to-b from-zinc-900/90 to-zinc-900/80">
         <p className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Plateformes</p>
         <ul className="space-y-1">
           {PLATFORMS.map((platform) => (

@@ -1,10 +1,11 @@
 export const config = {
-  cardWidth: 180,
-  cardHeight: 340,
+  cardWidth: 200,
+  cardHeight: 314,
   posterAspect: '2/3',
   showNumber: true,
   rankNumberVariant: 'portrait',
   numberSize: '6.5rem',
+  borderClass: 'border border-white/30',
 }
 
 function firstGenre(movie) {

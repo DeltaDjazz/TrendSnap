@@ -12,8 +12,8 @@ function IconHeart({ className = 'w-4 h-4' }) {
 
 function favoritesLinkClass({ isActive }) {
   return isActive
-    ? 'inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-white'
-    : 'inline-flex items-center gap-1.5 rounded-lg border border-transparent px-3 py-1.5 text-sm font-medium text-zinc-400 transition-colors hover:border-white/10 hover:bg-white/5 hover:text-white'
+    ? 'inline-flex items-center gap-1.5 rounded-lg border border-white bg-white/10 px-3 py-1.5 text-sm font-medium text-white'
+    : 'inline-flex items-center gap-1.5 rounded-lg border border-white/20 px-3 py-1.5 text-sm font-medium text-zinc-400 transition-colors hover:border-white/10 hover:bg-white/5 hover:text-white'
 }
 
 function BrandLogo({ className = 'text-2xl' }) {
@@ -83,7 +83,7 @@ export function Header() {
         <div className="px-4 pb-6">
           <BrandLogo />
         </div>
-        <div className="flex-1 overflow-y-auto px-2 pb-8">
+        <div className="flex-1 overflow-y-auto px-0 pb-8">
           <AppSidebar />
         </div>
       </div>
@@ -100,7 +100,7 @@ export function Header() {
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          <div className="flex h-full flex-col pt-16 px-3 pb-8 overflow-y-auto">
+          <div className="flex h-full flex-col pt-16 pb-8 overflow-y-auto">
             <AppSidebar onNavigate={closeMenu} />
             <p className="mt-auto pt-8 px-3 text-xs text-zinc-600">© 2026 TrendSnap</p>
           </div>
