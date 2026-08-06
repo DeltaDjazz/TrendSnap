@@ -12,6 +12,7 @@
     "scrapcinema": "node scrapers/jobs/cinemaMovies.mjs",
     "scrapparamount": "node scrapers/jobs/paramountTop.mjs",
     "scraphbo": "node scrapers/jobs/hboTop.mjs",
+    "scrapheo": "node scrapers/jobs/heroSlides.mjs",
     "scrapall": "node scrapers/scrapeAll.mjs",
     "set-date": "node scrapers/setActiveDate.mjs"
   },

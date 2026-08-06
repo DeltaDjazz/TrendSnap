@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { loadSnapshot } from '../data/loadSnapshots'
 import { Header } from '../components/Header'
+import { HeroCarousel } from '../components/HeroCarousel'
 import { PlatformSection } from '../components/PlatformSection'
 import { MovieModal } from '../components/MovieModal'
 
@@ -14,9 +15,18 @@ const amazonSeries = loadSnapshot('amazon-series.json')
 const amazonMovies = loadSnapshot('amazon-movies.json')
 const paramountSeries = loadSnapshot('paramount-series.json')
 const hboSeries = loadSnapshot('hbo-series.json')
+const heroSnapshot = loadSnapshot('hero-slides.json')
+
+function extractHeroSlides(snapshot) {
+  const raw = snapshot?.data
+  if (Array.isArray(raw?.slides)) return raw.slides
+  if (Array.isArray(raw)) return raw
+  return []
+}
 
 export function TrendsPage() {
   const [selection, setSelection] = useState(null)
+  const heroSlides = extractHeroSlides(heroSnapshot)
 
   const handleMovieSelect = (movie, template, snapshotDate) => {
     setSelection({ movie, template, snapshotDate })
@@ -31,6 +41,12 @@ export function TrendsPage() {
       <Header />
 
       <main className="px-0 py-6 md:py-8">
+        <HeroCarousel
+          slides={heroSlides}
+          snapshotDate={heroSnapshot.snapshotDate}
+          onOpenSlide={handleMovieSelect}
+        />
+
         <div className="mb-4 px-4 md:mb-6 md:mx-[30px] md:px-4">
           <h1 className="text-2xl font-bold text-white md:text-3xl">
             Retrouvez ici les tendances des plateformes de streaming et de cinéma.

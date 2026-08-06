@@ -1,0 +1,106 @@
+{
+  "updatedAt": "2026-07-20T12:00:00.000Z",
+  "slides": [
+    {
+      "slot": 1,
+      "kind": "cinema-now",
+      "badge": "#1 CINÉMA",
+      "mediaType": "movie",
+      "tmdbId": null,
+      "title": "L'Odyssée",
+      "backdropUrl": "https://image.tmdb.org/t/p/w500/k12dsDVtARFmr6TbC2hn0c68aw5.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/k12dsDVtARFmr6TbC2hn0c68aw5.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/k12dsDVtARFmr6TbC2hn0c68aw5.jpg",
+      "imgVertical": "https://image.tmdb.org/t/p/w500/k12dsDVtARFmr6TbC2hn0c68aw5.jpg",
+      "year": "2026",
+      "dateDeSortie": "15/07/2026",
+      "genres": [
+        "Aventure",
+        "Action",
+        "Fantastique"
+      ],
+      "runtimeMinutes": null,
+      "nbSaisons": null,
+      "nbEpisodes": null,
+      "certification": "",
+      "description": "Vingt ans après son départ pour la guerre de Troie, le roi Ulysse rentre enfin à Ithaque, mais son voyage est parsemé d'aventures et d'épreuves.",
+      "trailerUrl": "https://www.youtube.com/watch?v=9YGuN8sQpL0",
+      "stars": [
+        "Matt Damon",
+        "Tom Holland",
+        "Anne Hathaway",
+        "Robert Pattinson",
+        "Himesh Patel"
+      ],
+      "originCountry": "United Kingdom",
+      "template": "cinema",
+      "pageInfosUrl": "https://www.themoviedb.org/movie/1368337"
+    },
+    {
+      "slot": 2,
+      "kind": "trending-tv",
+      "badge": "#1 SÉRIE DU JOUR",
+      "mediaType": "tv",
+      "tmdbId": null,
+      "title": "Silo",
+      "backdropUrl": "https://fr.web.img6.acsta.net/c_310_420/pictures/23/04/28/10/15/0697295.jpg",
+      "posterUrl": "https://fr.web.img6.acsta.net/c_310_420/pictures/23/04/28/10/15/0697295.jpg",
+      "poster": "https://is1-ssl.mzstatic.com/image/thumb/Lwb2DbNDJAhMoh5jrnMx3Q/225x338nr.webp",
+      "imgVertical": "https://fr.web.img6.acsta.net/c_310_420/pictures/23/04/28/10/15/0697295.jpg",
+      "year": "2023",
+      "dateDeSortie": "",
+      "genres": [
+        "Science-fiction"
+      ],
+      "runtimeMinutes": null,
+      "nbSaisons": "4 Saisons",
+      "nbEpisodes": "30 Episodes",
+      "certification": "",
+      "description": "Dans un futur où la Terre est dévastée et l'air devenu toxique, les survivants vivent dans un silo géant souterrain de 144 étages. Au sein de cette communauté, les individus doivent se plier à toute une série de règles très strictes destinées les protéger.",
+      "trailerUrl": "https://www.dailymotion.com/video/x8jtun9",
+      "stars": [
+        "Rebecca Ferguson",
+        "Common",
+        "Harriet Walter"
+      ],
+      "originCountry": "U.S.A.",
+      "template": "apple-series",
+      "pageInfosUrl": "https://www.allocine.fr/series/ficheserie_gen_cserie=29245.html"
+    },
+    {
+      "slot": 3,
+      "kind": "cinema-upcoming",
+      "badge": "BIENTÔT",
+      "mediaType": "movie",
+      "tmdbId": null,
+      "title": "Spider-Man: Brand New Day",
+      "backdropUrl": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+      "imgVertical": "https://image.tmdb.org/t/p/w500/yikio8CfJxIA7faZxgvB9FGXy6u.jpg",
+      "year": "2026",
+      "dateDeSortie": "28/07/2026",
+      "genres": [
+        "Science-Fiction",
+        "Action",
+        "Aventure"
+      ],
+      "runtimeMinutes": null,
+      "nbSaisons": null,
+      "nbEpisodes": null,
+      "certification": "",
+      "description": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+      "trailerUrl": "https://www.youtube.com/watch?v=Di7-04l-W2w",
+      "stars": [
+        "Tom Holland",
+        "Zendaya",
+        "Sadie Sink",
+        "Jacob Batalon",
+        "Jon Bernthal"
+      ],
+      "originCountry": "United States of America",
+      "template": "cinema",
+      "pageInfosUrl": "https://www.themoviedb.org/movie/969681"
+    }
+  ]
+}
