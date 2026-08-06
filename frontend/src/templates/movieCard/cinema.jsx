@@ -1,21 +1,27 @@
 export const config = {
-  cardWidth: 180,
-  cardHeight: 340,
+  cardWidth: 200,
+  cardHeight: 314,
   posterAspect: '2/3',
   showNumber: true,
   rankNumberVariant: 'portrait',
-  numberPosition: 'top',
-  numberOffset: '-20px',
-  numberSize: '2.7rem',
+  numberSize: '6.5rem',
+  borderClass: 'border border-white/30',
+}
+
+function firstGenre(movie) {
+  if (Array.isArray(movie.genres)) return movie.genres[0]
+  return movie.genre || null
 }
 
 export function CardInfo({ movie }) {
+  const genre = firstGenre(movie)
+
   return (
     <div className="p-3">
       <h2 className="font-semibold text-sm text-zinc-100 truncate">{movie.title}</h2>
-      <div className="flex items-center justify-between mt-1">
-        <span className="text-xs text-zinc-400 text-center">{movie.dateDeSortie}</span>
-      </div>
+      {genre && (
+        <p className="mt-1 text-xs text-zinc-400 truncate">{genre}</p>
+      )}
     </div>
   )
 }

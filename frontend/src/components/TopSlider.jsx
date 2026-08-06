@@ -6,7 +6,7 @@ import { getSliderTemplate } from '../templates/sliderTemplates'
 const GAP = 36
 const DRAG_THRESHOLD = 5
 const MOBILE_BREAKPOINT = 768
-const MOBILE_GAP = 10
+const MOBILE_GAP = 4
 const DEFAULT_MOBILE_SCALE = 0.5
 const VELOCITY_SAMPLE_MS = 100
 const INERTIA_FRICTION = 0.0035
@@ -269,7 +269,7 @@ export function TopSlider({ movies, template = 'cinema', cardWidth, cardHeight, 
           ref={viewportRef}
           className="min-w-0 overflow-clip select-none"
           style={{
-            overflowClipMargin: sliderConfig.numberBleed ?? '2rem',
+            overflowClipMargin: isMobile ? '0px' : (sliderConfig.numberBleed ?? '2rem'),
             touchAction: 'pan-y',
             cursor: isDragging ? 'grabbing' : 'grab',
           }}

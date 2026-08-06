@@ -1,0 +1,79 @@
+import logoNetflix from './assets/logos/logo-netflix.png'
+import logoApple from './assets/logos/logo-apple-tv.png'
+import logoAmazon from './assets/logos/prime-video.png'
+import logoParamount from './assets/logos/paramount-plus.png'
+import logoMax from './assets/logos/hbo-max.png'
+import logoCinema from './assets/logos/cinema.png'
+
+/** Templates → plateforme (badge modale, etc.) */
+export const TEMPLATE_PLATFORM = {
+  'netflix-movies': 'netflix',
+  'netflix-series': 'netflix',
+  'apple-movies': 'apple',
+  'apple-series': 'apple',
+  'amazon-movies': 'amazon',
+  'amazon-series': 'amazon',
+  'paramount-series': 'paramount',
+  'hbo-series': 'max',
+  cinema: 'cinema',
+}
+
+export const PLATFORMS = [
+  {
+    id: 'netflix',
+    label: 'Netflix',
+    color: 'var(--platform-netflix)',
+    colorHex: '#E50914',
+    logo: logoNetflix,
+    anchor: 'netflix',
+  },
+  {
+    id: 'apple',
+    label: 'Apple TV+',
+    color: 'var(--platform-apple)',
+    colorHex: '#A2AAAD',
+    logo: logoApple,
+    anchor: 'apple',
+  },
+  {
+    id: 'amazon',
+    label: 'Prime Video',
+    color: 'var(--platform-amazon)',
+    colorHex: '#00A8E1',
+    logo: logoAmazon,
+    anchor: 'amazon',
+  },
+  {
+    id: 'paramount',
+    label: 'Paramount+',
+    color: 'var(--platform-paramount)',
+    colorHex: '#0064FF',
+    logo: logoParamount,
+    anchor: 'paramount',
+  },
+  {
+    id: 'max',
+    label: 'Max',
+    color: 'var(--platform-max)',
+    colorHex: '#B12A9A',
+    logo: logoMax,
+    anchor: 'hbo-max',
+  },
+  {
+    id: 'cinema',
+    label: 'Cinéma',
+    color: 'var(--platform-cinema)',
+    colorHex: '#C9A227',
+    logo: logoCinema,
+    anchor: 'cinema',
+  },
+]
+
+export function getPlatformById(id) {
+  return PLATFORMS.find((p) => p.id === id) ?? null
+}
+
+export function getPlatformForTemplate(template) {
+  const id = TEMPLATE_PLATFORM[template]
+  return id ? getPlatformById(id) : null
+}

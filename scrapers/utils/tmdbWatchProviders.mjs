@@ -5,6 +5,7 @@ import {
     loadEnvFile,
     pickTrailerUrl,
     posterUrl,
+    backdropUrl,
     REGION,
     tmdbFetch,
 } from './tmdb.mjs';
@@ -67,6 +68,7 @@ async function enrichTvShow(listItem, rank, auth) {
         year: airDate ? airDate.slice(0, 4) : '',
         nbSaisons: details.number_of_seasons ?? '',
         nbEpisodes: details.number_of_episodes ?? '',
+        backdropUrl: backdropUrl(details.backdrop_path || listItem.backdrop_path),
     };
 }
 
@@ -88,6 +90,7 @@ function fallbackTvShow(listItem, rank) {
         year: airDate ? airDate.slice(0, 4) : '',
         nbSaisons: '',
         nbEpisodes: '',
+        backdropUrl: backdropUrl(listItem.backdrop_path),
     };
 }
 

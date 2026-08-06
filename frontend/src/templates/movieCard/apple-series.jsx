@@ -5,10 +5,8 @@ export const config = {
   posterAspect: '2/3',
   showNumber: true,
   rankNumberVariant: 'portrait',
-  numberPosition: 'top',
-  numberOffset: '10px',
-  numberSize: '3.75rem',
-  borderClass: 'border-2 border-black/20',
+  numberSize: '6rem',
+  borderClass: 'border border-white/15',
 }
 
 export function CardInfo({ movie }) {

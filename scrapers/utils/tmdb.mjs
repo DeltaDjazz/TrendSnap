@@ -7,6 +7,7 @@ const ROOT_DIR = path.resolve(__dirname, '../..');
 
 export const TMDB_BASE = 'https://api.themoviedb.org/3';
 export const IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
+export const BACKDROP_BASE = 'https://image.tmdb.org/t/p/w1280';
 export const LANGUAGE = 'fr-FR';
 export const REGION = 'FR';
 
@@ -77,6 +78,11 @@ export async function tmdbFetch(pathname, auth, params = {}) {
 export function posterUrl(posterPath) {
     if (!posterPath) return '';
     return `${IMAGE_BASE}${posterPath}`;
+}
+
+export function backdropUrl(backdropPath) {
+    if (!backdropPath) return '';
+    return `${BACKDROP_BASE}${backdropPath}`;
 }
 
 export function pickTrailerUrl(videos) {

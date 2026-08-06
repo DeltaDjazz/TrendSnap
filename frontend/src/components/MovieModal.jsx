@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useFavorites } from '../features/favorites/useFavorites'
 import { MAX_FAVORITES } from '../features/favorites/constants'
+import { getPlatformForTemplate } from '../platforms'
+import { getCardTemplate } from '../templates/cardTemplates'
 
 function formatGenre(genre) {
   if (!genre) return null
@@ -8,23 +10,59 @@ function formatGenre(genre) {
   return genre
 }
 
-function InfoField({ label, value }) {
-  if (!value) return null
+function trailerHost(url) {
+  if (!url) return null
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '')
+    if (host.includes('youtube') || host.includes('youtu.be')) return 'youtube'
+    if (host.includes('dailymotion')) return 'dailymotion'
+    return 'other'
+  } catch {
+    return 'other'
+  }
+}
 
+function trailerButtonClass(host) {
+  if (host === 'youtube') {
+    return 'inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--accent-red)] px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110'
+  }
+  if (host === 'dailymotion') {
+    return 'inline-flex items-center justify-center gap-2 rounded-lg bg-[#00A8E1] px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110'
+  }
+  return 'inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15'
+}
+
+function MetaChip({ children }) {
+  if (!children) return null
   return (
-    <div className="md:mt-4 md:border rounded-md border-zinc-700 md:p-4 md:bg-zinc-900/70">
-      <p className="md:hidden text-sm text-zinc-300">
-        {/* si label est différent de"Acteurs", alors sur les ecrans petits on affiche pas le label */}
-        {label == "Acteurs" && (
-          <div className="mt-5">
-            <span className="font-semibold uppercase tracking-wider text-zinc-500">{label} : </span>
-          </div>
-        )}  
-        {value}
-      </p>
-      <p className="hidden md:block text-xs font-semibold uppercase tracking-wider text-zinc-500">{label}</p>
-      <p className="hidden md:block mt-1 text-sm text-zinc-300">{value}</p>
-    </div>
+    <span className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-xs text-zinc-300">
+      {children}
+    </span>
+  )
+}
+
+function IconPlay({ className = 'w-4 h-4' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8 5v14l11-7L8 5z" />
+    </svg>
+  )
+}
+
+function IconHeart({ className = 'w-4 h-4', filled = false }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill={filled ? 'currentColor' : 'none'}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M19.5 12.572l-7.5 7.428-7.5-7.428a5 5 0 1 1 7.5-6.572 5 5 0 1 1 7.5 6.572z" />
+    </svg>
   )
 }
 
@@ -39,10 +77,11 @@ export function MovieModal({
   genre,
   saison,
   episodes,
-  stars,
+  stars = [],
   originCountry,
   trailerUrl,
-  template: _template = 'cinema',
+  backdropUrl = '',
+  template = 'cinema',
   favoriteContent,
   onFavoriteRemoveRequest,
   onClose,
@@ -54,11 +93,43 @@ export function MovieModal({
     if (!isOpen) setLimitMessage(false)
   }, [isOpen])
 
+  useEffect(() => {
+    if (!isOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isOpen])
+
+  if (!isOpen) return null
+
+  const platform = getPlatformForTemplate(template)
+  const genreLabel = formatGenre(genre)
+  const posterAspect = getCardTemplate(template).config.posterAspect
+  const resolvedBackdropUrl =
+    backdropUrl || (posterAspect === '16/9' ? poster || '' : '')
+  const isRich = Boolean(resolvedBackdropUrl)
+  const isLandscapePoster = !modalPoster && posterAspect === '16/9'
+  const posterSrc = modalPoster || poster
+  const posterAspectClass = isLandscapePoster ? 'aspect-video' : 'aspect-[2/3]'
+  const host = trailerHost(trailerUrl)
   const favorited = favoriteContent ? isFavorite(favoriteContent) : false
+
+  const saisonLabel = saison
+    ? !isNaN(Number(saison))
+      ? `${saison} ${Number(saison) === 1 ? 'saison' : 'saisons'}`
+      : String(saison)
+    : null
+
+  const episodesLabel = episodes
+    ? !isNaN(Number(episodes))
+      ? `${episodes} ${Number(episodes) === 1 ? 'épisode' : 'épisodes'}`
+      : String(episodes)
+    : null
 
   const handleToggleFavorite = () => {
     if (!favoriteContent) return
-
     if (favorited) {
       if (onFavoriteRemoveRequest) {
         onFavoriteRemoveRequest()
@@ -67,161 +138,172 @@ export function MovieModal({
       toggleFavorite(favoriteContent)
       return
     }
-
     if (isAtLimit) {
       setLimitMessage(true)
       return
     }
-
     setLimitMessage(false)
     toggleFavorite(favoriteContent)
   }
-  useEffect(() => {
-    if (!isOpen) return
 
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [isOpen])
-
-  if (!isOpen) return null
-
-  const isWide = modalPoster === ''
-  const genreLabel = formatGenre(genre)
-
-  const handleBackdropClick = () => {
-    onClose()
-  }
+  const infoRows = [
+    dateDeSortie ? { label: 'Date de sortie', value: dateDeSortie } : year ? { label: 'Année', value: year } : null,
+    genreLabel ? { label: 'Genre', value: genreLabel } : null,
+    saisonLabel ? { label: 'Saison(s)', value: saisonLabel } : null,
+    episodesLabel ? { label: 'Épisodes', value: episodesLabel } : null,
+    originCountry ? { label: 'Pays', value: originCountry } : null,
+    platform ? { label: 'Plateforme', value: platform.label } : null,
+  ].filter(Boolean)
 
   return (
     <div
-      className="fixed inset-0 z-[9999] overflow-y-auto overscroll-contain bg-mist-600/80"
-      onClick={handleBackdropClick}
+      className="fixed inset-0 z-[9999] overflow-y-auto overscroll-contain bg-black/75 backdrop-blur-sm"
+      onClick={onClose}
       role="presentation"
     >
-      <div className="flex min-h-full items-center justify-center p-4">
-      <div
-        className="relative isolate flex w-full max-w-4xl flex-col items-start rounded-2xl border border-zinc-700 bg-zinc-950 shadow-2xl"
-        onClick={(event) => event.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-      >
-  
-        {/* L'effet lumineux avec z-[-1] ou z-0 */}
-        <div className="absolute top-[-3px] left-[-3px] z-[-1] w-[273px] h-[249px] rounded-tl-[20px] rounded-br-[200px] bg-gradient-to-br from-[#3ca2f6] to-transparent filter blur-[5px]" />
-        <div className="absolute bottom-[-6px] right-[-6px] z-[-1] w-[273px] h-[249px] rounded-br-[20px] rounded-tl-[200px] bg-gradient-to-br from-[#3ca2f6] to-transparent filter blur-[5px]" />
-        {/*<div className="modal-glass-panel">*/}
-        <div className="w-full bg-zinc-950 rounded-2xl pb-5">
-          <div className="w-full flex justify-end">
-            <button
-              type="button"
-              onClick={onClose}
-              className=" z-10 rounded-full  p-2 pr-4 text-2xl text-zinc-400 backdrop-blur-sm transition hover:text-white"
-              aria-label="Fermer la modale"
-            >
-              ×
-            </button>
-          </div>  
+      <div className="flex min-h-full items-center justify-center p-3 md:p-6">
+        <div
+          className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-[var(--bg-elevated)] shadow-2xl"
+          onClick={(event) => event.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
+        >
+          {isRich && (
+            <div className="relative h-36 w-full md:h-52">
+              <img src={resolvedBackdropUrl} alt="" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-elevated)] via-[var(--bg-elevated)]/50 to-transparent" />
+            </div>
+          )}
 
-          <div className="flex flex-rows">
-            <div className="shrink-0 p-4 ">
-              {poster && (
-                <div className="relative w-36 md:w-60">
+          <button
+            type="button"
+            onClick={onClose}
+            className="absolute top-3 right-3 z-20 rounded-full bg-black/50 px-3 py-1 text-xl text-zinc-300 backdrop-blur-sm transition hover:text-white"
+            aria-label="Fermer la modale"
+          >
+            ×
+          </button>
+
+          <div className={`relative px-4 pb-6 md:px-6 ${isRich ? '-mt-10 md:-mt-14' : 'pt-10'}`}>
+            <div className="flex flex-col gap-5 md:flex-row md:gap-6">
+              {posterSrc && (
+                <div
+                  className={
+                    isLandscapePoster
+                      ? 'mx-auto w-full max-w-sm shrink-0 md:mx-0 md:w-72'
+                      : 'mx-auto w-36 shrink-0 md:mx-0 md:w-44'
+                  }
+                >
                   <img
-                    src={modalPoster !== "" ? modalPoster : poster}
+                    src={posterSrc}
                     alt={title}
-                    className={`w-full rounded-lg object-cover ${
-                      isWide ? 'aspect-video' : 'aspect-[2/3]'
-                    }`}
+                    className={`w-full rounded-xl border border-white/10 object-cover shadow-lg ${posterAspectClass}`}
                   />
+                </div>
+              )}
+
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="text-2xl font-bold text-white md:text-3xl">{title}</h3>
+                  {platform && (
+                    <span
+                      className="rounded-full border px-2.5 py-0.5 text-xs font-medium text-white"
+                      style={{ borderColor: platform.colorHex, backgroundColor: `${platform.colorHex}22` }}
+                    >
+                      {platform.label}
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <MetaChip>{dateDeSortie || year}</MetaChip>
+                  <MetaChip>{genreLabel}</MetaChip>
+                  <MetaChip>{saisonLabel}</MetaChip>
+                  <MetaChip>{episodesLabel}</MetaChip>
+                  <MetaChip>{originCountry}</MetaChip>
+                </div>
+
+                {limitMessage && (
+                  <p className="mt-3 text-sm text-amber-400">
+                    Vous avez atteint la limite de {MAX_FAVORITES} favoris.
+                  </p>
+                )}
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {trailerUrl && (
+                    <a
+                      href={trailerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={trailerButtonClass(host)}
+                    >
+                      <IconPlay />
+                      Bande-annonce
+                    </a>
+                  )}
                   {favoriteContent && (
                     <button
                       type="button"
                       onClick={handleToggleFavorite}
-                      className={`absolute top-2 right-2 z-10 rounded-full bg-black/50 p-2 text-xl leading-none backdrop-blur-sm transition hover:scale-110 ${
+                      className={`inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-semibold transition ${
                         favorited
-                          ? 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.95)]'
-                          : 'text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.95)]'
+                          ? 'border-[var(--accent-red)]/50 bg-[var(--accent-red)]/15 text-[var(--accent-red)]'
+                          : 'border-white/20 bg-transparent text-white hover:bg-white/5'
                       }`}
-                      aria-label={favorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
                     >
-                      {favorited ? '★' : '☆'}
+                      <IconHeart filled={favorited} className="h-4 w-4" />
+                      {favorited ? 'Dans les favoris' : 'Ajouter aux favoris'}
                     </button>
                   )}
                 </div>
-              )}
-              {trailerUrl && (
-                <div className="flex flex-col gap-2">
-                  <a className="text-sm text-zinc-300 text-center  bg-[#1A2E3E] border border-blue-700/50 px-4 py-2 mt-4 rounded-md" href={trailerUrl} target="_blank" rel="noopener noreferrer">Bande annonce</a>
+
+                <div className="mt-5">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Synopsis</p>
+                  <p className="mt-1 text-sm leading-relaxed text-zinc-300">
+                    {description || 'Aucune description disponible.'}
+                  </p>
                 </div>
-              )}
-            </div>
 
-            <div className="min-w-0 flex-1 p-2 md:p-6 pr-4 md:pr-6 pt-5">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">{title}</h3>
-              {limitMessage && (
-                <p className="mb-4 text-sm text-amber-400">
-                  Vous avez atteint la limite de {MAX_FAVORITES} favoris.
-                </p>
-              )}
-              <div className="flex flex-col md:flex-row  gap-2">
-                {dateDeSortie ? (
-                  <InfoField label="Date de sortie" value={dateDeSortie} />
+                {isRich ? (
+                  Array.isArray(stars) && stars.length > 0 && (
+                    <div className="mt-5">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                        Acteurs principaux
+                      </p>
+                      <p className="mt-1 text-sm text-zinc-300">{stars.join(', ')}</p>
+                    </div>
+                  )
                 ) : (
-                  <InfoField label="Année" value={year} />
+                  <div className="mt-5 rounded-xl border border-white/10 bg-black/30 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                      Informations disponibles
+                    </p>
+                    <ul className="mt-3 space-y-1.5 text-sm text-zinc-300">
+                      {infoRows.map((row) => (
+                        <li key={row.label}>
+                          <span className="text-zinc-500">{row.label} : </span>
+                          {row.value}
+                        </li>
+                      ))}
+                    </ul>
+                    {infoRows.length < 4 && (
+                      <p className="mt-3 text-xs text-zinc-500">
+                        Certaines informations ne sont pas encore disponibles pour ce titre.
+                      </p>
+                    )}
+                    {Array.isArray(stars) && stars.length > 0 && (
+                      <p className="mt-3 text-sm text-zinc-300">
+                        <span className="text-zinc-500">Acteurs : </span>
+                        {stars.join(', ')}
+                      </p>
+                    )}
+                  </div>
                 )}
-                <InfoField label="Genre" value={genreLabel} />
-                {saison && (
-                  <InfoField
-                    label="saisons & eps"
-                    value={
-                      <>
-                        {saison}
-                        {!isNaN(Number(saison)) && (
-                          <span> {Number(saison) === 1 ? "saison" : "saisons"}</span>
-                        )}
-                        <br />
-                        {episodes}
-                        {!isNaN(Number(episodes)) && (
-                          <span> {Number(episodes) === 1 ? "épisode" : "épisodes"}</span>
-                        )}
-                      </>
-                    }
-                  />
-                )}
-                <InfoField label="Pays d'origine" value={originCountry} />  
-              </div>
-              
-
-
-
-              {/* on affiche les noms des stars */}
-              <InfoField label="Acteurs" value={stars.join(', ')} />
-              
-
-              <div className="hidden md:block mt-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Description</p>
-                <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  {description || 'Aucune description disponible.'}
-                </p>
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col md:hidden m-6">
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Description</p>
-            <p className="mt-1 text-sm leading-relaxed text-zinc-300">
-              {description || 'Aucune description disponible.'}
-            </p>
           </div>
         </div>
-        
-
-
-      </div>
       </div>
     </div>
   )
