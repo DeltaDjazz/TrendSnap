@@ -82,7 +82,7 @@ export function AppSidebar({ onNavigate, className = '' }) {
   }
 
   return (
-    <aside className={`flex flex-col gap-8 ${className}`}>
+    <nav className={`flex flex-col gap-8 ${className}`}>
       <div>
         <ul className="space-y-1">
           {CATEGORY_LINKS.map((link) => {
@@ -128,6 +128,6 @@ export function AppSidebar({ onNavigate, className = '' }) {
           ))}
         </ul>
       </div>
-    </aside>
+    </nav>
   )
 }

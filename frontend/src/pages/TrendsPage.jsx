@@ -57,7 +57,7 @@ export function TrendsPage() {
 
         
 
-        <div id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="netflix"
             title="Top 10 nouveautés films"
@@ -65,7 +65,8 @@ export function TrendsPage() {
             template="netflix-movies"
             onMovieSelect={handleMovieSelect}
           />
-          <hr className="my-0 border-white/10" />
+        </section>
+        <section id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="netflix"
             title="Top 10 nouveautés séries"
@@ -73,9 +74,9 @@ export function TrendsPage() {
             template="netflix-series"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="apple"
             title="Top 10 nouveautés séries"
@@ -83,7 +84,8 @@ export function TrendsPage() {
             template="apple-series"
             onMovieSelect={handleMovieSelect}
           />
-          <hr className="my-0 border-white/10" />
+        </section>
+        <section id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="apple"
             title="Top 10 nouveautés films"
@@ -91,9 +93,9 @@ export function TrendsPage() {
             template="apple-movies"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="amazon"
             title="Top 10 nouveautés séries"
@@ -101,7 +103,9 @@ export function TrendsPage() {
             template="amazon-series"
             onMovieSelect={handleMovieSelect}
           />
-          <hr className="my-0 border-white/10" />
+        </section>
+
+        <section id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="amazon"
             title="Top 10 nouveautés films"
@@ -109,9 +113,9 @@ export function TrendsPage() {
             template="amazon-movies"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="paramount" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="paramount" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="paramount"
             title="Top 10 nouveautés séries"
@@ -119,8 +123,8 @@ export function TrendsPage() {
             template="paramount-series"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
-        <div id="hbo-max" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        </section>
+        <section id="hbo-max" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="max"
             title="Top 10 nouveautés séries"
@@ -128,9 +132,9 @@ export function TrendsPage() {
             template="hbo-series"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="cinema" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="cinema" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="cinema"
             title="Top 10 des films cinéma du moment"
@@ -138,8 +142,8 @@ export function TrendsPage() {
             template="cinema"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
-        <div id="cinema-upcoming" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        </section>
+        <section id="cinema-upcoming" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
           <PlatformSection
             platformId="cinema"
             title="Top 10 des films cinéma à venir"
@@ -147,7 +151,7 @@ export function TrendsPage() {
             template="cinema"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
       </main>
 
       <MovieModal

@@ -88,14 +88,14 @@ export function Header() {
       </header>
 
       {/* Sidebar desktop */}
-      <div className="fixed top-0 bottom-0 left-0 z-50 hidden w-[var(--sidebar-width)] flex-col border-r border-white/10 bg-[var(--bg-sidebar)] pt-6 lg:flex">
+      <aside className="fixed top-0 bottom-0 left-0 z-50 hidden w-[var(--sidebar-width)] flex-col border-r border-white/10 bg-[var(--bg-sidebar)] pt-6 lg:flex">
         <div className="px-4 pb-6">
           <BrandLogo />
         </div>
         <div className="flex-1 overflow-y-auto px-0 pb-8">
           <AppSidebar />
         </div>
-      </div>
+      </aside>
 
       {/* Drawer mobile / tablette */}
       <div
