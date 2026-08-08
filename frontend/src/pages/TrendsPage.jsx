@@ -42,7 +42,7 @@ export function TrendsPage() {
 
       <main className="px-0 py-6 md:py-8">
         <div className="mb-4 px-4 md:mb-6 md:mx-[30px] md:px-4">
-          <h1 className="bg-linear-to-r from-red-500   to-violet-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
+          <h1 className="text-red-500 text-2xl font-bold md:text-3xl">
             Retrouvez ici les tendances des plateformes de streaming et de cinéma.
           </h1>
           <p className="text-white/70 mt-2">
@@ -57,7 +57,7 @@ export function TrendsPage() {
 
         
 
-        <div id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="netflix"
             title="Top 10 nouveautés films"
@@ -65,7 +65,8 @@ export function TrendsPage() {
             template="netflix-movies"
             onMovieSelect={handleMovieSelect}
           />
-          <hr className="my-0 border-white/10" />
+        </section>
+        <section id="netflix" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="netflix"
             title="Top 10 nouveautés séries"
@@ -73,9 +74,9 @@ export function TrendsPage() {
             template="netflix-series"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="apple"
             title="Top 10 nouveautés séries"
@@ -83,7 +84,8 @@ export function TrendsPage() {
             template="apple-series"
             onMovieSelect={handleMovieSelect}
           />
-          <hr className="my-0 border-white/10" />
+        </section>
+        <section id="apple" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="apple"
             title="Top 10 nouveautés films"
@@ -91,9 +93,9 @@ export function TrendsPage() {
             template="apple-movies"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="amazon"
             title="Top 10 nouveautés séries"
@@ -101,7 +103,9 @@ export function TrendsPage() {
             template="amazon-series"
             onMovieSelect={handleMovieSelect}
           />
-          <hr className="my-0 border-white/10" />
+        </section>
+
+        <section id="amazon" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="amazon"
             title="Top 10 nouveautés films"
@@ -109,45 +113,45 @@ export function TrendsPage() {
             template="amazon-movies"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="paramount" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="paramount" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="paramount"
-            title="Top 10 nouveautés séries"
+            title="Top 10 séries populaires"
             snapshot={paramountSeries}
             template="paramount-series"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
-        <div id="hbo-max" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        </section>
+        <section id="hbo-max" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="max"
-            title="Top 10 nouveautés séries"
+            title="Top 10 séries populaires"
             snapshot={hboSeries}
             template="hbo-series"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
 
-        <div id="cinema" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        <section id="cinema" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="cinema"
-            title="Top 10 des films cinéma du moment"
+            title="Top films cinéma du moment"
             snapshot={cinemaMovies}
             template="cinema"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
-        <div id="cinema-upcoming" className="media-section scroll-mt-[calc(var(--header-height)+1rem)]">
+        </section>
+        <section id="cinema-upcoming" className="media-section scroll-mt-[calc(var(--header-height)+1rem)] lg:scroll-mt-4">
           <PlatformSection
             platformId="cinema"
-            title="Top 10 des films cinéma à venir"
+            title="Top films cinéma à venir"
             snapshot={cinemaUpcoming}
             template="cinema"
             onMovieSelect={handleMovieSelect}
           />
-        </div>
+        </section>
       </main>
 
       <MovieModal

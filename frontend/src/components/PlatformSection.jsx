@@ -14,12 +14,12 @@ export function PlatformSection({
   const platform = getPlatformById(platformId)
 
   return (
-    <section
+    <div
       id={id}
       className={`platform-section py-0 pt-4  ${className}`}
       style={{ borderLeftColor: platform?.colorHex ?? '#52525b' }}
     >
-      <div className=" flex flex-wrap flex-col gap-3 px-2 md:px-4">
+      <div className="flex flex-col md:items-center gap-3 px-2 md:flex-row md:items-center md:px-4">
         {platform?.logo && (
           <img
             src={platform.logo}
@@ -36,6 +36,6 @@ export function PlatformSection({
         snapshotDate={snapshot.snapshotDate}
         onMovieSelect={onMovieSelect}
       />
-    </section>
+    </div>
   )
 }
