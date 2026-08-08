@@ -46,7 +46,7 @@ export function FavoritesPage() {
 
       <main className="px-6 pt-8 pb-16 max-w-7xl mx-auto">
         <div className="mb-10">
-          <h1 className="text-3xl font-bold text-white">Mes favoris</h1>
+          <h1 className="text-3xl font-bold text-fuchsia-500">Mes favoris</h1>
           <p className="mt-2 text-zinc-400">
             {favorites.length} / {MAX_FAVORITES} favoris enregistres
           </p>

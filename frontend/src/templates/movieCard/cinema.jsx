@@ -1,6 +1,6 @@
 export const config = {
   cardWidth: 200,
-  cardHeight: 314,
+  cardHeight: 240,
   posterAspect: '2/3',
   showNumber: true,
   rankNumberVariant: 'portrait',
@@ -18,9 +18,8 @@ export function CardInfo({ movie }) {
 
   return (
     <div className="p-3">
-      <h2 className="font-semibold text-sm text-zinc-100 truncate">{movie.title}</h2>
       {genre && (
-        <p className="mt-1 text-xs text-zinc-400 truncate">{genre}</p>
+        <p className=" font-semibold text-xs text-center text-white truncate">{genre}</p>
       )}
     </div>
   )
